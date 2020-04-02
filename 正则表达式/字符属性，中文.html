@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //使用\p{L}属性匹配字母
+        let hd = "houdunren2010.不断发布教程，加油！";
+        console.log(hd.match(/\p{L}+/u));
+
+        //使用\p{P}属性匹配标点
+        console.log(hd.match(/\p{P}+/gu));
+        let hs = 'houdunren'
+        let reg = /u/g;
+        console.log(reg.exec(hs));
+        console.log(hs.match(reg));
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // function Fun() {
+        //     this.name = 'Damonare';
+        // }
+        // Fun.prototype.say = () => {
+        //     console.log(this.name);
+        // }
+        // var f = new Fun();
+        // f.say(); //window
+        function Fun() {
+            this.name = 'Damonare';
+            this.say = () => {
+                console.log(this.name);
+            }
+        }
+        var f = new Fun();
+        f.say(); //Fun的实例对象
+    </script>
+</body>
+
+</html>

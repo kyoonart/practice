@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let hd = `
+     https://www.pengtao.xyz
+     https://pengtao.com
+     https://www.pengtao.cn?x=2:c=3
+
+     `
+        let reg = /https?:\/\/((?:\w+\.)?\w+\.(?:com|xyz|cn|org$))/gi;
+        let xxx = hd.matchAll(reg)
+        for (const iterator of xxx) {
+            console.log(iterator);
+
+        }
+        console.log(xxx);
+        let urls = []
+        while (res = reg.exec(hd)) {
+            urls.push(res[1])
+        }
+        console.dir(urls)
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        console.log(4 + [1, 2, 3]);
+        console.log('a' + +'b');
+        console.log('a' + +'1');
+        console.log(!![]);
+
+        function foo() {
+            let a = 9;
+            console.log(this.a)
+        }
+        var a = 1
+        foo()
+
+        const obj = {
+            a: 2,
+            foo: foo
+        }
+        obj.foo()
+
+        const c = new foo()
+        console.log(c);
+        console.log('1' == {
+            name: 'yck'
+        });
+        let xxx = {
+            a: 2
+        };
+        console.log(Object.prototype.toString.call(xxx))
+    </script>
+
+</body>
+
+</html>

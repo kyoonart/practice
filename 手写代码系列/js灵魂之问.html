@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+
+    </div>
+    <script>
+        // console.log(!![]);
+        let arr = [1, 2, 3, 4, 5, 6, 5, 8]
+        arr.some(item => {
+            if (item == 2)
+                return true;
+            // console.log(item);
+        })
+        const arrx = [2, 5, [7, 8, [2, 3, 1, [3, 9, 8, [2, 8]]]]];
+        let str = JSON.stringify(arrx);
+        // console.log(arr.join(',').split(',').map(item => Number(item)));
+        // 1 
+        console.log(arrx.join(',').split(','));
+        // ary = ary.flat(Infinity);
+        // 2 
+        console.log(arrx.flat(Infinity));
+        // 3
+        a = str.replace(/(\[|\])/g, '').split(',').map(item => {
+            return Number(item)
+        })
+        console.log(a);
+        let xxx = [1, 2, 5, 6, 2, 3, 5, 5]
+        console.log(Math.max(xxx[0], xxx[1]));
+
+        console.log(xxx.splice(2, 1));
+
+        function* gen() {
+            console.log('enter');
+            let a = yield 1 + 2;
+            let b = yield 2;
+            let c = yield(function() {
+                return 3
+            })
+        }
+        let x = gen();
+        console.log(x);
+        console.log(x.next());
+        console.log(x.next());
+        console.log(x.next());
+        console.log(x.next());
+        console.log(x.next());
+    </script>
+    <script>
+        var a = {
+            n: 1,
+
+        }
+        let b = a;
+        a.x = a;
+        var a = {
+            n: 2
+        }
+        console.log(b)
+        console.log(a)
+    </script>
+</body>
+
+</html>

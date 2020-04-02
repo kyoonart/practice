@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function foo() {
+            let arr = [];
+            for (var i = 0; i < 10; i++) {
+                console.log(i);
+                arr[i] = function() {
+                    console.log(i);
+                    return i
+                }
+            }
+            return arr;
+        }
+        var bar = foo();
+        console.log(bar[2]());
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" name="username">
+    <script>
+        let btn = document.querySelector(`[name='username']`)
+        btn.addEventListener('keyup', function(e) {
+            let value = e.target.value;
+            let reg = /^(?!.*卧槽.*)[a-z]{5,6}$/i;
+            console.log(value.match(reg));
+        })
+    </script>
+</body>
+
+</html>

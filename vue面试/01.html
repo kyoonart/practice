@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <h1>v-for和v-if谁的优先级高</h1>
+        <p v-for='child in children' v-if='isFoder'>{{child.title}}</p>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    children: [{
+                        title: 'foor'
+                    }, {
+                        title: 'sexx'
+                    }]
+                }
+            },
+            computed: {
+                isFoder() {
+                    return this.children && this.children.length > 0
+                }
+            }
+        });
+        console.log(app.$options.render);
+    </script>
+</body>
+
+</html>

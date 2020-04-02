@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function PrintMinNumber(numbers) {
+            numbers.sort(function(s1, s2) {
+                // const c1 = `${s1}${s2}`;
+                // const c2 = `${s2}${s1}`;
+                return s1 - s2
+            });
+            console.log(numbers);
+
+            let min = '';
+            numbers.forEach((i) => min += i);
+            console.log(min);
+        }
+        let arr = [3, 32, 321]
+        console.log(PrintMinNumber(arr));
+    </script>
+</body>
+
+</html>

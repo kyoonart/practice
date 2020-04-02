@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        Function.prototype._call = function(context) {
+            var context = context || window;
+            context.fn = this;
+            var args = [...arguments].slice(1);
+            var result = context.fn(...args);
+            delete context.fn;
+            return result;
+        }
+        let a = {
+            value: 1,
+            name: 'zhansan'
+        }
+
+        function
+        getValue(name, age) {
+            console.log(name) console.log(age) console.log(this.value) console.log(this.name)
+        }
+        getValue._call(a, 'lisj', 15);
+        if (!Function.prototype.bind) {
+            Function.prototype.bind = function() {
+                    var self = this, // 保存原函数 context = [].shift.call(arguments),
+                        // 保存需要绑定的this上下文 args = [].slice.call(arguments); // 剩余的参数转为数组 return function() { // 返回一个新函数 self.apply(context, [].concat.call(args, [].slice.call(arguments))); } } }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" name="mail" value="1564328778@qq.com">
+    <div></div>
+    <script>
+        let mail = document.querySelector(`[name='mail']`);
+        mail.addEventListener('keyup', function() {
+            let reg = /^[\w-]+@([\w-]+\.)+(com|cn|org|cc|net)$/i
+            document.querySelector('div').innerHTML =
+                reg.test(this.value) ?
+                `<span style="color: aquamarine;">正确</span>` :
+                `<span style="color: red;">错误</span>`
+        })
+    </script>
+</body>
+
+</html>

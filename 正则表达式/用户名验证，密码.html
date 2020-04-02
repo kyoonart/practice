@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" name="username">
+    <input type="text" name="password">
+
+    <script>
+        document.querySelector(`[name="username"]`).addEventListener('keyup', function(e) {
+            let value = e.target.value
+            let reg = /^[a-z][\w-]{2,7}$/i
+            console.log(reg.test(value));
+
+        })
+
+        let input = document.querySelector(`[name="password"]`);
+        input.addEventListener("keyup", e => {
+            const value = e.target.value.trim();
+            const regs = [/^[a-zA-Z0-9]{5,10}$/, /[A-Z]/];
+            let state = regs.every(v => v.test(value));
+            console.log(state ? "正确！" : "密码必须包含大写字母并在5~10位之间");
+        });
+    </script>
+</body>
+
+</html>

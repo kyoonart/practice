@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <span>houdunren</span>
+        <span>quaner</span>
+        <span>nielme</span>
+    </div>
+    <script>
+        // 禁止贪婪
+        var div = document.querySelector('div')
+        let regx = /<span>([\s\S]+?)<\/span>/g;
+        let reg = /<span>([\s\S]+?)<\/span>/g
+        div.innerHTML = div.innerHTML.replace(regx, (v, p1) => {
+            console.log(v);
+            return `<h1>${p1}</h1>`
+
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // \w 字母数字下划线  \s 是空白字符 大写的相反意思
+        // [\s\S][\d\D] 匹配任何字符
+        let tel = '010-26262626';
+        //错误结果：只匹配 | 左右两边任一结果
+        console.log((/010|020\-d{7,8}/).test(tel))
+
+        //正确结果：所以需要放在原子组中使用
+        console.log(tel.match(/(010|020)\-\d{7,8}/));
+        let hd = 'houdunren 2010'
+        console.log(hd.match(/(\d+|\d)/g));
+        let str = '周三:101-151510,里斯:129-226266';
+        console.log(str.match(/[^-\d:,\s]+/g));
+        // 最简单的邮箱匹配
+        let email = '156432778@qq.com'
+        console.log(email.match(/^\w+@\w+\.\w+$/));
+    </script>
+</body>
+
+</html>

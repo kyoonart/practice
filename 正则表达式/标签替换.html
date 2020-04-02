@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let hd = `
+    <h1>hodunfen</h1>
+    <span>houduneem</span>
+    <h2>china</h2>
+    `
+        let reg = /<(h[1-6])>([\s\S]+)<\/\1>/gi;
+
+        console.log(hd.replace(reg, `<p>$2</p>`));
+        // 函数形式
+        let res = hd.replace(reg, (p0, p1, p2) => {
+            // console.log(p1);
+
+            return `<p>${p2}</p>`
+        })
+        console.log(res);
+    </script>
+</body>
+
+</html>
