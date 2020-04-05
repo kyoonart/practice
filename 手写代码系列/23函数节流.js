@@ -78,4 +78,17 @@ const throttle = (fn, delay = 500) => {
             flag = true;
         }, delay)
     }
+};
+// 当前时间戳
+// let now = new Data.valueOf()
+
+function throttle_(fn, wait) {
+    let old = 0;
+    return (...args) => {
+        let now = +new Date()
+        if (now - old > wait) {
+            fn.apply(this, args);
+            old = now
+        }
+    }
 }
