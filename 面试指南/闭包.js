@@ -10,3 +10,8 @@ for (let i = 0; i < 10; i++) {
         console.log(i);
     }, i * 1000)
 }
+for (var i = 0; i < 10; i++) {
+    setTimeout(function(j) {
+        console.log(j);
+    }, i * 1000, i)
+}

@@ -1,7 +1,7 @@
 class Node {
     constructor(value) {
         this.value = value
-        this.nexy = undefined
+        this.next = undefined
     }
 };
 class NodeList {
@@ -15,3 +15,5 @@ class NodeList {
         return Head
     }
 }
+var a = new NodeList([1, 2, 3, 5, 4, 5, 6, 5])
+console.log(a);
