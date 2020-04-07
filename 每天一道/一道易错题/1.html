@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 在对象字面量的中不要使用箭头函数，这是禁忌
+        const shape = {
+            radius: 10,
+            diameter() {
+                console.log(this);
+                return this.radius * 2;
+            },
+            perimeter: () => {
+                return 2 * Math.PI * this.radius;
+
+            }
+        };
+        console.log(shape.diameter());
+        console.log(shape.perimeter());
+        console.log(+true);
+    </script>
+</body>
+
+</html>

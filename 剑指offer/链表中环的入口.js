@@ -3,7 +3,7 @@
     this.next = null;
 }*/
 // 、对于问题链表环入口，使用追赶的方法，设定两个指针slow、fast，从头节点开始，
-//每次分别前进1步、2步。如存在环，则两者相遇；如不存在环，fast遇到NULL退出。
+//每次分别前进1步、2步。如存在环，则两者相遇；如不存在环，fast遇到NULL退出。并且碰撞点到头节点的距离为环中结点数n。
 function EntryNodeOfLoop(pHead) {
     // write code here
     let slow = pHead;
