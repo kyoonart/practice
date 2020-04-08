@@ -13,7 +13,7 @@ function getPersonInfo(one, two, three) {
 }
 
 const person = "Lydia";
-const age = 21;
+const age = 21
 
 getPersonInfo(`${person} is ${age} years old`);
 // [Arguments] {

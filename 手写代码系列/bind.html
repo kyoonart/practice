@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var value = 2;
+        var foo = {
+            value: 1
+        };
+
+        function bar(name, age) {
+            this.habit = 'shopping';
+            console.log(this.value);
+            console.log(name);
+            console.log(age);
+        }
+        bar.prototype.friend = 'kevin';
+
+        var bindFoo = bar.bind(foo, 'Jack');
+        var obj = new bindFoo(20);
+        // undefined
+        // Jack
+        // 20
+
+        obj.habit;
+        // shopping
+
+        obj.friend;
+        // kevin
+    </script>
+</body>
+
+</html>
