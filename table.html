@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        main {
+            display: table;
+            width: 100%;
+            border-spacing: 30px 30px;
+            height: 300px;
+        }
+        
+        main>div {
+            display: table-cell;
+            border: 1px solid #ccc;
+            background-color: hotpink;
+        }
+        
+        .pie2 {
+            width: 200px;
+            height: 200px;
+            /* margin: 50px auto; */
+            background: conic-gradient(deeppink 0 30%, yellowgreen 30% 70%, teal 70% 100%);
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </main>
+    <div class="pie2"></div>
+    <script>
+        console.dir(Object.getPrototypeOf({}));
+    </script>
+</body>
+
+</html>
