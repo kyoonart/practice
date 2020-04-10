@@ -18,7 +18,7 @@ console.log(flat(arr));
 
 function _flat(arr) {
     return arr.reduce((pre, cur) => {
-        return pre.concat(cur instanceof Array ? flat(cur) : cur)
+        return pre.concat(cur instanceof Array ? _flat(cur) : cur)
     }, [])
 }
 console.log(_flat(arr));
@@ -29,6 +29,7 @@ function __flat(arr) {
 
     while (arr.some(Array.isArray)) {
         arr = [].concat(...arr)
+
     }
     return arr
 }

@@ -24,11 +24,12 @@ function hasGroupsSizeX(arr) {
     }
     // 求最大公因数的函数
     let gcd = (a, b) => {
-        if (b === 0) {
-            return a;
-        } else {
-            return gcd(b, a % b);
-        }
+        // if (b === 0) {
+        //     return a;
+        // } else {
+        //     return gcd(b, a % b);
+        // }
+        return b === 0 ? a : gcd(b, a % b);
     }
     console.log(num);
     // 当num的长度大于1时进入循环

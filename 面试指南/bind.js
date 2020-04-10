@@ -11,9 +11,10 @@ Function.prototype.bind = function(context) {
     return function F() {
         if (this instanceof F) {
             return new that(...args, ...arguments)
-        }
+        };
         // return Object.create(that.prototype);
-        return that.apply(context, args.concat(...arguments))
+        return that.apply(context, args.concat(...arguments));
+        // 主要是这为什么需要再连接一次参数呢 因为 bing({a,1},1)(2)可以这样传参数是 主要是因为bind返回的是一个对象
     };
     // 这个也可以
     // var fbound = function() {

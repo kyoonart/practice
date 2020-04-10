@@ -5,7 +5,7 @@ var a = 2;
 console.log(++a + 1);
 console.log(--a);
 console.log(a);
-
+// 说明了函数传参数是按值传递
 function setName(obj) {
     obj.name = 'zhangsan';
     obj = new Object()

@@ -57,7 +57,11 @@ new Mpromise((resolve, reject) => {
 }).then(value => {
     console.log(value);
 });
-// 手写promise A+规范---简易版
+
+
+
+
+
 const PENDING = 'pending'
 const RESOLVED = 'resolved'
 const REJECTED = 'rejected'

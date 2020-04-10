@@ -1,9 +1,5 @@
 // 简易的深拷贝函数
 function cloneDeep1(source) {
-    function isObject(obj) {
-        return typeof obj === 'object' && obj != null
-    }
-    // if (!isObject(source)) return source
     var target = Array.isArray(source) ? [] : {};
     for (var key in source) {
         if (Object.prototype.hasOwnProperty.call(source, key)) {
@@ -16,6 +12,7 @@ function cloneDeep1(source) {
     }
     return target;
 }
+
 var a = {
     name: 'zhangsabn',
     array: [2, 3],
@@ -26,8 +23,7 @@ var a = {
 }
 var b = cloneDeep1(a)
 a.name = 'lisi'
-a.children.price = 100
+a.children.price = 100;
+a.array = [4, 5]
 console.log(b);
 console.log(a);
-
-// 注意没有把数组考虑进去

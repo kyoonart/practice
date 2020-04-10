@@ -47,3 +47,16 @@ Function.prototype.bind2 = function(context) {
 // 当作为普通函数时，this 指向 window，此时结果为 false，将绑定函数的 this 指向 context
 // 注释2： 修改返回函数的 prototype 为绑定函数的 prototype，
 // 实例就可以继承绑定函数的原型中的值，即上例中 obj 可以获取到 bar 原型上的 friend。
+function bind3(context) {
+    if (typeof this !== 'function') {
+        throw 'error'
+    }
+    var args = Object.prototype.slice.call(arguments, 1);
+    var that = this;
+    var Fbind = function() {
+        var bargs = Object.prototype.slice.call(arguments);
+        return that.apply(this instanceof Fbind ? Fbind : context, args.concat(bargs))
+    }
+    Fbind.prototype = this.prototype;
+    return Fbind;
+}

@@ -5,5 +5,5 @@ function jsonp(url, callback, success) {
     window[callback] = function() {
         success && success()
     }
-    document.body.appendChild(script)
+    document.body.appendChild(script);
 }
