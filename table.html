@@ -38,7 +38,18 @@
     </main>
     <div class="pie2"></div>
     <script>
-        console.dir(Object.getPrototypeOf({}));
+        // console.dir(Object.getPrototypeOf({}));
+        var a = Object.create(null)
+        console.dir(a);
+        var b = {}
+        console.dir(b)
+        let c = {
+                a: 'sss'
+            }
+            // console.log(Object.getOwnPropertyDescriptor(c, 'a'));
+        console.log(typeof(function() {}))
+        console.dir(Object.keys(function() {}).__proto__);
+        console.log(typeof(undeclared));
     </script>
 </body>
 
