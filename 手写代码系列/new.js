@@ -28,7 +28,7 @@ console.log(car.start())
 
 // black
 
-// car.start();·
+// car.start();· 
 // black car startcs
 function _new() {
     let obj = new Object()
