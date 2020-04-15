@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Server send events</title>
+</head>
+
+<body>
+    <div id="example"></div>
+    <script>
+        var source = new EventSource('http://127.0.0.1:8844/stream');
+        var div = document.getElementById('example');
+
+        source.onopen = function(event) {
+            div.innerHTML += '<p>Connection open ...</p>';
+        };
+
+        source.onerror = function(event) {
+            div.innerHTML += '<p>Connection close.</p>';
+        };
+
+        source.addEventListener('connecttime', function(event) {
+            div.innerHTML += ('<p>Start time: ' + event.data + '</p>');
+        }, false);
+
+        source.onmessage = function(event) {
+            div.innerHTML += ('<p>Ping: ' + event.data + '</p>');
+        };
+    </script>
+</body>
+
+</html>
