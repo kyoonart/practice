@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <h2>{{person.name}}-----{{person.age}}</h2>
+        <h3>{{person.hobbies}}</h3>
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+
+        </ul>
+        <h3>{{msg}}</h3>
+        <div v-text="msg"></div>
+        <div v-text="person.hobbies"></div>
+        <div v-html="Html"></div>
+        <input type="text" v-model='msg'>
+        <button v-on:click='clickBack'>提交</button>
+        <script src="./Observer.js"></script>
+        <script src="./Mvue.js"></script>
+        <script>
+            let vm = new Mvue({
+                el: "#app",
+                data: {
+                    person: {
+                        name: '詹三',
+                        age: 15,
+                        hobbies: "coding"
+                    },
+                    msg: "学习mvvm",
+                    Html: "<h3>hello vue</h3>"
+                },
+                methods: {
+                    clickBack() {
+                        this.$data.person.name = "savn asinvis"
+                    }
+                }
+            })
+        </script>
+    </div>
+
+</body>
+
+</html>
