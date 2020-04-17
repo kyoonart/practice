@@ -13,7 +13,6 @@
 //     }
 //     return new Proxy(obj, handler)
 // }
-
 // let obj = { a: 1 }
 // let p = onWatch(
 //     obj,
@@ -26,8 +25,6 @@
 // )
 // p.a = 2 // 监听到属性a改变
 // p.a // 'a' = 2
-
-
 const  target  =   {};  // 要被代理的原对象// 用于描述代理过程的handler
 const  handler  =   {  
         get:   function (target,  key,  receiver)  {    
