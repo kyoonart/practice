@@ -15,5 +15,3 @@ let fn = add();
 console.log(fn(1));
 console.log(fn(2));
 console.log(fn(3));
-// let b = add(2);
-// console.log(a(2)(2));
