@@ -1,9 +1,15 @@
-function _instanceof(a) {
-    // let a = true
-    let res = Object.prototype.toString.call(a);
+function _type(obj) {
+    let res = Object.prototype.toString.call(obj);
     let arr = res.substr(8).split('');
     let x = arr.length - 1;
     arr.splice(x, 1);
     return arr.join('')
 }
-console.log(_instanceof(123));
+let a = {
+    a: 5
+}
+let x = function() {}
+console.log(_type(a));
+console.log(typeof(a));
+console.log(_type(x));
+console.log(typeof(x));

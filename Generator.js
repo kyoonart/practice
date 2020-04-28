@@ -6,12 +6,8 @@ function* fibonacci() {
     }
 }
 
-// for (let n of fibonacci()) {
-//     if (n > 1000) break;
-//     console.log(n);
-// }
 function* objectEntries(obj) {
-    let propKeys = Object.keys(obj)
+    let propKeys = Object.keys(obj);
 
     for (let propKey of propKeys) {
         yield [propKey, obj[propKey]];
@@ -20,5 +16,4 @@ function* objectEntries(obj) {
 let jane = { first: 'Jane', last: 'Doe' };
 for (const iterator of objectEntries(jane)) {
     console.log(iterator);
-
 }
