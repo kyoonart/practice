@@ -13,3 +13,6 @@ console.log(_type(a));
 console.log(typeof(a));
 console.log(_type(x));
 console.log(typeof(x));
+var isType = function(obj) {
+    return Object.prototype.toString.call(obj).slice(8, -1);
+}

@@ -9,7 +9,7 @@
 <script>
 import Schema from 'async-validator'
 export default {
-    name:"Item",
+    name: "Item",
     inject: ['form'],
     props: {
         label: {
@@ -32,9 +32,11 @@ export default {
         validate() {
             const value = this.form.model[this.prop];
             const rules = this.form.rules[this.prop];
-            const desc = {[this.prop]: rules };
+            const desc = {
+                [this.prop]: rules };
             const schema = new Schema(desc);
-            return schema.validate({[this.prop]: value }, errors => {
+            return schema.validate({
+                [this.prop]: value }, errors => {
                 if (errors) {
                     this.errorMessage = errors[0].message;
                 } else {
