@@ -48,3 +48,8 @@
 let a = { a: 1, b: 2 }
 let b = { b: 2, a: 1 }
 console.log(JSON.stringify(a) == JSON.stringify(b));
+
+
+function suiji(s, e) {
+    return Math.floor(Math.random() * (e - s)) + s
+}

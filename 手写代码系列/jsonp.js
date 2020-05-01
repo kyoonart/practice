@@ -14,7 +14,7 @@ function jsonp(url, jsponCallback, success) {
     script.url = url;
     script.type = "text/javascript";
     window[jsponCallback] = function(data) {
-        success && success()
+        success && success(data)
     };
     document.body.appendChild(script)
 }
