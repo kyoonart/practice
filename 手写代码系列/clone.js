@@ -52,18 +52,6 @@ function Deepcopy(newobj, obj) {
     }
     return newobj;
 }
-let a = {
-    a: 3,
-    b: function() {
-        console.log('xxx');
-        let c = 222;
-    },
-    c: {
-        a: 2
-    }
-}
-let b = clone(a)
-console.log(b);
 // 简易的深拷贝函数
 function cloneDeep1(source) {
     var target = Array.isArray(source) ? [] : {};
@@ -77,4 +65,18 @@ function cloneDeep1(source) {
         }
     }
     return target;
+}
+
+function deepClone(source) {
+    let target = Array.isArray(source) ? [] : {};
+    for (const key in source) {
+        if (object.hasOwnProperty(key)) {
+            if (typeof key === 'object') {
+                target[key] = deepClone(source[key]);
+
+            } else {
+                target[key] = source[key];
+            }
+        }
+    }
 }

@@ -45,11 +45,18 @@
 //     // getting a!
 
 
-let a = { a: 1, b: 2 }
-let b = { b: 2, a: 1 }
-console.log(JSON.stringify(a) == JSON.stringify(b));
+// let a = { a: 1, b: 2 }
+// let b = { b: 2, a: 1 }
+// console.log(JSON.stringify(a) == JSON.stringify(b));
 
 
-function suiji(s, e) {
-    return Math.floor(Math.random() * (e - s)) + s
+// function suiji(s, e) {
+//     return Math.floor(Math.random() * (e - s)) + s
+// }
+
+// 一旦函数加上async那么函数就会返回一个promise函数
+async function test() {
+    return "1"
 }
+console.log(test()) // -> Promise {<resolved>: "1"}
+console.log(0.100000000000000002)
