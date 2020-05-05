@@ -92,3 +92,25 @@ function throttle_(fn, wait) {
         }
     }
 }
+// 定时器 清除
+let timeId;
+
+function process() {
+    clearTimeout(timeId);
+    let timeId = setTimeout(() => {
+        console.log(233);
+    }, 500)
+}
+
+// 标识+定时器
+let flag = false;
+
+function throttle_() {
+    if (!flag) {
+        console.log(233);
+        flag = true;
+        setTimeout(() => {
+            flag = false;
+        }, 2000)
+    }
+}

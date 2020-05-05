@@ -8,6 +8,7 @@
 </head>
 
 <body>
+    <div id="box" style="background:green;width:200px;height: 200px;"></div>
     <!-- <script>
         function setInterval(callback, interval) {
             let timer
@@ -33,12 +34,19 @@
             if (a === 3) cancelAnimationFrame(timer)
         }, 1000)
     </script> -->
-
     <script>
-        function fn() {
-            fn()
+        let i = 10;
+        let id = requestAnimationFrame(move);
+
+        function move() {
+            i += 10;
+            document.getElementById('box').style.transform = `translateX(${i}px)`;
+            id = requestAnimationFrame(move);
+
         }
-        fn()
+        setTimeout(() => {
+            cancelAnimationFrame(id)
+        }, 2000)
     </script>
 </body>
 
