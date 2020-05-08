@@ -27,6 +27,3 @@ var youbick = new Bick()
 console.log(myBick.name)
 
 console.log(youbick.name)
-let x = 'lisi';
-x = 122
-console.log(x);

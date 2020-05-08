@@ -67,9 +67,18 @@ function count(words) {
     words.map(word => {
         dictionary[word] ? dictionary[word]++ : dictionary[word] = 1;
     });
-    return dictionary;
+    return { dictionary, diffrent_word_number };
 }
-这个是算法题题解
+// 这个是算法题题解
 console.log(count(['aa', 'bb', 'cc', 'dd', , '233',
     'aa', 'bb', 'cc', 'dd', 'ef', 'fd', 'bb', 'ac', 'ac', 'bf', 'cc'
 ]));
+
+function sum(a, b) {
+    if (a == 0) return b
+    if (b == 0) return a
+    let newA = a ^ b
+    let newB = (a & b) << 1
+    return sum(newA, newB)
+}
+console.log(sum(6, 8));
