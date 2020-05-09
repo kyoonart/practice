@@ -46,7 +46,7 @@ var d2 = new Dog('sexx');
 // 寄生组合式继承
 function Animal(name) {
     this.name = name;
-    this.color = ['red', 'blue']
+    this.color = ['red', 'blue'];
 
 }
 Animal.prototype.getName = function() {

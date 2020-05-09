@@ -17,3 +17,9 @@ let jane = { first: 'Jane', last: 'Doe' };
 for (const iterator of objectEntries(jane)) {
     console.log(iterator);
 }
+for (const key in jane) {
+    if (jane.hasOwnProperty(key)) {
+        console.log(jane[key]);
+
+    }
+}

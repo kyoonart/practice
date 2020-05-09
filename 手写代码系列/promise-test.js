@@ -34,4 +34,8 @@ Promise.resolve()
 setImmediate(() => {
     console.log('setImmediate')
 })
-console.log('end')
+console.log('end');
+// end
+// nextTick
+// then
+// setImmediate

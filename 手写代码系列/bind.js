@@ -51,7 +51,7 @@ function bind3(context) {
     if (typeof this !== 'function') {
         throw 'error'
     }
-    var args = Object.prototype.slice.call(arguments, 1);
+    var args = Object.prototype.slice.call(arguments);
     var that = this;
     var Fbind = function() {
         var bargs = Object.prototype.slice.call(arguments);

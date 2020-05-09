@@ -11,7 +11,7 @@
 // 跨域请求
 function jsonp(url, jsponCallback, success) {
     let script = document.createElement('script')
-    script.url = url;
+    script.src = url;
     script.type = "text/javascript";
     window[jsponCallback] = function(data) {
         success && success(data)

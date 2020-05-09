@@ -24,4 +24,23 @@ Function.prototype.callx = function(context) {
     return result;
 }
 
-bar.callx(foo); // 1
+bar.callx(foo); // 
+
+
+
+
+Function.prototype.apply = function(context, arr) {
+    // this 参数可以传基本类型数据，原生的 call 会自动用 Object() 转换
+    context = context ? Object(context) : window;
+    context.fn = this;
+
+    let result;
+    if (!arr) {
+        result = context.fn();
+    } else {
+        result = context.fn(...arr);
+    }
+
+    delete context.fn
+    return result;
+}

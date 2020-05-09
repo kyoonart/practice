@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* 产生间隙的原因：元素被当成行内元素排版的时候，元素之间的空白符（空格、回车换行等）都会被浏览器处理，
+      根据CSS中white-space属性的处理方式（默认是normal，合并多余空白），
+      原来HTML代码中的回车换行被转成一个空白符，在字体不为0的情况下，空白符占据一定宽度，
+      所以inline-block的元素之间就出现了空隙 */
+        
+        .container {
+            width: 800px;
+            height: 200px;
+            /* 解决间隙
+            1 :    font-size: 0;
+            2：浮动 
+            3：写html要注意
+            */
+        }
+        
+        .left {
+            font-size: 14px;
+            background: red;
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+        }
+        
+        .right {
+            font-size: 14px;
+            background: blue;
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="left">
+            左
+        </div>
+        <div class="right">
+            右
+        </div>
+    </div>
+</body>
+
+</html>
