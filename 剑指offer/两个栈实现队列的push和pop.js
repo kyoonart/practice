@@ -3,7 +3,7 @@ const outStack = [],
 
 function push(node) {
     // write code here
-    inStack.push(node)
+    inStack.push(node);
 }
 
 function pop() {
@@ -11,7 +11,7 @@ function pop() {
     // 出栈为空
     if (!outStack.length) {
         while (inStack.length) {
-            outStack.push(inStack.pop())
+            outStack.push(inStack.pop());
         }
     }
     return outStack.pop();
