@@ -31,11 +31,9 @@ function quickSort1(arr, low = 0, high = arr.length - 1) {
         arr[right] = arr[left]
     }
     arr[left] = flag;
-
     quickSort1(arr, low, left - 1)
     quickSort1(arr, left + 1, high)
     return arr
 };
 console.log(quickSort1(arr));
-
 // 优化思路 不要选择第一个数作为排序的中轴  1： 随机数 2：三平均法  第一个 最后一个  中间的那个 相加取平均数
