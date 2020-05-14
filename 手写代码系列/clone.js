@@ -79,4 +79,5 @@ function deepClone(source) {
             }
         }
     }
+    return target
 }
