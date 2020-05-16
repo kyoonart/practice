@@ -1,17 +1,17 @@
 let arr2 = [1, 2, 3, 2, 33, 55, 66, 3, 55];
 let newArr = [];
 // 1
-arr2.forEach(item => {
-    if (newArr.indexOf(item) == '-1') {
-        newArr.push(item)
-            // console.log(newArr.indexOf(item));
-    }
-});
+// arr.forEach(item => {
+//     if (newArr.indexOf(item) == '-1') {
+//         newArr.push(item)
+//             // console.log(newArr.indexOf(item));
+//     }
+// });
 // 2
-let newArr2 = [...new Set(arr2)]
-console.log(newArr2);
+// let newArr2 = [...new Set(arr2)]
+// console.log(newArr2);
 // 3
-let unique = arr.reduce((pre, cur) => {
+var unique = arr2.reduce((pre, cur) => {
     if (!pre.includes(cur)) {
         return pre.concat(cur)
     } else {
@@ -19,9 +19,10 @@ let unique = arr.reduce((pre, cur) => {
     }
 }, []);
 // 换个写法
-function unique(arr) {
+function _unique(arr) {
     return arr.reduce((prev, cur) => prev.includes(cur) ? prev : [...prev, cur], []);
 }
+console.log(_unique(arr2));
 //4 
 function unique(arr) {
     for (let i = 0; i < arr.length; i++) {

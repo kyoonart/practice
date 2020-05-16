@@ -23,8 +23,6 @@ function _flat(arr) {
 }
 console.log(_flat(arr));
 
-
-
 function __flat(arr) {
 
     while (arr.some(Array.isArray)) {
