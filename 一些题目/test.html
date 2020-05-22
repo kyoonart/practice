@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            background: green;
+            width: 500px;
+            height: 500px;
+            margin: 0 auto;
+        }
+        
+        .box {
+            width: 200px;
+            height: 200px;
+            display: inline-block;
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+    </div>
+    <script>
+        var iArray = [];
+
+        function getRandom(istart, iend) {
+            var iChoice = iend - istart + 1;
+            return Math.floor(Math.random() * iChoice + istart);
+        }
+        for (var i = 0; i < 10; i++) {
+            iArray.push(getRandom(10, 100));
+        }
+        iArray.sort();
+
+        console.log(iArray);
+    </script>
+    <script>
+        function run(input) {
+            if (typeof input !== 'string') return false;
+            return input.split('').reverse().join('') === input;
+        }
+        console.log(run('abcx3cba'));
+    </script>
+</body>
+
+</html>
