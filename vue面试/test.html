@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<div id="app">
+    <h1>{{a}}</h1>
+    <!-- <h2>{{b}}</h2>git  -->
+    <h2>{{$x}}</h2>
+</div>
+
+<body>
+    <script src="./vue.js"></script>
+    <script>
+        var data = {
+            a: 1
+        }
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                a: 55,
+                b: data,
+                $x: 'sssss'
+            }
+        })
+
+        // vm.$data === data // => true
+        // vm.$el === document.getElementById('example') // => true
+
+        // // $watch 是一个实例方法
+        // vm.$watch('a', function(newValue, oldValue) {
+        //     // 这个回调将在 `vm.a` 改变后调用
+        // })
+        vm.$data.a = 3
+            // console.log();
+        data.a = 22
+        console.log(data);
+        console.log(vm.$data);
+        console.log(vm.$options);
+        console.log(vm.$el);
+    </script>
+</body>
+
+</html>
