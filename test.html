@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <title>菜鸟教程(runoob.com)</title>
     <style>
         #div1 {
@@ -16,7 +16,7 @@
 <body>
     <p>创建一个横跨屏幕的div，div 两边有 50px 的间隙：</p>
     <div id="div1">一些文本...</div>
-    <script language="javascript">
+    <!-- <script language="javascript">
         var h = "";
         h += " 网页可见区域宽：" + document.body.clientWidth;
         h += " 网页可见区域高：" + document.body.clientHeight;
@@ -35,6 +35,36 @@
         h += " 你的屏幕设置是 " + window.screen.colorDepth + " 位彩色";
         h += " 你的屏幕设置 " + window.screen.deviceXDPI + " 像素/英寸";
         alert(h);
+    </script> -->
+    <script>
+        console.log("script start");
+
+        async function async1() {
+            await async2();
+            console.log("async1 end");
+            return "test";
+        }
+        async function async2() {
+            console.log("async2 end");
+        }
+        // async1();
+        setTimeout(function() {
+            console.log("setTimeout");
+        }, 0);
+        async1().then((data) => console.log(data));
+
+        new Promise((resolve) => {
+                console.log("Promise");
+                resolve();
+            })
+            .then(function() {
+                console.log("promise1");
+            })
+            .then(function() {
+                console.log("promise2");
+            });
+
+        console.log("script end");
     </script>
 </body>
 
