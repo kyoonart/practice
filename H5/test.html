@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>轮播</title>
+    <script src="js/jquery-1.8.3.min.js"></script>
+    <script src="js/lunbo.js"></script>
+    <link rel="stylesheet" href="css/lunbo.css" />
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    
+    .lunbo {
+        padding: 0px 10px;
+        margin-top: 20px;
+    }
+    
+    .wrap {
+        width: 100%;
+        height: 100px;
+        overflow: hidden;
+        position: relative;
+        box-shadow: 2px 2px 2px #666;
+    }
+    
+    .wraps {
+        width: 100%;
+        height: 100px;
+    }
+    
+    .wraps img {
+        float: left;
+        cursor: pointer;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    
+    .page {
+        width: 100%;
+        position: absolute;
+        bottom: 10px;
+        text-align: center;
+    }
+    
+    .page span {
+        display: inline-block;
+        width: 10px;
+        height: 5px;
+        text-align: center;
+        line-height: 20px;
+        background: rgba(0, 0, 0, 0.5);
+        color: #fff;
+        margin-left: 10px;
+        cursor: pointer;
+    }
+    
+    .page span.current {
+        background: #ffffff;
+    }
+    
+    .btnBox span {
+        width: 30px;
+        height: 30px;
+        display: inline-block;
+        background: rgba(0, 0, 0, 0.5);
+        color: #fff;
+        font-size: 20px;
+        text-align: center;
+        line-height: 26px;
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        margin-top: -10px;
+        z-index: 3;
+    }
+    
+    #left {
+        left: 0;
+    }
+    
+    #right {
+        right: 0;
+    }
+</style>
+
+<body>
+    <div class="lunbo">
+        <div class="wrap">
+            <div class="btnBox">
+                <span id="left">&lt;</span>
+                <span id="right">&gt;</span>
+            </div>
+            <div class="wraps">
+                <img src="http://www.photophoto.cn/m1/005/004/0050040031.jpg" />
+                <img src="http://www.photophoto.cn/m1/005/004/0050040001.jpg" />
+                <img src="http://www.photophoto.cn/m36/005/018/0050180021.jpg" />
+            </div>
+            <p class="page"></p>
+        </div>
+    </div>
+</body>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/swipe/2.0.0/swipe.js'></script>
+<script>
+    $(function() {
+        $(".wraps img:not(:first)").hide();
+        var index = 0;
+        var s = $(".wraps img").length;
+        var auto;
+        for (var i = 1; i <= s; i++) {
+            $(".page").append("<span></span>");
+        }
+        $(".page span:first").addClass("current");
+        $(".page span").on("click", function() {
+            index = $(this).index();
+            move();
+        });
+
+        function autos() {
+            auto = setInterval(function() {
+                index++;
+                if (index == s) {
+                    index = 0;
+                }
+                move();
+            }, 3000);
+        }
+        autos();
+
+        function move() {
+            $(".page span").eq(index).addClass("current").siblings().removeClass('current');
+            $(".wraps img").eq(index).stop(true, true).fadeIn().siblings().stop(true, true).fadeOut();
+        }
+        $("#left").click(function() {
+            clearInterval(auto);
+            index--;
+            if (index <= -1) {
+                index = s - 1;
+            }
+            move();
+            autos();
+        });
+        $("#right").click(function() {
+            clearInterval(auto);
+            index++;
+            if (index >= s) {
+                index = 0;
+            }
+            move();
+            autos();
+        });
+        $(".wraps img, .page span").mouseover(function() {
+            clearInterval(auto);
+        }).mouseout(function() {
+            autos();
+        });
+    });
+</script>
+
+</html>
