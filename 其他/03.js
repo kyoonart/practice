@@ -9,12 +9,12 @@
 // console.log(result); //30
 function add() {
     console.log(this);
-};
+}
 var obj = {
     say: () => {
         console.log(this);
-    }
-}
+    },
+};
 add();
-console.log('-- -- -- -- -- -- --');
-window.say()
+console.log("-- -- -- -- -- -- --");
+window.say();

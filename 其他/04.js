@@ -30,7 +30,7 @@ function hasGroupsSizeX(arr) {
         //     return gcd(b, a % b);
         // }
         return b === 0 ? a : gcd(b, a % b);
-    }
+    };
     console.log(num);
     // 当num的长度大于1时进入循环
     while (num.length > 1) {
@@ -46,7 +46,7 @@ function hasGroupsSizeX(arr) {
         num.unshift(v);
     }
     return true;
-
 }
+class() {}
 var arr = [1, 1, 2, 2, 2, 2, 3, 3];
 console.log(hasGroupsSizeX(arr));

@@ -1,3 +1,5 @@
 {
-  "liveServer.settings.multiRootWorkspaceName": "复习计划"
+    "liveServer.settings.multiRootWorkspaceName": "复习计划",
+    "editor.copyWithSyntaxHighlighting": false,
+    "tslint.suppressWhileTypeErrorsPresent": true
 }
