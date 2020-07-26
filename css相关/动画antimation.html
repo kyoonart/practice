@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #2e3e54;
+        }
+        
+        .container {
+            width: 500px;
+            height: 500px;
+            border: 1px solid #fff;
+            margin: 0 auto;
+        }
+        
+        .box {
+            background-color: yellow;
+            width: 100px;
+            height: 100px;
+            animation-name: hd;
+            animation-duration: 3s;
+        }
+        
+        @keyframes hd {
+            25% {
+                transform: translateX(400px);
+                background-color: red;
+                border-radius: 50%;
+            }
+            50% {
+                transform: translate(400px, 400px);
+            }
+            75% {
+                transform: translateY(400px);
+                background-color: #454545;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="box"></div>
+    </div>
+</body>
+
+</html>
