@@ -1,79 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>3D</title>
     <link rel="stylesheet" href="3D.css" />
-    <style>
-        .flip .rotate {
-            position: absolute;
-            width: 280px;
-            height: 420px;
-            /*   preserve-3d    */
-            -moz-transform-style: preserve-3d;
-            -webkit-transform-style: preserve-3d;
-            -o-transform-style: preserve-3d;
-            transform-style: preserve-3d;
-            -moz-transition: all 0.6s ease-in-out 0.3s;
-            -webkit-transition: all 0.6s ease-in-out 0.3s;
-            -o-transition: all 0.6s ease-in-out 0.3s;
-            transition: all 0.6s ease-in-out 0.3s;
-        }
-        
-        .flip .rotate>* {
-            position: absolute;
-            /*   翻转后隐藏   */
-            -moz-backface-visibility: hidden;
-            -webkit-backface-visibility: hidden;
-            -o-backface-visibility: hidden;
-            backface-visibility: hidden;
-        }
-        
-        .rotate .next {
-            -moz-transform: rotateX(180deg);
-            -webkit-transform: rotateX(180deg);
-            -o-transform: rotateX(180deg);
-            transform: rotateX(180deg);
-        }
-        
-        .rotate:hover {
-            -moz-transform: rotateX(180deg);
-            -webkit-transform: rotateX(180deg);
-            -o-transform: rotateX(180deg);
-            transform: rotateX(180deg);
-        }
-    </style>
 </head>
 
 <body>
-    <div class="assembly">
-        <div class="cube">
-            <div class="cube__face"></div>
-            <div class="cube__face"></div>
-            <div class="cube__face"></div>
-            <div class="cube__face"></div>
-            <div class="cube__face"></div>
-            <div class="cube__face"></div>
-        </div>
-
-        <div class="cube">
-            <div class="cube__face"></div>
-            <div class="cube__face"></div>
-            <div class="cube__face"></div>
-            <div class="cube__face"></div>
-            <div class="cube__face"></div>
-            <div class="cube__face"></div>
-        </div>
-
-        <div class="cube">
-            <div class="cube__face"></div>
-            <div class="cube__face"></div>
-            <div class="cube__face"></div>
-            <div class="cube__face"></div>
-            <div class="cube__face"></div>
-            <div class="cube__face"></div>
+    <div class="demo-perspective-photo">
+        <div id="stage">
+            <div id="container">
+                <img src="https://dss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3892521478,1695688217&fm=26&gp=0.jpg" class="piece" />
+                <img src="https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2534506313,1688529724&fm=26&gp=0.jpg" class="piece" />
+            </div>
         </div>
     </div>
 </body>
