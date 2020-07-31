@@ -64,3 +64,46 @@ axios.request({
   headers,
 })
 
+### 如何取消请求
+import axios from 'axios'
+
+// 第一种取消方法
+axios.get(url, {
+  cancelToken: new axios.CancelToken(cancel => {
+    if (/* 取消条件 */) {
+      cancel('取消日志');
+    }
+  })
+});
+
+// 第二种取消方法
+const CancelToken = axios.CancelToken;
+const source = CancelToken.source();
+axios.get(url, {
+  cancelToken: source.token
+});
+source.cancel('取消日志');
+```
+````
+
+例：发送 A、B 两个请求，当 B 请求成功后，取消 A 请求。
+
+// 第 1 种写法：
+let source;
+axios.get(Aurl, {
+cancelToken: new axios.CancelToken(cancel => {
+source = cancel;
+})
+});
+axios.get(Burl)
+.then(() => source('B 请求成功了'));
+
+// 第 2 种写法：
+const CancelToken = axios.CancelToken;
+const source = CancelToken.source();
+axios.get(Aurl, {
+cancelToken: source.token
+});
+axios.get(Burl)
+.then(() => source.cancel('B 请求成功了'));
+相对来说，我更推崇第 1 种写法，因为第 2 种写法太隐蔽了，不如第一种直观好理解。
