@@ -25,7 +25,7 @@
 // 首先将axios包引进来
 import axios from 'axios'
 ```js
-+
+
 第1种使用方式：axios(option)
 
 
@@ -63,4 +63,4 @@ axios.request({
   method,
   headers,
 })
-````
+
