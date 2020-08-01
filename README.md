@@ -266,7 +266,7 @@ document.body.contentEditable = "true";
 
 ### 为什么操作 DOM 慢
 
-​ 因为 DOM 是属于渲染引擎中的东西，而 JS 又是 JS 引擎中的东西。当我们通过 JS 操作 DOM 的时候，其实这个操作涉及到了两个线程之间的通信，那么势 必会带来一些性能上的损耗。操作 DOM 次数一多，也就等同于一直在进行线程之间的通信，并且操作 DOM 可能还会带来重绘回流的情况，所以也就导致了性能上的问题。
+ 因为 DOM 是属于渲染引擎中的东西，而 JS 又是 JS 引擎中的东西。当我们通过 JS 操作 DOM 的时候，其实这个操作涉及到了两个线程之间的通信，那么势 必会带来一些性能上的损耗。操作 DOM 次数一多，也就等同于一直在进行线程之间的通信，并且操作 DOM 可能还会带来重绘回流的情况，所以也就导致了性能上的问题。
 
 ### 作用域链
 
@@ -284,7 +284,7 @@ Number string Boolean,null undefined symbol object 还有新的 bigint
 
 **没有任何方法可以更改私有的 Class 属性，因此 Object.prototype.toString 是可以准确识别对象对应的基本类型的方法，它比 instanceof 更加准确。**
 
-​ 词法环境（Lexical Environment）
+ 词法环境（Lexical Environment）
 
 ### 词法环境有两个**组成部分**
 
@@ -656,7 +656,7 @@ xhr.onreadystatechange = function() {
 
 ### js 获取浏览器的高度和宽度常见方法
 
-s 获取手机屏幕宽度、高度
+``` js
 网页可见区域宽：document.body.clientWidth
 网页可见区域高：document.body.clientHeight
 网页可见区域宽：document.body.offsetWidth (包括边线的宽)
@@ -671,3 +671,18 @@ s 获取手机屏幕宽度、高度
 屏幕分辨率的宽：window.screen.width
 屏幕可用工作区高度：window.screen.availHeight
 屏幕可用工作区宽度：window.screen.availWidth
+```
+
+### vue 路径处理
+
+``` js
+ configureWebpack: {
+    resolve: {
+      alias: {
+        "@": path.join(__dirname, "src")
+      }
+    }
+  }
+```
+
+  
