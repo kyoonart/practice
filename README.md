@@ -685,4 +685,6 @@ xhr.onreadystatechange = function() {
   }
 ```
 
-  
+commit 提交规范
+
+  ![image-20200802003249231](C:\Users\彭涛\AppData\Roaming\Typora\typora-user-images\image-20200802003249231.png)
