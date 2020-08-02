@@ -8,6 +8,6 @@ var sleepSort = function(arr, callback) {
     });
 }
 let arr = [1, 8, 2, 6, 2, 3, 22, 63, 1000];
-console.time('A')；
+console.time('A')
 sleepSort(arr, res => { console.log(res) });
-console.timeEnd('A')；
+console.timeEnd('A')
