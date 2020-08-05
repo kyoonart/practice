@@ -1,7 +1,6 @@
 import React, { Component, useState, useEffect } from "react";
 import { Form, Input, Select, Button } from "antd";
-import { FormComponentProps } from "antd/lib/form";
-
+import { FormComponentProps } from "antd/lib/form/Form";
 import { get } from "../../utils/request";
 import { GET_EMPLOYEE_URL } from "../../constants/urls";
 import { EmployeeRequest, EmployeeResponse } from "../../interface/employee";
