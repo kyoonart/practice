@@ -2,30 +2,30 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
 </head>
 
 <body>
     <div id="app">
-        <p v-for='item in list' :key='item'>
+        <p v-for="item in list" :key="item">
             {{item}}
         </p>
     </div>
     <script src="vue.js"></script>
     <script>
         new Vue({
-            el: '#app',
+            el: "#app",
             data: {
-                list: ['a', 'b', 'c', 'd', 'e']
+                list: ["a", "b", "c", "d", "e"],
             },
             mounted() {
                 setTimeout(() => {
-                    this.list.splice(2, 0, 'f')
-                }, 2000)
-            }
-        })
+                    this.list.splice(2, 0, "f");
+                }, 2000);
+            },
+        });
     </script>
 </body>
 
