@@ -28,5 +28,4 @@ event.$on('hook2', function(args) {
     })
     // event.$remove('hook')
 event.$emit('hook', '233')
-event.$emit('hook', '23332232')
 event.$emit('hook2', '24444')
