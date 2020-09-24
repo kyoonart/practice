@@ -55,7 +55,7 @@ function addx() {
     let fn = function() {
         return addx.apply(null, args.concat([...arguments]));
     };
-    fn.toString = () => args.reduce((pre, cur) => pre + cur);
+    fn.toString = () => args.reduce((pre, cur) => pre * cur);
     return fn;
 }
 let a = addx(1)(2, 4)(3, 5);
