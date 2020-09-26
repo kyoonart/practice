@@ -79,3 +79,6 @@ function sum(a, b) {
     return sum(newA, newB)
 }
 console.log(sum(6, 8));
+
+const array = new Array(20).fill(0)
+console.log(array);
