@@ -1,17 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
+  </head>
 
-<body>
-    <input id=input " type="text " />
+  <body>
+    <input id="input" type="text" />
     <script>
       const data = {};
-      const input = document.getElementById("input ");
+      const input = document.getElementById("input");
       Object.defineProperty(data, "text ", {
         set(value) {
           input.value = value;
@@ -21,6 +20,7 @@
       });
       input.onChange = function (e) {
         data.text = e.target.value;
+        console.log("sss");
       };
     </script>
   </body>

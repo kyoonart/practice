@@ -1,42 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-        .circle {
-            width: 100px;
-            height: 100px;
-            background-color: #ffb5bf;
-            border-radius: 50% 50% 0 0 / 100% 100% 0 0;
-        }
-        
-        .loading {
-            width: 50px;
-            height: 50px;
-            display: inline-block;
-            border: 5px solid #ddd;
-            border-top-color: #ffb5bf;
-            border-radius: 50%;
-            animation: loading-animation 1.2s linear infinite;
-        }
-        
-        @keyframes loading-animation {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-    </style>
-</head>
+      .circle {
+        width: 100px;
+        height: 100px;
+        background-color: #ffb5bf;
+        border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+      }
 
-<body>
+      .loading {
+        width: 50px;
+        height: 50px;
+        display: inline-block;
+        border: 5px solid #ddd;
+        border-top-color: #ffb5bf;
+        border-radius: 50%;
+        animation: loading-animation 1.2s linear infinite;
+      }
+
+      @keyframes loading-animation {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </head>
+
+  <body>
     <div class="circle"></div>
     <div class="loading"></div>
-</body>
-
+    <script>
+      let map = new Map();
+      map.set("id", 233);
+      map.set("id2", 243);
+      map.set("id3", 236);
+      console.log(map);
+      console.log(map.has("id"));
+      console.log(map.get("id"));
+      console.log(map.clear("id"));
+      console.log(map);
+    </script>
+  </body>
 </html>
