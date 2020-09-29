@@ -29,16 +29,75 @@
         // console.log(p.m()); //1
         // o.n();
         // console.log(o.m().a); //2
-        function setName(obj) {
-            obj.name = 'test';
-            console.log(person.name); //'test'
-            //函数内部重写引用类型的形参，这个obj变量是一个局部对象。函数执行完毕，立马销毁。所以person.name还是全局对象person的属性值
-            obj = new Object();
-            obj.name = 'white';
-            console.log(person.name); //'test'
+        // function setName(obj) {
+        //     obj.name = 'test';
+        //     console.log(person.name); //'test'
+        //     //函数内部重写引用类型的形参，这个obj变量是一个局部对象。函数执行完毕，立马销毁。所以person.name还是全局对象person的属性值
+        //     obj = new Object();
+        //     obj.name = 'white';
+        //     console.log(person.name); //'test'
+        // }
+        // var person = new Object();
+        // setName(person);
+        // function test() {
+        //     console.log('testets');
+        // }
+        // let getFunc = function(func) {
+        //     return () => {
+        //         let arr = [].prototype.slice.call(arguments);
+        //         func.apply(this, arr);
+        //         console.log(1)
+        //     }
+        // }
+        // let newFunc = getFunc(test);
+        // newFunc(test)
+        class Parent {
+            static myMethod(msg) {
+                console.log('static ' + msg);
+            }
+            myMethod(msg) {
+                console.log('instance ' + msg)
+            }
         }
-        var person = new Object();
-        setName(person);
+        class Child extends Parent {
+            static myMethod(msg) {
+                super.myMethod(msg);
+                // 在子类的静态方法中,super指向父类
+            }
+            myMethod(msg) {
+                super.myMethod(msg);
+                // 在普通方法中，super指向的是父类的原型对象
+            }
+        }
+        let a = new Child()
+            // a.myMethod()
+            //获取年龄的方法
+        function getAge(name, callback) {
+            let age = 10;
+            callback(age);
+        }
+        //需要调用的方法
+        function html() {
+            let strHtml = ``
+                //在此希望调用获取年龄方法得到小明的年龄
+            let age = getAge("小明", function(data) {
+                strHtml = "小明的年龄为：" + data;
+                console.log(strHtml);
+            });
+        }
+        // html()
+
+        function getApp(callback) {
+            callback();
+            console.log(1);
+        }
+
+        function ht() {
+            let a = getApp(function() {
+                console.log('test');
+            })
+        }
+        ht()
     </script>
 </body>
 

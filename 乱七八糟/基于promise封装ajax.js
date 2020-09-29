@@ -48,3 +48,26 @@ function getStringParam(param) {
     }
     return dataString;
 }
+
+
+const _fetch(url) {
+    return new Promise((resolve, reject) => {
+        if (window.XMLHttpRequest) {
+            const xhr = new XMLHttpRequest();
+        } else {
+            const xhr = ActiveXObject("Microsoft.XMLHTTP")
+        }
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4) {
+                if (xhr.status >= 200 && xhr.status < 300 || xhr.status === 304) {
+                    resolve(JSON.parse(xhr.responseText))
+                } else {
+                    reject('fail')
+                }
+            }
+        }
+        xhr.open('GET', url, false)
+        xhr.send()
+    })
+
+}
