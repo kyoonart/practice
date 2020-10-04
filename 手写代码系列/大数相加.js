@@ -19,6 +19,7 @@ function BigSum(a, b) {
     for (let i = len - 1; i >= 0; i--) {
         let sum = Number(arrA[i]) + Number(arrB[i]) + Number(carry);
         carry = sum >= 10 ? 1 : 0;
+        // or carry= Math.floor(sum/10)
         sum = sum > 10 ? parseInt(sum % 10) : sum;
         res.push(sum)
     }

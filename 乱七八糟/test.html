@@ -1,62 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <meta charset="utf-8">
     <style>
+        .message-ball {
+            font-size: 20px;
+            line-height: 200px;
+            text-align: center;
+        }
+        
         .circle {
-            width: 100px;
-            height: 100px;
-            background-color: #ffb5bf;
-            border-radius: 50% 50% 0 0 / 100% 100% 0 0;
-        }
-        
-        .loading {
-            width: 50px;
-            height: 50px;
-            display: inline-block;
-            border: 5px solid #ddd;
-            border-top-color: #ffb5bf;
+            transition-property: width, height, margin-left, margin-top;
+            transition-duration: 2s;
+            position: fixed;
+            transform: translateX(-50%) translateY(-50%);
+            background-color: red;
             border-radius: 50%;
-            animation: loading-animation 1.2s linear infinite;
-        }
-        
-        @keyframes loading-animation {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
         }
     </style>
 </head>
 
 <body>
-    <div class="circle"></div>
-    <div class="loading"></div>
-    <script>
-        let map = new Map();
-        map.set("id", 233);
-        map.set("id2", 243);
-        map.set("id3", 236);
-        // console.log(map);
-        // console.log(map.has("id"));
-        // console.log(map.get("id"));
-        // console.log(map.clear("id"));
-        // console.log(map);
 
-        let str = 'hello';
-        str.test = {
-            name: 'test'
+    <button onclick="go()">Click me</button>
+
+    <script>
+        function go() {
+            showCircle(150, 150, 100, div => {
+
+                div.classList.add('message-ball');
+                div.append("Hello, world!");
+            });
         }
-        console.log(str.test);
-        let num = 255;
-        console.log(num.toString(16)); // ff
-        console.log(num.toString(4)); // 11111111
+
+        function showCircle(cx, cy, radius, callback) {
+            debugger
+            let div = document.createElement('div');
+            div.style.width = 0;
+            div.style.height = 0;
+            div.style.left = cx + 'px';
+            div.style.top = cy + 'px';
+            div.className = 'circle';
+            document.body.append(div);
+
+            setTimeout(() => {
+                div.style.width = radius * 2 + 'px';
+                div.style.height = radius * 2 + 'px';
+
+                div.addEventListener('transitionend', function handler() {
+                    div.removeEventListener('transitionend', handler);
+                    callback(div);
+                });
+            }, 0);
+        }
     </script>
+
+
 </body>
 
 </html>
