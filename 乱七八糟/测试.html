@@ -1,15 +1,29 @@
 <script>
-    var a = {
-        name: '1'
-    };
-    console.log(a);
-    a.name = '2';
-    console.log(a);
+    // new Promise(function(resolve, reject) {
+    //     setTimeout(() => {
+    //         throw new Error("Whoops!")
+    //     }, 1000)
+    // }).catch((err) => {
+    //     console.log(err)
+    // });
 
+    // console.table([
+    //     [1, 3, 4],
+    //     [3, 6, 8]
+    // ]);
+    // console.dir(console);
+    function addx() {
+        // 1:取出所有的参数
+        let args = [...arguments];
+        console.log(args);
+        let fn = function() {
+            console.log('done');
 
-    //  console.log不是javascript提供的对象 而是浏览器提供的对象  并且只有当浏览器控制台打开的时候console才会起作用 也就是说console相当于异步的
-    var a = {};
-    console.log(a);
-    a.foo = 'foo';
-    console.log(a);
+            return addx.apply(null, args.concat([...arguments]));
+        };
+        fn.toString = () => args.reduce((pre, cur) => pre * cur);
+        return fn;
+    }
+    let a = addx(1)(2, 4)(3, 5);
+    console.log(a());
 </script>

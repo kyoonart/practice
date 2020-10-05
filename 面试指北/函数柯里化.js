@@ -38,25 +38,27 @@ let sumx = add(1)(2)(3);
 
 // 无限累加函数
 
-function add(a) {
-    function sum(b) {
-        a = b ? a + b ? a;
-        return sum;
-    }
-    sum.toString = function() {
-        return a
-    }
-    return sum;
-}
+// function add(a) {
+//     function sum(b) {
+//         a = b ? a + b ? a
+//         return sum;
+//     }
+//     sum.toString = function() {
+//         return a
+//     }
+//     return sum;
+// }
 // 科里化实现多参数
 function addx() {
     // 1:取出所有的参数
     let args = [...arguments];
+    console.log(args);
     let fn = function() {
+        console.log('done');
         return addx.apply(null, args.concat([...arguments]));
     };
     fn.toString = () => args.reduce((pre, cur) => pre * cur);
     return fn;
 }
 let a = addx(1)(2, 4)(3, 5);
-console.log(a);
+console.log(a());
