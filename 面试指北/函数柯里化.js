@@ -54,7 +54,6 @@ function addx() {
     let args = [...arguments];
     console.log(args);
     let fn = function() {
-        console.log('done');
         return addx.apply(null, args.concat([...arguments]));
     };
     fn.toString = () => args.reduce((pre, cur) => pre * cur);
