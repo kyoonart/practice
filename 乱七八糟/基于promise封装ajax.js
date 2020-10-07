@@ -71,3 +71,6 @@ const _fetch(url) {
     })
 
 }
+
+
+// onreadystatechange 和 onload 的区别是 onload只有当readyState为4才会触发 而 onreadystatechange 当readyState变化了就会触发
