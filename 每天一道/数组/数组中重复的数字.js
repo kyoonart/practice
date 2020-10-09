@@ -30,8 +30,6 @@
 var findRepeatNumber = function(nums) {
     const map = {};
     for (const num of nums) {
-        console.log(map);
-
         if (!map[num]) {
             map[num] = true;
         } else {
