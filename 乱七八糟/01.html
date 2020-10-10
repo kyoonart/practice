@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        for (var i = 0; i < 10; i++) {
+            // var b = i;
+        }
+        // console.log(i);
+        // console.log(b);
+        let a = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'h']
+
+        console.log(a.includes('b'));
+
+
+
+        var sum = a.reduce((pre, cur, index, arr) => {
+            // console.log(pre, cur, index, arr)
+            return pre + cur
+        })
+        console.log(sum)
+        let b = {
+                a: 'ass'
+            }
+            // console.log(b)
+        let formateDate = (time) => {
+                if (!time) return '';
+                let date = new Date(time);
+                return date.getHours() + ':' + date.getMinutes() + ':' + (
+                    date.getSeconds() > 10 ? date.getSeconds() : `0${date.getSeconds()}`
+                );
+            }
+            // console.log('时间差为:', formateDate(1602323920294 - 1602322085027))
+        var replaceSpace = function(s) {
+            let temp = s.split(' ');
+            return temp.map((item, index) => index === temp.length - 1 ? item : `${item}%20`).join('');
+        };
+        console.log(replaceSpace("We are happy."));
+    </script>
+
+</body>
+
+</html>
