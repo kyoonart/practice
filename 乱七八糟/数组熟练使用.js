@@ -15,7 +15,7 @@ let filterRange = (arr, a, b) => {
 }
 let resp = filterRange([1, 2, 3, 4, 5], 2, 4)
     // console.log(resp);
-    // 数组打算算法
+    // 数组打乱算法
 let shuffle = (arr) => {
     for (let i = arr.length - 1; i >= 0; i--) {
         let j = Math.floor(Math.random() * (i + 1));
