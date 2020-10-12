@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">节流提交</button>
+    <script>
+        let btn = document.querySelector('#btn');
+        const throttle = (fn, delay) => {
+            let flag = true
+            return (...args) => {
+                if (!flag) return
+                flag = false
+                setTimeout(() => {
+                    fn.apply(this, args)
+                    flag = true
+                }, delay)
+            }
+        }
+
+        function success(e) {
+            console.log('节流 success');
+        }
+        const throttleS = throttle(success, 1000)
+        btn.addEventListener('click', throttleS);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,16 @@
+<script>
+    var a = 'out'
+    const foo = {
+        a: 2,
+        bar: function() {
+            console.log(this.a); //2
+        }
+    }
+    const foo = {
+        a: 2,
+        bar: () => {
+            console.log(this.a); // out
+        }
+    }
+    foo.bar()
+</script>
