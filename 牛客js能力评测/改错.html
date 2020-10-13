@@ -1,0 +1,51 @@
+<script>
+    function functions(flag) {
+        if (flag) {
+            function getValue() {
+                return 'a';
+            }
+        } else {
+            function getValue() {
+                return 'b';
+            }
+        }
+
+        return getValue();
+    }
+    let res = functions(true)
+    console.log(res);
+
+    // function(greeting, name, punctuation) {
+    //     return greeting + ', ' + name + (punctuation || '!');
+    // }, ['Hello', 'Ellie', '!']
+    function valueAtBit(num, bit) {
+        let res = num.toString(2).split('').map(v => Number(v))
+        return res[res.length - bit]
+            // return
+    }
+    console.log(valueAtBit(2, 2));
+
+    function base10(str) {
+        return parseInt(str, 2)
+    }
+    console.log(base10('11000000'));
+
+    function iterate(obj) {
+        let res = []
+        for (const key in obj) {
+            if (obj.hasOwnProperty(key)) {
+                res.push({
+                    key: obj[key]
+                })
+            }
+        }
+        return res
+    }
+    var C = function() {
+        this.foo = 'bar';
+        this.baz = 'bim';
+    };
+    C.prototype.bop = 'bip';
+
+    console.log(iterate(new C()));
+</script>

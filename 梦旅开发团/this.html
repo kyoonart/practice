@@ -1,0 +1,32 @@
+<script>
+    //  this 是在创建上下文执行的时候救生成了this
+    // 谁直接调用this就指向谁
+    var obj = {
+        a: 1,
+        b: {
+            a: 2,
+            fn: function() {
+                console.log(this.a);
+            }
+        }
+    };
+    // obj.b.fn.call(obj);
+    var value = 'hah'
+
+    function fn() {
+        console.log(value);
+    }
+
+    function odd() {
+        var value = 'hello';
+        fn()
+    }
+    odd()
+
+    function callback(cbx) {
+        cbx()
+    }
+    callback(() => {
+        console.log(this);
+    })
+</script>
