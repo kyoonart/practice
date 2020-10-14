@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        body,
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .content {
+            margin: 100px auto;
+            width: 1000px;
+        }
+        
+        .box {
+            position: relative;
+            float: left;
+            width: 50px;
+            height: 120px;
+            overflow: hidden;
+        }
+        
+        .box li {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 120px;
+            list-style: none;
+            font-size: 80px;
+            font-weight: bold;
+            background-color: #fff;
+            line-height: 120px;
+            text-align: center;
+        }
+        
+        .colon {
+            float: left;
+            height: 120px;
+            font-size: 80px;
+            color: #e91e63;
+            font-weight: bold;
+            line-height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+    </div>
+    <script type="text/javascript">
+        (function() {
+            var colors = ["#69D2E7", "#E20049", "#19215E", "#F38630", "#FA6900", "#FF4E50", "#F9D423", "#FFB6FF", "#474168", "#6ACAFC"];
+            var content = document.querySelector('.content');
+            var num = 0;
+            var height = 120;
+            var maxheight = (2 - num) * height;
+            var timeNum = [3, 10, 6, 10, 6, 10];
+            var position = [];
+            var NumberBoxs = [];
+            for (var i = 0; i < 10; i++) {
+                position.push((1 - i) * height);
+            };
+
+            function NumberBox() {}
+            NumberBox.prototype = {
+                init: function() {
+                    var innerHTML = "<div class='box' id='box" + num + "'><ul>"
+                    this.num = num;
+                    num++;
+                    for (var i = 0, l = timeNum[this.num]; i < l; i++) {
+                        innerHTML += "<li style='color:" + colors[i] + "'>" + i + "</li>";
+                    }
+                    innerHTML += "</ul><div>"
+                    content.innerHTML += innerHTML;
+                    if (num == 2 || num == 4) {
+                        content.innerHTML += "<div class='colon'>:</div>"
+                    }
+                },
+                dominit: function() {
+                    this.Ali = [].slice.call(document.getElementById('box' + this.num).getElementsByTagName('li'), 0);
+                    this.Ali.forEach(function(dom, i) {
+                        dom.style.top = position[i] + "px";
+                        dom.style.transition = "top .8s";
+                    })
+                    this.hasdom = true;
+                },
+                toNum: function(n) {
+                    if (!this.hasdom) {
+                        this.dominit();
+                    }
+                    n = "" + n;
+                    var p = this;
+                    var l = p.Ali.length - 1;
+                    while (p.Ali[1].innerHTML != n) {
+                        p.Ali.unshift(p.Ali.pop());
+                    }
+                    p.Ali.forEach(function(dom, i) {
+                        dom.style.zIndex = (i == l) ? "-1" : "1";
+                        dom.style.top = position[i] + "px";
+                    })
+                }
+            }
+            for (var i = 0; i < 6; i++) {
+                var o = new NumberBox();
+                o.init();
+                NumberBoxs.push(o);
+            }
+
+            function getTime() {
+                var time = new Date();
+                return ("" + Fixed2(time.getHours()) + Fixed2(time.getMinutes()) + Fixed2(time.getSeconds())).split("");
+            }
+
+            function Fixed2(n) {
+                return Number(n) < 10 ? "0" + n : n;
+            }
+            (function() {
+                var time = getTime();
+                NumberBoxs.forEach(function(obj, i) {
+                    obj.toNum(time[i]);
+                });
+                setTimeout(arguments.callee, 1000);
+            })()
+        })();
+    </script>
+</body>
+
+</html>

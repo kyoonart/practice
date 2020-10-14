@@ -25,3 +25,16 @@ Function.prototype.cally = function(context) {
     delete context[fn];
     return result;
 };
+
+
+function _call(context) {
+    if (typeof this !== "function") {
+        return undefined;
+    }
+    context = context || window
+    context[fn] = this
+    let args = [...arguments].slice(1);
+    let result = fn(...args)
+    delete context[fn]
+    return result;
+}
