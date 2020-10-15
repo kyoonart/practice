@@ -17,3 +17,18 @@ var reverseList = function(head) {
     }
 
 }
+
+
+
+function reverseList(head) {
+    let prev = null;
+    let cur = null
+    while (head) {
+        cur = head.next;
+        head.next = prev;
+        prev = head;
+        cur = head
+
+
+    }
+}
