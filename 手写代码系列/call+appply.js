@@ -16,7 +16,7 @@ function bar() {
 Function.prototype.callx = function(context) {
     context = context ? Object(context) : window;
     context.fn = this;
-
+    //   this是.前面的那个(谁调用它this指向就是谁)
     let args = [...arguments].slice(1);
     let result = context.fn(...args);
 

@@ -17,7 +17,7 @@ var reverseList = function(head) {
     }
 
 }
-
+``
 
 
 function reverseList(head) {
@@ -28,7 +28,5 @@ function reverseList(head) {
         head.next = prev;
         prev = head;
         cur = head
-
-
     }
 }

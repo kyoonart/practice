@@ -60,3 +60,28 @@ function bind3(context) {
     Fbind.prototype = this.prototype;
     return Fbind;
 }
+
+
+
+// 最终实现  字节跳动
+function myBind() {
+
+    let thatFunc = this;
+    let bindTo = arguments[0]
+    let args = Array.prototype.slice.call(arguments, 1);
+
+    function Fn() {
+        let isNewCall = this instanceof Fn
+        let thisArgs = Array.prototype.slice.call(arguments);
+        return thatFunc。 apply(isNewCall ? this : bindTo, args.concat(thisArgs));
+    }
+    Fn.prototype = Object.create(thatFunc.prototype);
+    return Fn;
+};
+
+function Animal(name, color) {
+    this.name = name;
+    this.color = color;
+
+}
+const cat = Animal.myBind(null, 'cat')
