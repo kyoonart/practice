@@ -1,0 +1,30 @@
+function arrayStandards(arr) {
+    let res = []
+    let temp = new Map()
+    arr.forEach((item, index) => {
+        let val = 1
+        if (res.indexOf(item) === -1) {
+            res.push(item)
+            temp.set(item, val)
+        } else {
+            if (temp.has(item)) {
+                val = temp.get(item) + 1
+                temp.set(item, val)
+            }
+        }
+    })
+    let result = []
+    for (let i = arr.length - 1; i >= 0; i--) {
+        let dp = temp.get(arr[i])
+        if (typeof(arr[i]) === 'number') {
+            result.push(Number(arr[i].toString() + dp))
+        } else {
+            result.push(arr[i] + dp)
+        }
+        dp = dp - 1;
+        temp.set(arr[i], dp)
+    }
+    console.log(result.reverse());
+}
+let res = [111, '111', 222, '222', 111, 111, 111]
+arrayStandards(res)

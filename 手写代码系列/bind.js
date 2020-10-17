@@ -65,7 +65,6 @@ function bind3(context) {
 
 // 最终实现  字节跳动
 function myBind() {
-
     let thatFunc = this;
     let bindTo = arguments[0]
     let args = Array.prototype.slice.call(arguments, 1);

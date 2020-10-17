@@ -12,7 +12,7 @@ instanceof 实现原理
     let prototype = right.prototype
     let _proto=left.__proto__
     while(true){
-      if(_proto==null){
+      if(_proto===null){
         return false
       }
        if(_proto===prototype){
@@ -22,3 +22,18 @@ instanceof 实现原理
     }
   }
 ```
+### Symbol.toPrimitive
+~~~js
+let a = {
+  valueOf() {
+    return 0
+  },
+  toString() {
+    return '1'
+  },
+  [Symbol.toPrimitive]() {
+    return 2
+  }
+}
+1 + a // => 3
+~~~
