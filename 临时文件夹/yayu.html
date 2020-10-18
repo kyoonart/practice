@@ -1,0 +1,68 @@
+<!-- <script>
+    // console.log(foo);
+
+    // function foo() {
+    //     console.log("foo");
+    // }
+
+    // var foo = 1;
+    // console.log(foo);
+    var value = 1;
+    var foo = {
+            value: 2,
+            bar: function() {
+                return this.value;
+            }
+        }
+        //示例1
+    console.log(foo.bar());
+    //示例2
+    console.log((foo.bar)());
+    //示例3
+    console.log((foo.bar = foo.bar)());
+    //示例4
+    console.log((false || foo.bar)());
+    //示例5
+    console.log((foo.bar, foo.bar)());
+
+    function abs() {
+        console.log(this);
+        return this
+    }
+    let res = abs()
+    console.log(res);
+
+    function Foo() {
+        getName = function() {
+            console.log(1);
+        };
+        return this
+    }
+
+    function getName() {
+        console.log(5);
+    }
+
+    Foo().getName();
+    window.getName();
+</script> -->
+
+<html>
+
+<body>
+    <h2>Hello</h2>
+    <script>
+        function printH2() {
+            console.log('first script', document.querySelectorAll('h2'));
+        }
+        printH2()
+        setTimeout(printH2)
+    </script>
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/4.0.0-alpha.4/css/bootstrap.css">
+    <h2>World</h2>
+    <script>
+        console.log('second script');
+    </script>
+</body>
+
+</html>

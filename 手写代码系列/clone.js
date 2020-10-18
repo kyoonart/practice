@@ -117,3 +117,18 @@ const cloneDeep1 = (target, hash = new WeakMap()) => {
     }
     return cloneTarget;
 }
+
+
+function clone(obj) {
+    if (typeof(obj) !== 'object') {
+        return obj;
+    }
+    let newObj = Array.isArray(obj) ? [] : {};
+    for (const key in object) {
+        if (arr.hasOwnProperty(key)) {
+            newObj[key] = typeof(obj[key]) === 'object' ? clone(obj[key]) : obj[key]
+        }
+    }
+
+    return newObj;
+}

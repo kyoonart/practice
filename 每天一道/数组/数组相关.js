@@ -26,5 +26,5 @@ function arrayStandards(arr) {
     }
     console.log(result.reverse());
 }
-let res = [111, '111', 222, '222', 111, 111, 111]
+let res = [111, '111', 222, '222', 111, 111, 111, 111, 22, 33, 4444, 5, 555, 5, 55, 55, '22', '222']
 arrayStandards(res)

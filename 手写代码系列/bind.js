@@ -72,7 +72,7 @@ function myBind() {
     function Fn() {
         let isNewCall = this instanceof Fn
         let thisArgs = Array.prototype.slice.call(arguments);
-        return thatFunc。 apply(isNewCall ? this : bindTo, args.concat(thisArgs));
+        return thatFunc.apply(isNewCall ? this : bindTo, args.concat(thisArgs));
     }
     Fn.prototype = Object.create(thatFunc.prototype);
     return Fn;
@@ -83,4 +83,4 @@ function Animal(name, color) {
     this.color = color;
 
 }
-const cat = Animal.myBind(null, 'cat')
+const cat = Animal.myBind(obj, 'cat')

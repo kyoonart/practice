@@ -50,3 +50,22 @@ function unique(arr) {
     }
     return newArr;
 }
+
+
+function Aunique(arr) {
+    let map = new Map()
+    let res = []
+    arr.forEach((item) => {
+        let val = map.get(item) || 1
+        if (!map.has(item)) {
+            map.set(item, val)
+            res.push(item)
+        } else {
+            val = val + 1
+            map.set(item, val)
+        }
+    })
+    console.log(map, res)
+}
+let arr = [1, 1, 12, 2, 2, 24, 42, 3, 3, 3, 3, 3, 3, 3, 3]
+Aunique(arr)

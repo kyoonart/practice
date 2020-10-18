@@ -32,3 +32,8 @@ function __flat(arr) {
     return arr
 }
 console.log(__flat(arr));
+
+
+function flatten(arr) {
+    return arr.valueOf()
+}
