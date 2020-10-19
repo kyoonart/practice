@@ -1,5 +1,5 @@
 const arr = [2, 5, [7, 8, [2, 3, 1, [3, 9, 8, [2, 8]]]]];
-// Es6
+Es6
 let res = flat(arr)
 console.log(res);
 
@@ -37,3 +37,16 @@ console.log(__flat(arr));
 function flatten(arr) {
     return arr.valueOf()
 }
+let res = []
+
+function flat(arr) {
+    for (let i = 0; i < arr.length; i++) {
+        if (Array.isArray(arr[i])) {
+            flat(arr[i])
+        } else {
+            res.push(arr[i])
+        }
+    }
+    console.log(res);
+}
+flat(arr)
