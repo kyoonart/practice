@@ -597,7 +597,7 @@ ETag`配合`If-None-Match
 
 Es6
 
-let const 模板字符串 解构赋值 剩余运算符 数组新增方法 symbol Set Map class promise generator async await proxy module 模块化
+let const 模板字符串 解构赋值 剩余运算符 字符串数组对象扩展  symbol Set Map class promise generator async await proxy module 模块化
 
 css3 新增
 
@@ -744,3 +744,13 @@ alert( a == b ); // true
 + setState 只在合成事件和钩子函数中是“异步”的，在原生事件和 setTimeout 中都是同步的。
 + setState的“异步”并不是说内部由异步代码实现，其实本身执行的过程和代码都是同步的，只是合成事件和钩子函数的调用顺序在更新之前， 导致在合成事件和钩子函数中没法立马拿到更新后的值，形式了所谓的“异步”，当然可以通过第二个参数 setState(partialState, callback) 中的callback拿到更新后的结果。
 + setState 的批量更新优化也是建立在“异步”（合成事件、钩子函数）之上的，在原生事件和setTimeout 中不会批量更新，在“异步”中如果对同一个值进行多次 setState ， setState 的批量更新策略会对其进行覆盖，取最后一次的执行，如果是同时 setState 多个不同的值，在更新时会对其进行合并批量更新。
+
+### 虚拟DOM
+核心答案：
+Virtual DOM 就是用js对象来描述真实DOM，是对真实DOM的抽象，由于直接操作DOM性能低但是js层的操作效率高，
+可以将DOM操作转化成对象操作，最终通过diff算法比对差异进行更新DOM (减少了对真实DOM的操作)。
+虚拟DOM不依赖真实平台环境从而也可以实现跨平台。
+补充回答：
+虚拟DOM的实现就是普通对象包含tag、data、children等属性对真实节点的描述。（本质上就是在JS和DOM之间的一个缓存）
+Vue2的 Virtual DOM 借鉴了开源库snabbdom的实现。
+VirtualDOM映射到真实DOM要经历VNode的create、diff、patch等阶段。
