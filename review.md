@@ -57,3 +57,40 @@ V8 引入预解析器，比如当解析顶层代码的时候，遇到了一个�
 2、csrf（跨站请求伪造）
 ![](https://upload-images.jianshu.io/upload_images/100028-37e1f13dd91fee0d.jpg?imageMogr2/auto-orient/strip|imageView2/2/format/webp)
 防御：组织不明域的访问、Referer Check - Https不发送referer(在 HTTP 头中有一个字段叫 Referer，它记录了该 HTTP 请求的来源地址)、添加验证码
+### webpack
++  webpack-dev-server是webpack官方提供的一个小型Express服务器
++  多页面打包 chunks：["home.js"]
++ loader 从右向左解析
++ happypack 多线程打包(加载loader过多很费时间)
++ tree-shaking 把没有的用到的代码自动删除掉
+##### 常见的loader
+（1）作用
+  Loader直译为‘加载器’。webpack将一切文件视为模块，但是webpack原生是只能解析js文件，如果想将其他文件也打包的话，就会用到loader。所以loader的作用是让webpack拥有了加载和解析非javascript文件的能力
+（2）使用
+Loader在module.rules中配置，也就是说它作为模块的解析规则而存在，类型为数组，每一项都是一个object，里面描述了对于什么类型的文件(test)，使用什么加载(loader)和使用的参数(options)  
+（3）常见的loader
+ + css-loader  加载css，支持模块化、压缩、文件导入等特性
+ + image-loader 加载并压缩图片
+ + style-loader 把css注入js中、 通过js操作dom引入
+ + eslint-loader 检查js代码
+ + babel-loader:把ES6转换成ES5
+ ##### 插件 
+ 作用
+ 插件可以扩展webpack的能力、让webpack具有更多的灵活性、让webpack更加强大
+ 使用
+ Plugin在plugins中单独配置，类型为数组，每一项是一个plugin的实例，蚕食都通过构造函数传入
+ 常见的plugin
+ define-plugin:定义环境变量
+ html-webpack-plugin:简化html文件创建
+ HotModuleReplacementPlugin：热更新
+##### 优化
+利用CDN加速：在构建过程中，将引用的静态资源路径修改为CDN上对应的路径，可以利用webpack对于output参数和各loader的publicPath参数来修改资源路径
+Tree Shaking：将代码中永远不会走到的片段删除掉，可以通过在启动webpack时对追加参数 --optimize-minimize来实现
+Code Splitting：将代码按路由维度或者组件分块（chunk），这样做到按需加载，同时可以充分浏览器缓存
+提取公共第三方库：SplitChunkPlugin插件来进行公共模块抽取，利用浏览器缓存可以长期缓存这些无需频繁变动的公共代码
+ ###### 提高打包速度
+happypack：利用多线程并行编译loader
+### flex布局
++ flex：1是什么意思 flex: 1 1 0%; flex-grow flex-shrink flex-basis
++ 分配到的减小宽度 = 超出宽度*(自身宽度*（自身元素的flex-shrink值 / 所有子元素的flex-shrink值 * 自身宽度 的和）)
++ 增加的同理

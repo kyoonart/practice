@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0
+        }
+        
+        .container {
+            width: 600px;
+            height: 300px;
+            display: flex;
+        }
+        
+        .left {
+            flex: 1;
+            flex: 1 2 500px;
+            background-color: red;
+        }
+        
+        .right {
+            flex: 2 1 400px;
+            flex: 1;
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+    <script>
+        let res = 0.100000000000000002
+        console.log(res)
+    </script>
+</body>
+
+</html>

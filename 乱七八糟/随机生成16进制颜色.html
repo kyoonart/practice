@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 100vw;
+            height: 100vh;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+    <script>
+        function rgbRandom() {
+            return '#' + Math.random().toString(16).slice(2, 8);
+        }
+        let color = rgbRandom()
+        let box = document.querySelector('.box')
+        setInterval(() => {
+            box.style.backgroundColor = color;
+            color = rgbRandom()
+        }, 1000)
+    </script>
+</body>
+
+</html>
