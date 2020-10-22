@@ -330,7 +330,7 @@ Number string Boolean,null undefined symbol object 还有新的 bigint
 
 `beforeCreate`是 new Vue()之后触发的第一个钩子，在当前阶段 data、methods、computed 以及 watch 上的数据和方法都不能被访问。
 
-`created`在实例创建完成后发生，当前阶段已经完成了数据观测，也就是可以使用数据，更改数据，在这里更改数据不会触发 updated 函数。可以做一些初始数据的获取，在当前阶段无法与 Dom 进行交互，如果非要想，可以通过 vm.\$nextTick 来访问 Dom。
+`created`在实例创建完成后发生，当前阶段已经完成了数据观测，也就是可以使用数据，更改数据，在这里更改数据不会触发 updated 函数。可以做一些初始数据的获取，在当前阶段无法与 Dom 进行交互，如果非要想，可以通过 vm.$nextTick 来访问 Dom。
 
 `beforeMount`发生在挂载之前，在这之前 template 模板已导入渲染函数编译。而当前阶段虚拟 Dom 已经创建完成，即将开始渲染。在此时也可以对数据进行更改，不会触发 updated。
 
@@ -550,6 +550,10 @@ BFC：块级格式化上下文，容器里面的子元素不会在布局上影�
 - `onmouseleave`
 
 ### 缓存
+
+强制缓存
+
+Expires cache-control
 
 协商缓存
 

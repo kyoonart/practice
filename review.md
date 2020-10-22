@@ -94,3 +94,10 @@ happypack：利用多线程并行编译loader
 + flex：1是什么意思 flex: 1 1 0%; flex-grow flex-shrink flex-basis
 + 分配到的减小宽度 = 超出宽度*(自身宽度*（自身元素的flex-shrink值 / 所有子元素的flex-shrink值 * 自身宽度 的和）)
 + 增加的同理
+### Class
++ 静态方法被设计为只能被创建它们的构造器使用（也就是 Chameleon），并且不能传递给实例。因为 freddie 是一个实例，静态方法不能被实例使用，因此抛出了 TypeError 错误
++ 子类没有自己的this对象，而是继承父类的this对象，然后对其进行加工
++ super指向问题 作为函数时 指向父类的构造函数 并且返回子类的实例相当于调用了 A.prototype.constructor.call(this) 
++ super 作为对象指向父类的原型对象 这时分为
+ - 静态方法中调用super指向父类本身
+ - 普通方法中调用指向父类的原型对象

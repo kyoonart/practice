@@ -1,0 +1,19 @@
+<script script>
+    function Person(firstName, lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    const member = new Person("Lydia", "Hallie");
+    Person.getFullName = function() {
+        console.log('2323', this);
+        // Person.prototype.constructor = Person
+        return `${Person} ${Person}`;
+    }
+    Person.prototype.getFullName = function() {
+        return `${this.firstName} ${this.lastName}`;
+    }
+    console.log(member.getFullName());
+    console.log(member.__proto__.constructor.getFullName());
+    // Person.getFullName()
+</script>
