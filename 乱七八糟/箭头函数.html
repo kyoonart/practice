@@ -6,11 +6,40 @@
             console.log(this.a); //2
         }
     }
-    const foo = {
+    const foo2 = {
         a: 2,
-        bar: () => {
-            console.log(this.a); // out
+        b: {
+            bar: () => {
+                console.log(this.a); // out
+            }
         }
     }
     foo.bar()
+    foo2.b.bar()
+
+    let name = 'zhangsan'
+    let obj = {
+        name: 'lisi',
+        getNameFunc: function() {
+            return function() {
+                console.log(this.name || '???');
+            };
+        }
+    }
+
+    obj.getNameFunc()();
+
+    let object = {
+        name: "zhangsan",
+        func: function() {
+            console.log(this.name);
+        },
+        say: function() {
+            return () => {
+                console.log(this.name);
+            }
+        }
+    }
+    object.say()()
+    object.func()
 </script>

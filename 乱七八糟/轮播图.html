@@ -66,15 +66,15 @@
         margin: 0;
         padding: 0;
         list-style: none;
-        transition: margin-left 250ms;
+        transition: margin-left 500ms;
         /* remove white-space between inline-block'ed li */
         /* http://davidwalsh.name/remove-whitespace-inline-block */
-        font-size: 0;
+        /* font-size: 0; */
+        display: flex;
     }
-    
-    .gallery li {
+    /* .gallery li {
         display: inline-block;
-    }
+    } */
 </style>
 
 <body>
@@ -109,7 +109,7 @@
 
         /* configuration */
         let width = 130; // image width
-        let count = 3; // visible images count
+        let count = 4; // visible images count
 
         let list = carousel.querySelector('ul');
         let listElems = carousel.querySelectorAll('li');

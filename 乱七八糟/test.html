@@ -35,7 +35,7 @@
         }
 
         function showCircle(cx, cy, radius, callback) {
-            debugger
+            // debugger
             let div = document.createElement('div');
             div.style.width = 0;
             div.style.height = 0;
@@ -54,6 +54,35 @@
                 });
             }, 0);
         }
+
+
+        function A() {}
+
+        function B() {}
+
+        let a = new A;
+        let b = new B;
+
+        // alert(a == b); // true
+
+        function count(arr) {
+            // let count = Array.from(new Set(arr)).length;
+            // let count = [...new Set(arr)].length
+            // let map = {}
+            let map = new Map()
+            arr.map(item => {
+                // return map[item] ? map[item]++ : map[item] = 1
+                let val = map.get(item) + 1;
+                return map.has(item) ? map.set(item, val) : map.set(item, 1)
+            })
+            return {
+                count: map.size,
+                map
+            }
+        }
+        let arr = [1, 2, 2, 2, 2, 23, 42, 45, 5321, 5353, 1231, 'css']
+        let res = count(arr)
+        console.log(res);
     </script>
 
 

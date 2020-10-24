@@ -15,7 +15,11 @@ rl.on('line', function(line) {
 
 
 function ajax(url) {
-    var xhr = new XMLHttpRequest();
+    if (window.XMLHttpRequest) {
+        var xhr = new XMLHttpRequest();
+    } else {
+        var xhr = ActiveXObject('MicrosoftXMLHTTP');
+    }
     xhr.open('get', url, true);
     xhr.onreadystatechange = function(res) {
         if (xhr.readyState === 4 && xhr.status === 200) {

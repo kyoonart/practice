@@ -7,5 +7,5 @@ function duplicates(arr) {
     })
     return res
 }
-let res = duplicates([2, 2, 2, 2, 2, 2])
+let res = duplicates([2, 2, 2, 2, 2, 2, 32, 3, 3, 23, 245, 5, 43, 543])
 console.log(res);

@@ -14,8 +14,8 @@ var myObject = {
     }
 }
 myObject.add(); // 1 
-console.log(myObject.num);
+// console.log(myObject.num);
 
-console.log(num);
-var sub = myObject.sub;
-sub();
+// console.log(num);
+// var sub = myObject.sub;
+// sub();

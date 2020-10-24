@@ -48,6 +48,4 @@ function ReverseList(pHead) {
         pr = head;
         head = pc
     }
-
-
 }

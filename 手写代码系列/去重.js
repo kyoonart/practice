@@ -69,3 +69,13 @@ function Aunique(arr) {
 }
 let arr = [1, 1, 12, 2, 2, 24, 42, 3, 3, 3, 3, 3, 3, 3, 3]
 Aunique(arr)
+
+
+function test(arr) {
+    let res = {}
+    arr.map(item => {
+        return res[item] ? res[item]++ : res[item] = 1
+    })
+    console.log([...Object.keys(res)].map(v => Number(v)));
+}
+test(arr)

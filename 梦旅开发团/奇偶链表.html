@@ -51,7 +51,7 @@
         while (odd && odd.next && even && even.next) {
             let nextOdd = odd.next.next; //  下一个奇数节点
             let nextEven = even.next.next; // 下一个偶数节点
-            odd.next = nextOdd; //  连接
+            odd.next = nextOdd; //  连接 
             even.next = nextEven;
             odd = nextOdd; // 下一个节点 重新开始
             even = nextEven;

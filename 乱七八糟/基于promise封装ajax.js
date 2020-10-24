@@ -74,3 +74,37 @@ const _fetch(url) {
 
 
 // onreadystatechange 和 onload 的区别是 onload只有当readyState为4才会触发 而 onreadystatechange 当readyState变化了就会触发
+
+
+
+function _fetch(url, method = 'GET') {
+    if (window.XMLHttpRequest) {
+        let xhr = new XMLHttpRequest()
+    } else {
+        let xhr = ActiveXObject('Microsoft.XMLHTTP')
+    }
+    xhr.open(method, url)
+    xhr.onload = function() {
+        if (xhr.status >= 200 && xhr.status < 300 || xhr.status == 304) {
+            success(xhr.responseText)
+        }
+    }
+    xhr.send(null)
+}
+
+function _fetch(url, method = 'GET') {
+    return new Promise((resolve, reject) => {
+        if (window.XMLHttpRequest) {
+            let xhr = new XMLHttpRequest()
+        } else {
+            let xhr = ActiveXObject('Microsoft.XMLHTTP')
+        }
+        xhr.open(method, url)
+        xhr.onload = function() {
+            if (xhr.status >= 200 && xhr.status < 300 || xhr.status == 304) {
+                resolve(xhr.responseText)
+            }
+        }
+        xhr.send(null)
+    })
+}

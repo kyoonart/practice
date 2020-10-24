@@ -61,3 +61,16 @@ function addx() {
 }
 let a = addx(1)(2, 4)(3, 5);
 console.log(a());
+
+
+function curry(func) {
+    return curried(...args) {
+        if (func.length <= args.length) {
+            return func.apply(this, args)
+        } else {
+            return function(...args2) {
+                return curried.apply(this, args.concat(args2))
+            }
+        }
+    }
+}

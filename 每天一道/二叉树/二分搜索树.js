@@ -35,3 +35,33 @@ class BST {
     }
 
 }
+
+
+class BST {
+    constructor() {
+        this.root = null
+        this.size = null
+    }
+    getSize() {
+        return this.size
+    }
+    isEmpty() {
+        return !!(this.size === 0)
+    }
+    addNode(v) {
+        this.root = this._addNode(this.root, v)
+    }
+    _addChild(root, vNode) {
+        if (!root) {
+            this.size++;
+            return new Node(vNode)
+        }
+        if (root.value > vNode.value) {
+            root.left = _addChild(root.left, vNode)
+        }
+        if (root.value < vNode.value) {
+            root.right = _addChild(root.right, vNode)
+        }
+        return root
+    }
+}

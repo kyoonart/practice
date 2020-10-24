@@ -14,11 +14,6 @@ const getURLParameters = url =>
     (url.match(/([^?=&]+)(=([^&]*))/g) || []).reduce(
         (a, v) => ((a[v.slice(0, v.indexOf('='))] = v.slice(v.indexOf('=') + 1)), a), {}
     );
-https:
-    366239575
-
-
-
 async function async1() {
     console.log('async1 start') //2  
         // 执行async2函数的 setTimeout
