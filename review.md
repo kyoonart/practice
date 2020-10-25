@@ -44,6 +44,8 @@ JavaScript中变量分为两种：全局变量，局部变量。
 
 v8 实现闭包原理 
 https://segmentfault.com/a/1190000023053620
+无论通过何种手段将内部函数传递到所在词法作用域以为，它都会持有对原始定义作用域的引用，无论在何处执行这个函数都会使用闭包。
+应用：在定时器、事件监听器、ajax请求，使用了回调函数实际上就是在使用闭包
 v8的预解析器
 V8 引入预解析器，比如当解析顶层代码的时候，遇到了一个函数，那么预解析器并不会直接跳过该函数，而是对该函数做一次快速的预解析，其主要目的有两个：
 + 是判断当前函数是不是存在一些语法上的错误。
@@ -58,6 +60,7 @@ V8 引入预解析器，比如当解析顶层代码的时候，遇到了一个�
 ![](https://upload-images.jianshu.io/upload_images/100028-37e1f13dd91fee0d.jpg?imageMogr2/auto-orient/strip|imageView2/2/format/webp)
 防御：阻止不明域的访问、Referer Check - Https不发送referer(在 HTTP 头中有一个字段叫 Referer，它记录了该 HTTP 请求的来源地址)、添加验证码
 ### webpack
++ module chunk bound bundle
 +  webpack-dev-server是webpack官方提供的一个小型Express服务器
 +  多页面打包 chunks：["home.js"]
 + loader 从右向左解析
@@ -101,3 +104,11 @@ happypack：使用多线程并行编译loader
 + super 作为对象指向父类的原型对象 这时分为
  - 静态方法中调用super指向父类本身
  - 普通方法中调用指向父类的原型对象
+ ### 模块化
++ AMD 依赖于 requirejs,是异步加载的，是提前加载，立即加载 
++ CMD 依赖于 seajs ,是异步加载，延后加载，就近加载，用时加载 
++ CommonJS模块 同步导入支持动态导入 输出的是一个值的拷贝 运行时加载
++ Es Module 模块 异步导入 输出的是一个值的引用  译时输出接口
+  -加载的差异是因为CommonJS加载的是一个对象（即module.exports属性），该对象只有在脚本运行结束时才会生成。
+  -而ES6模块不是对象，它的对外接口只是一种静态定义，在代码静态解析阶段就会生成。
++ defer是 渲染完再执行，async是 下载完就执行
