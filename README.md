@@ -131,7 +131,7 @@ request({
  accept
  accept-language
  content-language
- content-type 
+ content-type (application/x-www-form-urlencoded、multipart/form-data、text/plain)
 可用于检测服务器允许的 http 方法。当发起跨域请求时，由于安全原因，触发一定条件时浏览器会在正式请求之前**自动**先发起 OPTIONS 请求，即**CORS 预检请求**，服务器若接受该跨域请求，浏览器才继续发起正式请求。
 #### this
 首先，要明白**this 既不指向函数自身，也不指函数的词法作用域**。this 一般存在于函数中，表示当前函数的执行上下文，如果函数没有执行，那么 this 没有内容，只有函数在运行时 this 才有绑定。

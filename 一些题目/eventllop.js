@@ -28,10 +28,11 @@ async function async1() {
     console.log('async1 start') //2  
         // 执行async2函数的 setTimeout
     await async2()
-    setTimeout(function() {
-        // 等上面执行完在执行
-        console.log('setTimeout1') //8
-    }, 0)
+        // setTimeout(function() {
+        //     // 等上面执行完在执行
+        //     console.log('setTimeout1') //8
+        // }, 0)
+    console.log('233');
 }
 async function async2() {
     setTimeout(function() {

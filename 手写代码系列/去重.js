@@ -79,4 +79,4 @@ function unique(arr) {
     return [...Object.keys(res)].map(v => Number(v))
         // console.log([...Object.keys(res)].map(v => Number(v)));
 }
-test(arr)
+unique(arr)
