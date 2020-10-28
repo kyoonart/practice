@@ -27,6 +27,6 @@ function reverseList(head) {
         cur = head.next;
         head.next = prev;
         prev = head;
-        cur = head
+        head = cur
     }
 }

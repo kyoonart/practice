@@ -42,7 +42,7 @@ add('1X', '2B');
 // 36进制加法
 function addB(str1, str2) {
     //abcdefghijklmnopqrstuvwxyz
-    let charts = '0123456789'
+    let charts = '0123456789abcdefghijklmnopqrstuvwxyz'
     let a = str1.split('');
     let b = str2.split('');
     let alength = a.length;

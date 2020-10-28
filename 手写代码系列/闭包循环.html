@@ -11,17 +11,25 @@
     <script>
         function foo() {
             let arr = [];
-            for (var i = 0; i < 10; i++) {
-                console.log(i);
-                arr[i] = function() {
-                    console.log(i);
-                    return i
-                }
+            for (let i = 0; i < 10; i++) {
+                // arr[i] = function() {
+                //         return i
+                //     }
+                (function(i) {
+                    arr[i] = function() {
+                        return i
+                    }
+                })(i)
+
+
             }
             return arr;
         }
         var bar = foo();
+        console.log(bar[1]());
         console.log(bar[2]());
+        console.log(bar[3]());
+        console.log(bar[4]());
     </script>
 </body>
 

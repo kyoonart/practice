@@ -1,5 +1,5 @@
 const arr = [2, 5, [7, 8, [2, 3, 1, [3, 9, 8, [2, 8]]]]];
-Es6
+// Es6
 let res = flat(arr)
 console.log(res);
 

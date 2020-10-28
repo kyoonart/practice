@@ -16,3 +16,12 @@ function pop() {
     }
     return outStack.pop();
 }
+
+function pop() {
+    if (!outStack.length) {
+        while (inStack.length) {
+            outStack.push(inStack.pop());
+        }
+    }
+    return outStack.pop();
+}
