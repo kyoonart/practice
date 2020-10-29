@@ -11,7 +11,6 @@ prev：上一次调用回调时返回的值
 
 Array.prototype.myReduce = function(fn, prev) {
     for (let i = 0; i < this.length; i++) {
-        // 初始
         if (typeof prev === 'undefined') {
             prev = fn(this[i], this[i + 1], i + 1, this);
             i++;
