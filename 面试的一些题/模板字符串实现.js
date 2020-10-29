@@ -12,3 +12,4 @@ function templateFunc(str, data) {
     return computed;
 }
 console.log(templateFunc(templateStr, data));
+'i am xbd,age 18,job CTO '

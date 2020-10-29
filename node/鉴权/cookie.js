@@ -30,3 +30,6 @@ http
         res.end("hello cookie!!");
     })
     .listen(3000);
+
+
+trim()
