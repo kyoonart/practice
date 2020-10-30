@@ -1,11 +1,11 @@
-function minNumberInRotateArray(rotateArray) {
-    const length = rotateArray.length;
-    if (!length) {
-        return 0;
-    }
+// function minNumberInRotateArray(rotateArray) {
+//     const length = rotateArray.length;
+//     if (!length) {
+//         return 0;
+//     }
 
-    return Math.min(...rotateArray);
-}
+//     return Math.min(...rotateArray);
+// }
 
 function minNumberInRotateArray(rotateArray) {
     const length = rotateArray.length;
@@ -29,3 +29,5 @@ function minNumberInRotateArray(rotateArray) {
     }
 
 }
+let res = minNumberInRotateArray([1, 2, 3, 4, 5])
+console.log(res);
