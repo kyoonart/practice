@@ -17,8 +17,8 @@ xhr.onreadystatechange = function() {
     }
 }
 
-
-###
+// var xhr = ActiveXObject("Microsoft.XMLHTTP")
+;###
 各个状态码的意思
 0: 请求未初始化  
 1: 服务器连接已建立  
