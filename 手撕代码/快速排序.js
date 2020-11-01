@@ -17,11 +17,29 @@ function quickSort(arr) {
     }
     return quickSort(l).concat(c, quickSort(r));
 }
-console.log(quickSort(arr));
 
 
+function quickSort2(arr, low = 0, high = arr.length - 1) {
+    if (low >= high) return
+    let left = low;
+    let right = high
+    let flag = arr[left]
+    while (left < right) {
+        if (left < right && arr[right] >= flag) right--
+            arr[left] = arr[right]
+        if (left < right && arr[left] <= flag) left++
+            arr[right] = arr[left]
 
+    }
+    arr[left] = flag;
+    quickSort2(arr, low, left - 1)
+    quickSort2(arr, left + 1, high)
+    return arr
+}
 
+console.log(quickSort2(arr));
+let a = JSON.parse(JSON.stringify([1, 2, 3]))
+console.log(a);
 
 
 

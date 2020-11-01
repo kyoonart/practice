@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* @import url("https://fonts.googleapis.com/css?family=Courgette:400,700&display=swap"); */
+        /* @import url('http://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900'); */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #0056a7, #165fa3, #477aaa);
+            font-family: "Courgette", cursive;
+        }
+        
+        header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            position: relative;
+            height: 100vh;
+            color: #eee;
+            z-index: -1;
+            text-align: center;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        
+        section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
+            height: 100vh;
+            font-size: 5rem;
+            background: #fcdb6d;
+            color: #0056a7;
+        }
+        
+        .animate-me {
+            animation: bounceIn 3s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes bounceIn {
+            0% {
+                transform: scale(0.1);
+                opacity: 0;
+            }
+            60% {
+                transform: scale(1.2);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <header>
+            <div class="container">
+                <i class="fas fa-5x fa-laugh"></i>
+                <h3>Welcome</h3>
+                <p>Scroll to see how cool i am!</p>
+            </div>
+        </header>
+
+        <section>
+            <h3>Cool like you</h3>
+        </section>
+    </main>
+    <script>
+        window.addEventListener("scroll", function() {
+            const distance = window.scrollY
+            document.querySelector("header").style.transform = `translateY(${distance *
+    1}px)`
+            document.querySelector(
+                ".container"
+            ).style.transform = `translateY(${distance * 0.3}px)`
+            setTimeout(() => {
+                document.querySelector("section h3").classList.add("animate-me")
+            }, 400)
+        })
+    </script>
+</body>
+
+</html>

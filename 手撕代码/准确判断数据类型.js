@@ -1,10 +1,10 @@
-// function _type(obj) {
-//     let res = Object.prototype.toString.call(obj);
-//     let arr = res.substr(8).split('');
-//     let x = arr.length - 1;
-//     arr.splice(x, 1);
-//     return arr.join('')
-// }
+function _type(obj) {
+    let res = Object.prototype.toString.call(obj);
+    let arr = res.substr(8).split('');
+    let x = arr.length - 1;
+    arr.splice(x, 1);
+    return arr.join('')
+}
 // let a = {
 //     a: 5
 // }

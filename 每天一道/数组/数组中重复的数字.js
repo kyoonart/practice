@@ -31,10 +31,10 @@ var findRepeatNumber = function(nums) {
     const map = {};
     for (const num of nums) {
         if (!map[num]) {
-            map[num] = true;
+            map[num] = true
         } else {
             return num;
         }
     }
 };
-findRepeatNumber([2, 3, 1, 0, 2, 5, 3])
+console.log(findRepeatNumber([2, 3, 1, 0, 2, 3, 3, 3, 3, 3, 35, 3]));

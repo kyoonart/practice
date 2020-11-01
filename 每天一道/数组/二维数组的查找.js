@@ -19,3 +19,23 @@ var findNumberIn2DArray = function(matrix, target) {
     }
     return false
 };
+
+
+
+function findNumberIn2DArray(arr, target) {
+    let n = arr.length;
+    let m = arr[0] && arr[0].length
+    let row = n - 1;
+    let col = 0;
+    if (row == 0 && col == 0) return false;
+    while (col < m && row >= 0) {
+        if (arr[row][col] > target) {
+            row--
+        } else if (arr[row][col] < target) {
+            col++
+        } else {
+            return true
+        }
+    }
+    return false
+}

@@ -21,7 +21,7 @@
 //     return maxLength;
 // };
 
-var lengthOfLongestSubstring = function(s) {
+var lengthOfLongestSubstring222 = function(s) {
     if (!s) return 0
     if (s.length === 1) return 1
     let map = new Map()
@@ -31,6 +31,7 @@ var lengthOfLongestSubstring = function(s) {
         const str = s[r]
         if (map.has(str) && map.get(str) >= l) {
             l = map.get(str) + 1
+            console.log(l);
         }
         maxLength = Math.max(maxLength, r - l + 1)
         map.set(str, r)
@@ -38,5 +39,25 @@ var lengthOfLongestSubstring = function(s) {
     console.log(map);
     return maxLength;
 };
-// let res = lengthOfLongestSubstring("abcabcbbaavccbb")
+// let res = lengthOfLongestSubstring("abcab")
 // console.log(res);
+
+
+
+function lengthOfLongestSubstring(str) {
+    if (str.length === 1) return 1;
+    let maxLen = 0;
+    let l = 0;
+    let map = new Map();
+    for (let r = 0; r < str.length; r++) {
+        let val = str[r];
+        if (map.has(val) && map.get(val) >= l) {
+            l = map.get(val) + 1
+        }
+        maxLen = Math.max(maxLen, r - l + 1)
+        map.set(val, r)
+    }
+    return maxLen
+}
+let res = lengthOfLongestSubstring("abcab")
+console.log(res);
