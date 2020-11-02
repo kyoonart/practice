@@ -38,22 +38,6 @@ function quickSort2(arr, low = 0, high = arr.length - 1) {
 }
 
 console.log(quickSort2(arr));
-let a = JSON.parse(JSON.stringify([1, 2, 3]))
-console.log(a);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
