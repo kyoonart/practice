@@ -23,3 +23,15 @@ setTimeout(() => {
     })
 }, 0);
 console.log('start');
+
+
+
+function FindNumsAppearOnce(arr) {
+    let res = []
+    for (let i = 0; i < arr.length; i++) {
+        if (arr.indexOf(arr[i]) === arr.lastIndexOf(arr[i])) {
+            res.push(arr[i]);
+        }
+    }
+    return res;
+}

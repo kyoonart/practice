@@ -25,14 +25,26 @@
             height: 200px;
             background-color: red;
             transform: rotate(45deg);
-            /* animation-name: heart;
+            animation-name: heart;
             animation-duration: 2s;
-            animation-iteration-count: infinite; */
+            animation-iteration-count: infinite;
         }
         
         @keyframes heart {
-            to {
-                transform: rotate(45deg) scale(1);
+            0% {
+                transform: rotate(45deg) scale(0)
+            }
+            25% {
+                transform: rotate(45deg) scale(0.5)
+            }
+            50% {
+                transform: rotate(45deg) scale(0.25)
+            }
+            75% {
+                transform: rotate(45deg) scale(0.5)
+            }
+            100% {
+                transform: rotate(45deg) scale(.75)
             }
         }
         
