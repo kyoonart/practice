@@ -47,3 +47,9 @@ toString方法 join(',').split(',')
 reduce+递归
 while+some 
 常规遍历
+
+
+```js
+ 字节跳动 抖音
+ 
+```
