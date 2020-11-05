@@ -708,8 +708,8 @@ function useDebounce(value: any, delay = 300) {
     const handler = setTimeout(() => {
       setDebouncedValue(value);
     }, delay);
-
     return () => {
+
       clearTimeout(handler);
     };
   }, [value, delay]);

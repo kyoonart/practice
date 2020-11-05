@@ -29,4 +29,5 @@ function reverseList(head) {
         prev = head;
         head = cur
     }
+    return prev
 }

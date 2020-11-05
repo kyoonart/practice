@@ -25,3 +25,6 @@ function getType(param) {
         return type;
     }
 }
+
+let a = Symbol(12)
+console.log(a.constructor.name);

@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body>
+    <style type="text/css">
+        #demo {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            border-radius: 50px;
+        }
+    </style>
+
+    <script type="text/javascript">
+        window.onload = function() {
+            var demo = document.getElementById('demo');
+            var sx = sy = 10;
+            var x = y = 0;
+
+            function move() {
+                if (document.documentElement.clientWidth - demo.offsetWidth - 10 < x || x < 0) {
+                    sx = -sx;
+                }
+
+                if (document.documentElement.clientHeight - demo.offsetHeight - 10 < y || y < 0) {
+                    sy = -sy;
+                }
+
+                x = demo.offsetLeft + sx;
+                y = demo.offsetTop + sy;
+
+                demo.style.left = x + 'px';
+                demo.style.top = y + 'px';
+            }
+
+            var timer = setInterval(move, 100);
+
+            demo.onmouseover = function() {
+                clearInterval(timer);
+            }
+
+            demo.onmouseout = function() {
+                timer = setInterval(move, 100);
+            }
+        }
+    </script>
+
+    <img src="https://s1.ax1x.com/2020/11/04/BcvrXn.jpg" id="demo" />
+
+</body>
+
+</html>

@@ -1,7 +1,7 @@
 ### instanceof  百分百正确吗？
 ```js
 class PrimitiveString {
-  static [Symbol.hasInstance](x) {
+  static [Symbol.hasInstance](x){
     return typeof x === 'string'
   }
 }
@@ -44,7 +44,7 @@ JavaScript中变量分为两种：全局变量，局部变量。
 
 v8 实现闭包原理 
 https://segmentfault.com/a/1190000023053620
-无论通过何种手段将内部函数传递到所在词法作用域以为，它都会持有对原始定义作用域的引用，无论在何处执行这个函数都会使用闭包。
+无论通过何种手段将内部函数传递到所在词法作用域以外，它都会持有对原始定义作用域的引用，无论在何处执行这个函数都会使用闭包。
 应用：在定时器、事件监听器、ajax请求，使用了回调函数实际上就是在使用闭包
 v8的预解析器
 V8 引入预解析器，比如当解析顶层代码的时候，遇到了一个函数，那么预解析器并不会直接跳过该函数，而是对该函数做一次快速的预解析，其主要目的有两个：
@@ -53,14 +53,13 @@ V8 引入预解析器，比如当解析顶层代码的时候，遇到了一个�
 ### 前端安全
 1、xss
 存储性、反射性、基于DOM型 
-防御 
 +  服务器端过滤或转码
 + csp（内容安全策略）本质上建立白名单，明确告诉了浏览器那些外部资源可以加载和执行 例如 只允许加载本站资源 只允许加载http协议图片 不允许加载任何来源的框架
 2、csrf（跨站请求伪造）
 ![](https://upload-images.jianshu.io/upload_images/100028-37e1f13dd91fee0d.jpg?imageMogr2/auto-orient/strip|imageView2/2/format/webp)
 防御：阻止不明域的访问、Referer Check - Https不发送referer(在 HTTP 头中有一个字段叫 Referer，它记录了该 HTTP 请求的来源地址)、添加验证码
-### webpack
-+ module chunk bound bundle
+### webpack   
++ module chunk  bundle
 +  webpack-dev-server是webpack官方提供的一个小型Express服务器
 +  多页面打包 chunks：["home.js"]
 + loader 从右向左解析
