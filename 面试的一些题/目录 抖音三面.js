@@ -19,6 +19,7 @@ function path(path) {
                 break
         }
     })
+    console.log(stack);
     let an = ''
     stack.forEach(item => {
         an += `/${item}`

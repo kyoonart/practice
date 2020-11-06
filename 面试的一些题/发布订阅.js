@@ -1,8 +1,3 @@
-var arr = [
-    { id: 1, text: 'aa', done: true },
-    { id: 2, text: 'bb', done: false }
-]
-
 class Event {
     constructor() {
         this.callback = {}
