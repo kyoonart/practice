@@ -321,7 +321,7 @@ Number string Boolean,null undefined symbol object 还有新的 bigint
 
 ### 原型链图
 
-![ ](https://i.loli.net/2020/05/03/yRmpBnNUxfPYahc.png)
+![](https://i.loli.net/2020/05/03/yRmpBnNUxfPYahc.png)
 
 ### vue 运行机制
 
