@@ -28,5 +28,12 @@
         }
         console.log(newArr);
         return newArr;
+    };
+    Arr([0, 1, 2, 4, 5, 7, 13, 15, 16]);
+
+    function test(a, b) {
+        let a;
+        console.log(a);
+
     }
-    Arr([0, 1, 2, 4, 5, 7, 13, 15, 16])
+    test(1, 2)
