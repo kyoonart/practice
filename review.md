@@ -1,3 +1,32 @@
+### Git常用命令
+```js
+git commit --amend -m "New commit message" 修改上次commit信息
+git remote add origin git@XX.XX.XX.12:gyjia/hotcodeserver.git 添加远程仓库
+gitcheckout -b 'branchname'  创建并切换分支
+git remote set-url origin xxx 修改远程仓库地址
+git reset --hard id   回滚
+git reset --hard ~HEAD 回滚上一次提交
+git reset --soft HEAD^ 撤销上次commit 
+git reflog  查看提交记录
+git log --graph 查看提交树形结构
+git pull --rebase
+git rebase --abort
+git stash 当遇到需求还没写完却要pull代码的时候使用
+git stash list / pop apply 
+ commit 提交规范
+feat:新增feature 
+fix:修复bug
+revert:代码回滚
+docs:修改文档
+style:修改空格标点等不修改逻辑
+perf:优化相关
+test:测试用例
+chore:改变构建流程或增加依赖库
+
+关闭占用端口号
+1：netstat -nao|findstr 端口号
+2：taskkill /pid 端口号 /f
+```
 ### instanceof  百分百正确吗？
 ```js
 class PrimitiveString {
