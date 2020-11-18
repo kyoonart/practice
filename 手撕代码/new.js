@@ -48,3 +48,10 @@ var car = create(Car, "black");
 // (3) 执行构造函数中的代码（ 为这个新对象添加属性）；
 // (4) 返回新对象。
 3000
+
+//
+function myNew(fn,...args) {
+   let newObj=Object.create(fn.prototype);
+   let result=fn.apply(newObj,args);
+   return (result && typeof result ==='object')?result:newObj;
+}
