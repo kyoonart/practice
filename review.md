@@ -157,3 +157,6 @@ happypack：使用多线程并行编译loader
 浏览器实现借助http headers
 强缓存 状态码 200 headers:{expries,catch-control}
 协商缓存 状态码 304 Last-Modefied`配合`If-Modified-Since ETag`配合`If-None-Match
+### 表单提交的content-type
+application/x-www-form-urlencoded
+multipart/form-data
