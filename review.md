@@ -141,6 +141,15 @@ happypack：使用多线程并行编译loader
 + Es Module 模块 异步导入 输出的是一个值的引用  编译时输出接口
   -加载的差异是因为CommonJS加载的是一个对象（即module.exports属性），该对象只有在脚本运行结束时才会生成。
   -而ES6模块不是对象，它的对外接口只是一种静态定义，在代码静态解析阶段就会生成。
+  CommonJS 模块使用 require() 和 module.exports，ES6 模块使用 import和 export。
+  CommonJS 模块输出的是一个值的浅拷贝，ES6 模块输出的是值的引用。
+  CommonJS 模块是运行时加载，ES6 模块是编译时输出接口。
+  CommonJS 模块的 require() 是同步加载模块，ES6 模块的 import 命令是异步加载，有一个独立的模块依赖的解析阶段。
+  ES6 模块之中，顶层的 this 指向 undefined；CommonJS 模块的顶层 this 指向当前模块，
+对于循环加载的处理方法不同
+
+第 3 个差异是因为 CommonJS 加载的是一个对象（即 module.exports 属性），该对象只有在脚本运行完才会生成。
+而 ES6 模块不是对象，它的对外接口只是一种静态定义，在代码静态解析阶段就会生成。
 + defer是 渲染完再执行，async是 下载完就执行
 ### DNS解析过程
 ![](http://c.biancheng.net/uploads/allimg/191111/6-191111164422334.gif)
