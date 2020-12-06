@@ -55,3 +55,26 @@
 </body>
 
 </html>
+
+
+
+<script type="text/javascript">
+    function defineReactive(obj) {
+        Object.keys(obj).forEach(key => {
+            let value = obj[key];
+            let dep = []
+            Object.defineProperty(obj, key, {
+                get: function() {
+                    if (active) {
+                        dep.push(active)
+                    }
+                    return obj[key];
+                },
+                set: function(newval) {
+                    dep.forEach(watcher => watcher())
+                    return newval
+                }
+            })
+        })
+    }
+</script>
