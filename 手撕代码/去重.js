@@ -99,4 +99,3 @@ function distinct(arr) {
 
 const fn = (arr) => [...new Set([...arr])]
 let rr = fn(arr)
-console.log(rr)
