@@ -23,7 +23,7 @@
 //     return arr.reduce((prev, cur) => prev.includes(cur) ? prev : [...prev, cur], []);
 // }
 // console.log(_unique(arr2));
-// //4 
+// //4
 // function unique(arr) {
 //     for (let i = 0; i < arr.length; i++) {
 //         for (let j = i + 1; j < arr.length; j++) {
@@ -51,7 +51,6 @@
 //     return newArr;
 // }
 
-
 // function Aunique(arr) {
 //     let map = new Map()
 //     let res = []
@@ -67,9 +66,8 @@
 //     })
 //     console.log(map, res)
 // }
-let arr = [1, 1, 12, 2, 2, 24, 42, 3, 3, 3, 3, 3, 3, 3, 3]
-    // Aunique(arr)
-
+let arr = [1, 1, 12, 2, 2, 24, 42, 3, 3, 3, 3, 3, 3, 3, 3];
+// Aunique(arr)
 
 // function unique(arr) {
 //     let res = {}
@@ -81,21 +79,19 @@ let arr = [1, 1, 12, 2, 2, 24, 42, 3, 3, 3, 3, 3, 3, 3, 3]
 // }
 // unique(arr)
 
-
 function distinct(arr) {
-    return arr.filter((item, index) => arr.indexOf(item) === index)
+  return arr.filter((item, index) => arr.indexOf(item) === index);
 }
-let res = distinct(arr)
+let res = distinct(arr);
 console.log(res);
 
 function distinct(arr) {
-    let result = [];
-    for (const i of arr) {
-        !result.includes(i) && result.push(i)
-    }
-    return result;
+  let result = [];
+  for (const i of arr) {
+    !result.includes(i) && result.push(i);
+  }
+  return result;
 }
 
-
-const fn = (arr) => [...new Set([...arr])]
-let rr = fn(arr)
+const fn = (arr) => [...new Set([...arr])];
+let rr = fn(arr);
