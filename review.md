@@ -152,6 +152,8 @@ happypack：使用多线程并行编译loader
   -加载的差异是因为CommonJS加载的是一个对象（即module.exports属性），该对象只有在脚本运行结束时才会生成。
   -而ES6模块不是对象，它的对外接口只是一种静态定义，在代码静态解析阶段就会生成。
 + defer是 渲染完再执行，async是 下载完就执行
+看这个文章
+  https://github.com/mqyqingfeng/Blog/issues/108
 ### DNS解析过程
 ![](http://c.biancheng.net/uploads/allimg/191111/6-191111164422334.gif)
 上图中分 8 个步骤介绍了域名解析的流程，每个步骤如下：
