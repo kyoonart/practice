@@ -28,3 +28,15 @@ function curry(func) {
         }
     }
 }
+
+function curry(func){
+    return  curried(...args)=>{
+        if(args.length>=func.length){
+            func.apply(this, args);
+        }else {
+            rerurn (...args2)=>{
+                return curried.apply(this, args.concat(args2));
+            }
+        }
+    } 
+}

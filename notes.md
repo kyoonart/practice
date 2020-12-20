@@ -127,14 +127,17 @@ request({
 #### OPTIONS 请求即**预检请求**，Access-Control-Allow-Origin: \*
 
 简单请求 一般有
- + get post head
- + headers 为 
- accept
- accept-language
- content-language
- content-type (application/x-www-form-urlencoded、multipart/form-data、text/plain)
-可用于检测服务器允许的 http 方法。当发起跨域请求时，由于安全原因，触发一定条件时浏览器会在正式请求之前**自动**先发起 OPTIONS 请求，即**CORS 预检请求**，服务器若接受该跨域请求，浏览器才继续发起正式请求。
+
+- get post head
+- headers 为
+  accept
+  accept-language
+  content-language
+  content-type (application/x-www-form-urlencoded、multipart/form-data、text/plain)
+  可用于检测服务器允许的 http 方法。当发起跨域请求时，由于安全原因，触发一定条件时浏览器会在正式请求之前**自动**先发起 OPTIONS 请求，即**CORS 预检请求**，服务器若接受该跨域请求，浏览器才继续发起正式请求。
+
 #### this
+
 首先，要明白**this 既不指向函数自身，也不指函数的词法作用域**。this 一般存在于函数中，表示当前函数的执行上下文，如果函数没有执行，那么 this 没有内容，只有函数在运行时 this 才有绑定。
 
 是指包含它的函数作为方法被调用时所属的对象。这句话理解起来感觉还是很拗口的，但是如果你把它拆分开来变成这三句话后就好理解一点了。
@@ -167,7 +170,7 @@ lorem;
 
 #### 隐式转换规则
 
-注意`+`是个例外，执行`+`操作符时：	
+注意`+`是个例外，执行`+`操作符时：
 
 ```javascript
 1.当一侧为String类型，被识别为字符串拼接，并会优先将另一侧转换为字符串类型。
@@ -309,7 +312,7 @@ Number string Boolean,null undefined symbol object 还有新的 bigint
 
 执行上下文也就是执行环境。执行环境中定义了变量和对象，决定了他们的行为。每个环境都有个活动对象，也就是常说的 AO VO ,这个对象中保存着当前环境的变量和对象。虽然我们不能访问他， 但是 js 解析器可以访问他，， **在生成执行上下文时，会有两个阶段。第一个阶段是创建的阶段（具体步骤是创建 `VO`），`JS` 解释器会找出需要提升的变量和函数，并且给他们提前在内存中开辟好空间，函数的话会将整个函数存入内存中，变量只声明并且赋值为 `undefined`，所以在第二个阶段，也就是代码执行阶段，我们可以直接提前使用。** 每个执行上下文有三个重要的属性，变量对象，作用域链（也就是说作用链是静态的在创建的时候就已经确定好了）,this; 当执行流进入一个函数时，函数的环境就会被推入执行栈，而当函数执行后函数的环境会被弹出栈，通过执行栈来管理函数的运行
 
-执行上下文创建的四部曲， 
+执行上下文创建的四部曲，
 
 1:创建 AO 对象，找形参，和变量声明，
 
@@ -335,7 +338,7 @@ Number string Boolean,null undefined symbol object 还有新的 bigint
 
 `beforeMount`发生在挂载之前，在这之前 template 模板已导入渲染函数编译。而当前阶段虚拟 Dom 已经创建完成，即将开始渲染。在此时也可以对数据进行更改，不会触发 updated。
 
-`mounted`在挂载完成后发生，在当前阶段，真实的 Dom 挂载完毕，数据完成双向绑定，可以访问到 Dom 节点，使用\$refs 属性对 Dom 进行操作。
+`mounted`在挂载完成后发生，在当前阶段，真实的 Dom 挂载完毕，数据完成双向绑定，可以访问到 Dom 节点，使用$refs 属性对 Dom 进行操作。
 
 `beforeUpdate`发生在更新之前，也就是响应式数据发生更新，虚拟 dom 重新渲染之前被触发，你可以在当前阶段进行更改数据，不会造成重渲染。
 
@@ -391,6 +394,7 @@ async 则是一个乱序执行的主，反正对它来说脚本的加载和执�
 
 - 三个重要的 api: events props slot
 - 组件通信方式 $emit $on $parent $children **provide inject **(封装组件最常用)
+<!-- 作用域插槽 -->
 
 ### GET 和 POST 最大的区别
 
@@ -474,6 +478,22 @@ async 则是一个乱序执行的主，反正对它来说脚本的加载和执�
             margin: auto;
     }
 }
+//**6**//
+.wrap {
+        height: 100vh;
+        width: 100vw;
+      }
+      .center {
+        position: relative;
+        top: 50%;
+        margin: 0 auto;
+        width: 200px;
+        height: 200px;
+        transform: translateY(-50%);
+        background-color: pink;
+        text-align: center;
+        line-height: 200px;
+      }
 ```
 
 ### 如何实现小于 12px 的字体效果
@@ -520,6 +540,11 @@ https 本质上还是 http 协议 ，但是信息通过 `TLS` 协议进行了加
 ### BFC
 
 BFC：块级格式化上下文，容器里面的子元素不会在布局上影响到外面的元素，反之也是如此(按照这个理念来想，只要脱离文档流，肯定就能产生 `BFC`
+创建 BFC
+1:flat 不为 none 的
+2:position 属性不为 reactive 或者 static
+3:display 属性为 flex inline-flex table-cell 等
+4:overflow:属性不为 hidden 即可
 
 #### offset client scroll
 
@@ -598,11 +623,11 @@ ETag`配合`If-None-Match
 `JWT`的最大缺点，由于服务器不保存`session`状态，因此无法在使用过程中废止某个`token`，或者更改 `token`的权限。也就是说，一旦`JWT`签发了，在到期之前就会始终有效，除非服务器部署额外的逻辑。
 说一句套话但绝对不是空话：还是需要根据实际应用场景选用认证方式的
 
-### 新增属性	
+### 新增属性
 
 Es6
 
-let const 模板字符串 解构赋值 剩余运算符 字符串数组对象扩展  symbol Set Map class promise generator async await proxy module 模块化
+let const 模板字符串 解构赋值 剩余运算符 字符串数组对象扩展 symbol Set Map class promise generator async await proxy module 模块化
 
 css3 新增
 
@@ -709,7 +734,6 @@ function useDebounce(value: any, delay = 300) {
       setDebouncedValue(value);
     }, delay);
     return () => {
-
       clearTimeout(handler);
     };
   }, [value, delay]);
@@ -718,10 +742,25 @@ function useDebounce(value: any, delay = 300) {
 }
 
 export default useDebounce;
+
+const useDebounce = (value, delay) => {
+  const [debouncedValue, setDebounceValue] = useState(value);
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebounceValue(value);
+    }, delay);
+    return () => {
+      clearTimeout(handler);
+    };
+  }, [value, delay]);
+  return debouncedValue;
+};
 // useEffect 处理函数的副作用 当useEffect函数返回一个函数的时候代表着下次update的时候清理函数的副作用
 //  这里正好利用这一点来clear
 ```
+
 两个函数一个对象
+
 ```js
 function A() { ... }
 function B() { ... }
@@ -731,31 +770,40 @@ let b = new B;
 
 alert( a == b ); // false
 ```
-### 箭头函数与普通函数的区别
-+ 写法不同
-+ 箭头函数里是没有this的，而普通函数是有this的
-+ 箭头函数中的this是在定义函数时绑定，普通函数是在执行函数时绑定
-+ 箭头函数中的this，指向与一般function定义的函数不同，比较容易绕晕，箭头函数this的定义：箭头函数中的this是在定义函数的时候绑定，而不是在执行函数的时候绑定。
-+ 箭头函数的this永远指向其上下文的 this，任何方法都改变不了其指向，如call(), bind(), apply()
-### 进程线程
-+ 进程是操作系统分配资源的最小单位
-+ 线程是CPU计算的最小单元
-+ 进程相当于是一个容器 是 线程的容器
-+ 单线程 一个进程只产生一个线程
-### 纯函数
-+ 函数的返回值依赖于它的参数 如果函数的调用参数相同，则永远返回相同的结果。它不依赖于程序执行期间函数外部任何状态或数据的变化，必须只依赖于其输入参数。 
-+  该函数不会产生任何可观察的副作用，例如网络请求，输入和输出设备或数据突变（mutation）
-### setState
-+ setState 只在合成事件和钩子函数中是“异步”的，在原生事件和 setTimeout 中都是同步的。
-+ setState的“异步”并不是说内部由异步代码实现，其实本身执行的过程和代码都是同步的，只是合成事件和钩子函数的调用顺序在更新之前， 导致在合成事件和钩子函数中没法立马拿到更新后的值，形式了所谓的“异步”，当然可以通过第二个参数 setState(partialState, callback) 中的callback拿到更新后的结果。
-+ setState 的批量更新优化也是建立在“异步”（合成事件、钩子函数）之上的，在原生事件和setTimeout 中不会批量更新，在“异步”中如果对同一个值进行多次 setState ， setState 的批量更新策略会对其进行覆盖，取最后一次的执行，如果是同时 setState 多个不同的值，在更新时会对其进行合并批量更新。
 
-### 虚拟DOM
+### 箭头函数与普通函数的区别
+
+- 写法不同
+- 箭头函数里是没有 this 的，而普通函数是有 this 的
+- 箭头函数中的 this 是在定义函数时绑定，普通函数是在执行函数时绑定
+- 箭头函数中的 this，指向与一般 function 定义的函数不同，比较容易绕晕，箭头函数 this 的定义：箭头函数中的 this 是在定义函数的时候绑定，而不是在执行函数的时候绑定。
+- 箭头函数的 this 永远指向其上下文的 this，任何方法都改变不了其指向，如 call(), bind(), apply()
+
+### 进程线程
+
+- 进程是操作系统分配资源的最小单位
+- 线程是 CPU 计算的最小单元
+- 进程相当于是一个容器 是 线程的容器
+- 单线程 一个进程只产生一个线程
+
+### 纯函数
+
+- 函数的返回值依赖于它的参数 如果函数的调用参数相同，则永远返回相同的结果。它不依赖于程序执行期间函数外部任何状态或数据的变化，必须只依赖于其输入参数。
+- 该函数不会产生任何可观察的副作用，例如网络请求，输入和输出设备或数据突变（mutation）
+
+### setState
+
+- setState 只在合成事件和钩子函数中是“异步”的，在原生事件和 setTimeout 中都是同步的。
+- setState 的“异步”并不是说内部由异步代码实现，其实本身执行的过程和代码都是同步的，只是合成事件和钩子函数的调用顺序在更新之前， 导致在合成事件和钩子函数中没法立马拿到更新后的值，形式了所谓的“异步”，当然可以通过第二个参数 setState(partialState, callback) 中的 callback 拿到更新后的结果。
+- setState 的批量更新优化也是建立在“异步”（合成事件、钩子函数）之上的，在原生事件和 setTimeout 中不会批量更新，在“异步”中如果对同一个值进行多次 setState ， setState 的批量更新策略会对其进行覆盖，取最后一次的执行，如果是同时 setState 多个不同的值，在更新时会对其进行合并批量更新。
+
+### 虚拟 DOM
+
 核心答案：
-Virtual DOM 就是用js对象来描述真实DOM，是对真实DOM的抽象，由于直接操作DOM性能低但是js层的操作效率高，
-可以将DOM操作转化成对象操作，最终通过diff算法比对差异进行更新DOM (减少了对真实DOM的操作)。
-虚拟DOM不依赖真实平台环境从而也可以实现跨平台。
+Virtual DOM 就是用 js 对象来描述真实 DOM，是对真实 DOM 的抽象，由于直接操作 DOM 性能低但是 js 层的操作效率高，
+可以将 DOM 操作转化成对象操作，最终通过 diff 算法比对差异进行更新 DOM (减少了对真实 DOM 的操作)。
+虚拟 DOM 不依赖真实平台环境从而也可以实现跨平台。
 补充回答：
-虚拟DOM的实现就是普通对象包含tag、data、children等属性对真实节点的描述。（本质上就是在JS和DOM之间的一个缓存）
-Vue2的 Virtual DOM 借鉴了开源库snabbdom的实现。
-VirtualDOM映射到真实DOM要经历VNode的create、diff、patch等阶段。
+虚拟 DOM 的实现就是普通对象包含 tag、data、children 等属性对真实节点的描述。（本质上就是在 JS 和 DOM 之间的一个缓存）
+Vue2 的 Virtual DOM 借鉴了开源库 snabbdom 的实现。
+VirtualDOM 映射到真实 DOM 要经历 VNode 的 create、diff、patch 等阶段。

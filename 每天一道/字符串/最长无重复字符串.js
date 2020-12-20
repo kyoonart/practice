@@ -59,3 +59,4 @@ function lengthOfLongestSubstring(str) {
 }
 let res = lengthOfLongestSubstring("abcab");
 console.log(res);
+

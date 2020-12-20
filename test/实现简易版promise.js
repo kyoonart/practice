@@ -33,3 +33,20 @@ myPromise.prototype.then = function (onFulfilled, onRejected) {
     default:
   }
 };
+
+function promiseAll(promises) {
+  let result = [];
+  return new Promise((resolve, reject) => {
+    promises.forEach((promise, index) => {
+      if (promise instanceof Promise) {
+        promise.then((res) => {
+          result[index] = res;
+          if (result.length === promises.length) {
+            resolve(result);
+          }
+        });
+      }
+    });
+  }, reject);
+}
+Promise.resolve(obj);
