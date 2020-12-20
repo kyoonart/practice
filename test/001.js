@@ -1,18 +1,18 @@
-// Function.prototype.a = () => console.log(1);;
-// Object.prototype.b = () => console.log(2);
+Function.prototype.a = () => console.log(1);;
+Object.prototype.b = () => console.log(2);
 
-// function A() {}
-// const a = new A();
-// // a.a();
-// A.a()
-// a.b();
+function A() {}
+const a = new A();
+// a.a();
+A.a()
+a.b();
 
 
 var a = 1;
 
 function Fn1() {
     var a = 2;
-    console.log(this);
+    // console.log(this);
     console.log(this.a + a);
 }
 

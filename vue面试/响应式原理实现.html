@@ -1,80 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <div id="app"></div>
     <script>
-        let state = {
-            count: 1
-        };
-        let active = null;
-
-        function defineReactive(obj) {
-            Object.keys(obj).forEach((key) => {
-                let dep = [] // 记录watcher
-                let value = obj[key];
-                Object.defineProperty(obj, key, {
-                    get: function() {
-                        if (active) {
-                            dep.push(active)
-                        }
-                        console.log(dep);
-                        return value
-                    },
-                    set: function(newVal) {
-                        // if (newVal !== value) {
-                        value = newVal
-                            // }
-                        dep.forEach((watcher) => watcher())
-                    }
-                })
-            })
-        }
-        defineReactive(state);
-        const watcher = (fn) => {
-            active = fn
-            fn()
-            active = null
-        }
-        watcher(() => {
-            app.innerHTML = state.count
-        })
-        watcher(() => {
-            console.log('更新了:', state.count);
-            // console.log('更新了');
+      let state = {
+        count: 1,
+      };
+      let active = null;
+      function defineReactive(obj) {
+        Object.keys(obj).forEach((key) => {
+          let dep = []; // 记录watcher
+          let value = obj[key];
+          Object.defineProperty(obj, key, {
+            get: function () {
+              if (active) {
+                dep.push(active);
+              }
+              console.log(dep);
+              return value;
+            },
+            set: function (newVal) {
+              // if (newVal !== value) {
+              value = newVal;
+              // }
+              dep.forEach((watcher) => watcher());
+            },
+          });
         });
-        setTimeout(() => state.count += 1, 1000)
-            //  Object.freeze() 冻结对象属性 避免被不必要的更新
+      }
+      defineReactive(state);
+      const watcher = (fn) => {
+        active = fn;
+        fn();
+        active = null;
+      };
+      watcher(() => {
+        app.innerHTML = state.count;
+      });
+      watcher(() => {
+        console.log("更新了:", state.count);
+        // console.log('更新了');
+      });
+      setTimeout(() => (state.count += 1), 1000);
+      //  Object.freeze() 冻结对象属性 避免被不必要的更新
     </script>
-</body>
-
+  </body>
 </html>
 
-
-
 <script type="text/javascript">
-    function defineReactive(obj) {
-        Object.keys(obj).forEach(key => {
-            let value = obj[key];
-            let dep = []
-            Object.defineProperty(obj, key, {
-                get: function() {
-                    if (active) {
-                        dep.push(active)
-                    }
-                    return obj[key];
-                },
-                set: function(newval) {
-                    dep.forEach(watcher => watcher())
-                    return newval
-                }
-            })
-        })
-    }
+  function defineReactive(obj) {
+    Object.keys(obj).forEach((key) => {
+      let value = obj[key];
+      let dep = [];
+      Object.defineProperty(obj, key, {
+        get: function () {
+          if (active) {
+            dep.push(active);
+          }
+          return obj[key];
+        },
+        set: function (newval) {
+          dep.forEach((watcher) => watcher());
+          return newval;
+        },
+      });
+    });
+  }
 </script>
