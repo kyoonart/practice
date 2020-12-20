@@ -28,7 +28,7 @@ window.onload = function () {
 
     drag.onmouseup = function (e) {
       this.onmousemove = null;
-      this.onmouseup = null;
+      // this.onmouseup = null;
     };
   };
 };
