@@ -9,13 +9,27 @@
 
 <body>
     <script>
-        var b = 20;
-        (function b() {
-            b = 10;
-            console.log(b); // func
-            console.log(window.b); // 20
-            console.log(this.b); // 20
-        })()
+        // var b = 20;
+        // (function b() {
+        //     b = 10;
+        //     console.log(b); // func
+        //     console.log(window.b); // 20
+        //     console.log(this.b); // 20
+        // })()
+
+        let a = new Promise((resolve, reject) => {})
+            // a instanceof Array
+        console.log(a instanceof Promise)
+
+        function ObjectCreate(prototype) {
+            function fn() {}
+            fn.prototype = prototype;
+            return new fn()
+        }
+        let arr = [1, 2, 3, 4, 5]
+        let newarr = arr.map(item => item * 2)
+        let sum = arr.reduce((prev, cur) => prev + cur)
+        console.log(arr, newarr, sum)
     </script>
 </body>
 
