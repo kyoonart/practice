@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"
+    />
     <title>Document</title>
-    <link rel="stylesheet" href="./index.css">
-</head>
+    <link rel="stylesheet" href="./index.css" />
+  </head>
 
-<body>
+  <body>
     <div class="header"></div>
     <script async>
-        var html = document.documentElement;
-        console.log(html);
-
+      var html = document.documentElement;
+      window.addEventListener("resize", function () {
         var winth = html.clientWidth;
         var s = winth / 10;
-        html.style.fontSize = s + 'px';
-        console.log(s + 'px');
+        html.style.fontSize = s + "px";
+        console.log(s + "px");
+      });
     </script>
-
-</body>
-
+  </body>
 </html>

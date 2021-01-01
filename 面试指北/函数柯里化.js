@@ -19,7 +19,7 @@ function add(x) {
         }
     };
 }
-let sumx = add(1)(2)(3);
+// let sumx = add(1)(2)(3);
 // console.log(sumx());
 
 // function curry(func) {
@@ -60,9 +60,8 @@ function addx() {
     return fn;
 }
 let a = addx(1)(2, 4)(3, 5);
-console.log(a());
 
-
+// 不定参数
 function curry(func) {
     return curried(...args) {
         if (func.length <= args.length) {
@@ -74,3 +73,50 @@ function curry(func) {
         }
     }
 }
+
+
+// 定参数时
+function curry(a){
+  let args=a;
+  function sum(b){
+      args+=b
+      return sum
+  }
+  sum.toString(){
+    return args;
+  }
+  return sum;
+}
+
+
+const add = (...args) => {
+    const addFn = (args) => {
+        return args.reduce((p, c) => p + c, 0);
+    };
+    const fn = function (...addition) {
+        let concatArgs = args.concat(addition);
+        return add(...concatArgs);
+    }
+    fn.sumOf = function () {
+        console.log(addFn(args));          
+    }
+    return fn;
+}
+
+
+const add=(...args) =>{
+    const addFn = (args)=>args.reduce((prev,cur)=>prev+cur,0);
+    cosnt fn(...args2)=>{
+        let conArgs=args.concat(args2);
+        return add(conArgs);
+    }
+    add.sumOf()=>return addFn(args)
+    return fn
+}
+// add(1, 2, 3).sumOf()
+// add(1)(2)(3).sumOf()  
+// add(1, 2)(3).sumOf()   
+// add(4, 5)(1)(2, 3).sumOf()   
+// add(1, 1)(3)(6).sumOf()  
+
+

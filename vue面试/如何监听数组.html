@@ -29,6 +29,14 @@
       render();
       setTimeout(() => state.push(5), 1000);
       // 索引和长度的变化是监控不到的
+
+      let arrayMethods = Object.create(Array.prototype);
+      function defineReactive(obj) {
+        arrayMethods.push = function (...args) {
+          arrayMethods.push.call(this, ...args);
+          render();
+        };
+      }
     </script>
   </body>
 </html>

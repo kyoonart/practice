@@ -73,7 +73,7 @@ vm.$on( event, callback )
 
 #### vue 请求拦截器
 
-```java
+```javascript
 const whiteUrl = [ '/login', '/book/home/v2' ]
 const url = '/book/home/v2'
 const request = axios.create({
