@@ -54,10 +54,3 @@ function fn1(arr) {
 }
 
 console.log(fn1(arr));
-
-function unique(arr) {
-  let result = [];
-  arr.forEach((item) => {
-    !result.includes(item) && result.push(item);
-  });
-}

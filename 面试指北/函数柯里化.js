@@ -106,11 +106,11 @@ const add = (...args) => {
 
 const add=(...args) =>{
     const addFn = (args)=>args.reduce((prev,cur)=>prev+cur,0);
-    cosnt fn(...args2)=>{
+    const fn(...args2)=>{
         let conArgs=args.concat(args2);
         return add(conArgs);
     }
-    add.sumOf()=>return addFn(args)
+    add.sumOf=()=>return addFn(args)
     return fn
 }
 // add(1, 2, 3).sumOf()

@@ -237,3 +237,35 @@ onmouseleave
 scroll
 blur
 focus
+
+### vue 中 key 的作用
+
+key 是给每个 vnode 节点一个唯一的 id,可以使得 diff 算法更加准确，高效
+diff 算法过程中会进行首尾交叉比较，当无法匹配的时候，会先根据 key 生成一个 map 数据结构，然后用新的节点的 key 与旧的节点进行对比，从而找到相对应的节点
+更准确:因为带了 key 就不是原地复用了，在 diff 算法中有个 sameNode 函数，a.key===b.key 对比就可以避免原地复用的情况，所以会更加准确，如果不加 key 会导致之前的节点状态被保留下来，产生一系列的 bug;
+（sameNode）比较节点是否是同一个 首先会对比 key 是否相同 其次是 标签名称 接下来是 是否是静态节点 如果是 input 标签 type 值是否相同
+
+```js
+function sameVnode(a, b) {
+  return (
+    a.key === b.key &&
+    ((a.tag === b.tag &&
+      a.isComment === b.isComment &&
+      isDef(a.data) === isDef(b.data) &&
+      sameInputType(a, b)) ||
+      (isTrue(a.isAsyncPlaceholder) &&
+        a.asyncFactory === b.asyncFactory &&
+        isUndef(b.asyncFactory.error)))
+  );
+}
+```
+
+更快速：key 的唯一性可以被 map 数据结构充分利用，想比于遍历查复度 O(N),map 的时间复杂度为 O(1)
+
+### diff 的本质
+
+过程
+1，先比较同级再比较子节点
+2，先判断一方有子节点和一方没有子节点的情况，如果新的一方有子节点，旧的一方没有，那么相当于新的子节点代替了原来没有的节点。同理如果新的一方没有子节点，旧的一方有，相当于要把老的节点删除掉
+3，再比较都有子节点的情况，这是 diff 的核心，首先会通过判断两个节点的 key、tag、isComment（是否是静态节点、data 同时定义或者不定义，以及如果标签是 input 的情况下 type 值是否相同来确定是否是同一个节点。如果不是的话就将新的节点替换旧的节点
+4，如果是相同节点的话会进入到 patchVnode 阶段,这个阶段的核心就是采用双指针来首位交叉对比，在这个过程中，会用到模版编译时的静态标记配合 key 来跳过对比静态节点，如果不是的话再进行其它的比较。
