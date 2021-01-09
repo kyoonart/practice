@@ -3,7 +3,7 @@
 ```js
 git commit --amend -m "New commit message" 修改上次commit信息
 git remote add origin git@XX.XX.XX.12:gyjia/hotcodeserver.git 添加远程仓库
-gitcheckout -b 'branchname'  创建并切换分支
+git checkout -b 'branchname'  创建并切换分支
 git remote set-url origin xxx 修改远程仓库地址
 git reset --hard id   回滚
 git reset --hard ~HEAD 回滚上一次提交
@@ -115,8 +115,11 @@ XSS 攻击是指黑客往 HTML 文件中或者 DOM 中注入恶意脚本，从�
   2、csrf（跨站请求伪造）
   ![](https://upload-images.jianshu.io/upload_images/100028-37e1f13dd91fee0d.jpg?imageMogr2/auto-orient/strip|imageView2/2/format/webp)
   防御：阻止不明域的访问、Referer Check - Https 不发送 referer(在 HTTP 头中有一个字段叫 Referer，它记录了该 HTTP 请求的来源地址)、添加验证码
+  名言:get 不写库 post 认 json（把 post 简单请求强制转换为复杂请求 使用预检请求来防御 csrf 攻击）
 
 ### webpack
+
+webpack 打包原理是根据文件间的依赖关系对其进行静态分析，然后将这些模块按指定规则生成静态资源，当 webpack 处理程序时，它会递归地构建一个依赖关系图(dependency graph)，其中包含应用程序需要的每个模块，然后将所有这些模块打包成一个或多个 bundle。
 
 - module chunk bundle
 - webpack-dev-server 是 webpack 官方提供的一个小型 Express 服务器
@@ -141,6 +144,8 @@ Loader 在 module.rules 中配置，也就是说它作为模块的解析规则�
 
 ##### 插件
 
+原理
+在 Webpack 运行的生命周期中会广播出许多事件，Plugin 可以监听这些事件，在合适的时机通过 Webpack 提供的 API 改变输出结果
 作用
 插件可以扩展 webpack 的能力、让 webpack 具有更多的灵活性、让 webpack 更加强大
 使用
@@ -185,6 +190,13 @@ happypack：使用多线程并行编译 loader
 - CommonJS 模块 同步导入支持动态导入 输出的是一个值的拷贝 运行时加载
 - Es Module 模块 异步导入 输出的是一个值的引用 编译时输出接口 -加载的差异是因为 CommonJS 加载的是一个对象（即 module.exports 属性），该对象只有在脚本运行结束时才会生成。 -而 ES6 模块不是对象，它的对外接口只是一种静态定义，在代码静态解析阶段就会生成。
 - defer 是 渲染完再执行，async 是 下载完就执行
+  它们有两个重大差异。
+  CommonJS 模块输出的是一个值的拷贝，ES6 模块输出的是值的引用。
+  CommonJS 模块是运行时加载，ES6 模块是编译时输出接口。
+  第二个差异可以从两个项目的打印结果看出，导致这种差别的原因是：
+  因为 CommonJS 加载的是一个对象（即 module.exports 属性），该对象只有在脚本运行完才会生成。而 ES6 模块不是对象，它的对外接口只是一种静态定义，在代码静态解析阶段就会生成。
+  重点解释第一个差异。
+  CommonJS 模块输出的是值的拷贝，也就是说，一旦输出一个值，模块内部的变化就影响不到这个值
   看这个文章
   https://github.com/mqyqingfeng/Blog/issues/108
 
@@ -215,3 +227,55 @@ multipart/form-data
 区别
 其中的数据会被编码成以&分隔的键值对
 字符以 URL 编码方式编码。
+
+### 单元测试
+
+业务比较复杂，前端参与的人员超过 3 人
+公司非常注重代码质量，想尽一切办法杜绝线上出 bug
+你是跨项目组件的提供方
+你在做一个开源项目
+
+### 不会冒泡的事件
+
+onmouseenter
+onmouseleave
+scroll
+blur
+focus
+
+### vue 中 key 的作用
+
+key 是给每个 vnode 节点一个唯一的 id,可以使得 diff 算法更加准确，高效
+diff 算法过程中会进行首尾交叉比较，当无法匹配的时候，会先根据 key 生成一个 map 数据结构，然后用新的节点的 key 与旧的节点进行对比，从而找到相对应的节点
+更准确:因为带了 key 就不是原地复用了，在 diff 算法中有个 sameNode 函数，a.key===b.key 对比就可以避免原地复用的情况，所以会更加准确，如果不加 key 会导致之前的节点状态被保留下来，产生一系列的 bug;
+（sameNode）比较节点是否是同一个 首先会对比 key 是否相同 其次是 标签名称 接下来是 是否是静态节点 如果是 input 标签 type 值是否相同
+
+```js
+function sameVnode(a, b) {
+  return (
+    a.key === b.key &&
+    ((a.tag === b.tag &&
+      a.isComment === b.isComment &&
+      isDef(a.data) === isDef(b.data) &&
+      sameInputType(a, b)) ||
+      (isTrue(a.isAsyncPlaceholder) &&
+        a.asyncFactory === b.asyncFactory &&
+        isUndef(b.asyncFactory.error)))
+  );
+}
+```
+
+更快速：key 的唯一性可以被 map 数据结构充分利用，想比于遍历查复度 O(N),map 的时间复杂度为 O(1)
+
+### diff 的本质
+
+过程
+1，先比较同级再比较子节点
+2，先判断一方有子节点和一方没有子节点的情况，如果新的一方有子节点，旧的一方没有，那么相当于新的子节点代替了原来没有的节点。同理如果新的一方没有子节点，旧的一方有，相当于要把老的节点删除掉
+3，再比较都有子节点的情况，这是 diff 的核心，首先会通过判断两个节点的 key、tag、isComment（是否是静态节点、data 同时定义或者不定义，以及如果标签是 input 的情况下 type 值是否相同来确定是否是同一个节点。如果不是的话就将新的节点替换旧的节点
+4，如果是相同节点的话会进入到 patchVnode 阶段,这个阶段的核心就是采用双指针来首位交叉对比，在这个过程中，会用到模版编译时的静态标记配合 key 来跳过对比静态节点，如果不是的话再进行其它的比较。
+
+### webpack 打包原理
+
+webpack 打包原理是根据文件间的依赖关系对其进行静态分析，然后将这些模块按指定规则生成静态资源，
+当 webpack 处理程序时，它会递归地构建一个依赖关系图(dependency graph)，其中包含应用程序需要的每个模块，然后将所有这些模块打包成一个或多个 bundle。

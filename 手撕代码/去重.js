@@ -80,7 +80,7 @@ let arr = [1, 1, 12, 2, 2, 24, 42, 3, 3, 3, 3, 3, 3, 3, 3];
 // unique(arr)
 
 function distinct(arr) {
-  return arr.filter((item, index) => arr.indexOf(item) === index);
+  return arr.filter((item, index, array) => array.indexOf(item) === index);
 }
 let res = distinct(arr);
 console.log(res);

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="file" id="file" />
+    <img src="" alt="" width="100" id="img" />
+    <script>
+      const request = ({
+        url,
+        method = "POST",
+        data,
+        requestList,
+        headers = {},
+      }) =>
+        new Promise((resolve) => {
+          const xhr = new XMLHttpRequest();
+          xhr.open(method, url);
+          Object.keys(headers).forEach((key) => {
+            xhr.setRequestHeader(key, headers[key]);
+          });
+          xhr.send(data);
+          xhr.onload = (e) => {
+            resolve({
+              data: e.target.response,
+            });
+          };
+        });
+      const requesMerge = async () => {
+        await request({
+          url: "http://localhost:3000/merge",
+          headers: {
+            "content-type": "application/json",
+          },
+        });
+      };
+      document.getElementById("file").addEventListener("change", async (e) => {
+        const files = e.target.files[0]; // es6才有文件对象
+        const file_name = files.split(".")[0];
+        let cur = 0;
+        let size = 1024 * 1024;
+        let fileChunkList = [];
+        while (cur < files.size) {
+          fileChunkList.push({ file: files.slice(cur, cur + size) }); // 切片
+          cur += size;
+        }
+        console.log("fileChunkList", fileChunkList);
+        const requestList = fileChunkList
+          .map(({ file }, index) => {
+            const formData = new FormData();
+            formData.append("chunk", file);
+            formData.append("filename", `${file_name}-${index}`);
+            return { formData };
+          })
+          .map(async ({ formData }) => {
+            request({
+              url: "http://localhost:3000",
+              data: formData,
+            });
+          });
+        await Promise.all(requestList); // 并发
+        // 上传完毕后通知合并文件
+        await requesMerge();
+      });
+
+      document.getElementById("file").addEventListener("change", (e) => {
+        const file = e.target.files[0];
+        const URL = window.URL;
+        const objectURL = URL.createObjectURL(file);
+        console.log("url", objectURL);
+        const pic = document.getElementById("img");
+        pic.src = objectURL;
+        pic.onload = () => {
+          URL.revokeObjectURL(objectURL);
+        };
+      });
+    </script>
+  </body>
+</html>

@@ -1,7 +1,11 @@
 .clearFix::after {
-    content: "";
-    height: 0;
-    visibility: hidden;
-    display: block;
-    clear: both;
+  content: "";
+  height: 0;
+  visibility: hidden;
+  display: block;
+  clear: both;
 }
+/* 添加额外元素 clear:both
+父元素添加 overflow:hidden 开启bfc
+伪元素
+双伪元素  =>推荐使用 */

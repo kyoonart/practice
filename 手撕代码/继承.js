@@ -57,9 +57,15 @@ Dog.prototype = Object.create(Animal.prototype);
 Dog.prototype.constructor = Dog;
 var d1 = new Dog("tom");
 var d2 = new Dog("sexx");
-
+//实现Object.create
 function create(o) {
   function f() {}
   f.prototype = o;
   return new f();
+}
+
+function createX(prototype) {
+  let obj = new Object();
+  Object.setPrototypeOf(obj, prototype);
+  return obj;
 }

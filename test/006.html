@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">233</div>
+    <script>
+      app.addEventListener("click", () => {
+        Promise.resolve().then(() => {
+          console.log(1);
+        });
+        console.log(2);
+      });
+      app.addEventListener("click", () => {
+        Promise.resolve().then(() => {
+          console.log(3);
+        });
+        console.log(4);
+      });
+      console.log("test");
+      //
+      // app.click();
+
+      const add = function (a) {
+        let sum = a;
+        let temp = function (b) {
+          sum += b;
+          return temp;
+        };
+        temp.toString = function () {
+          return sum;
+        };
+        return temp;
+      };
+      let res = add(1)(2)(3);
+      console.log(res);
+    </script>
+  </body>
+</html>
