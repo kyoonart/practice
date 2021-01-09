@@ -24,8 +24,8 @@
 class Scheduler {
   constructor() {
     this.queue = [];
-    this.maxCount = 2;
-    this.count = 0;
+    this.maxCount = 2; // 并发限制
+    this.count = 0; //当前执行promise个数
   }
   add(promiseCreator) {
     this.queue.push(promiseCreator);

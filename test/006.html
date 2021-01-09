@@ -22,7 +22,21 @@
       });
       console.log("test");
       //
-      app.click();
+      // app.click();
+
+      const add = function (a) {
+        let sum = a;
+        let temp = function (b) {
+          sum += b;
+          return temp;
+        };
+        temp.toString = function () {
+          return sum;
+        };
+        return temp;
+      };
+      let res = add(1)(2)(3);
+      console.log(res);
     </script>
   </body>
 </html>

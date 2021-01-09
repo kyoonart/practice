@@ -9,20 +9,34 @@ prev：上一次调用回调时返回的值
 正在遍历的集合对象
 */
 
-Array.prototype.myReduce = function(fn, prev) {
-    for (let i = 0; i < this.length; i++) {
-        if (typeof prev === 'undefined') {
-            prev = fn(this[i], this[i + 1], i + 1, this);
-            i++;
-        } else {
-            prev = fn(prev, this[i], i, this);
-        }
+Array.prototype.myReduce = function (fn, prev) {
+  for (let i = 0; i < this.length; i++) {
+    if (typeof prev === "undefined") {
+      prev = fn(this[i], this[i + 1], i + 1, this);
+      i++;
+    } else {
+      prev = fn(prev, this[i], i, this);
     }
-    return prev;
-}
+  }
+  return prev;
+};
 
 let sum = [1, 2, 3].myReduce((pre, cur) => {
-    return pre + cur;
-})
+  return pre + cur;
+});
 
 console.log(sum);
+
+// 实现map
+Array.prototype.map1 = function (fn, ret = this) {
+  let arr = [];
+  for (let i = 0; i < ret.length; i++) {
+    arr.push(fn(ret[i], i, ret));
+  }
+  return arr;
+};
+let xxx = [1, 2, 3].map1((item, index, array) => {
+  console.log(item, index, array);
+  return item * 2;
+});
+console.log("xxx", xxx);

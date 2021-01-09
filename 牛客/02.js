@@ -11,5 +11,5 @@ function foo() {
 }
 let myName = "global";
 let _printName = foo();
-_printName();
+_printName(); //
 bar.printName();

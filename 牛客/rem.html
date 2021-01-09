@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .container {
+        width: 5rem;
+        height: 5rem;
+        background-color: pink;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container"></div>
+    <script type="text/javascript">
+      function setRem() {
+        let doc = document.documentElement;
+        let width = doc.getBoundingClientRect().width;
+        let rem = width / 10;
+        doc.style.fontSize = rem + "px";
+        console.log("rem", rem);
+      }
+      window.addEventListener("resize", () => {
+        console.log("233");
+        setRem();
+      });
+    </script>
+  </body>
+</html>

@@ -597,7 +597,21 @@ ETag`配合`If-None-Match
 （1）通过媒体查询的方式即 CSS3 的 meida queries  
 （2）以天猫首页为代表的 flex 弹性布局  
 （3）以淘宝首页为代表的 rem+viewport 缩放  
-（4）rem 方式
+（4）rem + js 方式+vw、vh
+
+rem 计算方式：
+
+```js
+假设设计图尺寸是 640px
+funtion setRem(){
+let doc=document.documentElement;
+ let windowWidth=doc.getBoundingClientRect.width();
+  // 为了实现响应式 那就以640px为基准来计算  640px下 1 rem = 20px
+  let rem =（windowWidth/640)*(640/32);
+  doc.style.fontSize=rem+'px'
+}
+window.addEventListener('resize',setRem)
+```
 
 ### jwt
 

@@ -1,5 +1,7 @@
 // promise async
 
+const { log } = require("console");
+
 cosnt myFetch = async(ayn) => {
         let start = new Date().getTime();
         let result = await (await fetch(url)).json();
@@ -20,4 +22,16 @@ const Fetch = (ayn) => {
                 resolve(res);
             })
     ])
+}
+
+
+
+async function   timeoutM(url, timeout){
+    let start = new Date().getTime();
+    let result = await fetch(url).json()
+    let end = new Date().getTime()
+    if(end-start>timeout){
+        console.log('Timeout')
+    }
+    else return result;
 }
