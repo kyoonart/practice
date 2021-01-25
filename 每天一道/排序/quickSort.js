@@ -39,26 +39,26 @@ function quickSort1(arr, low = 0, high = arr.length - 1) {
     quickSort1(arr, low, left - 1);
     quickSort1(arr, left + 1, high);
     return arr;
-}   
+}
 console.log(quickSort1(arr));
 // 优化思路 不要选择第一个数作为排序的中轴 
 // 1： 随机数 2：三平均法  第一个 最后一个
 //  中间的那个 相加取平均数
 
 
-function quicksort(arr,low=0,high=arr.length-1){
-    let left=low;
-    let right =high;
-    let flag=arr[left]
-    while(left<right){
-        if(left<right&&arr[right]>arr[left]) right--;
-        arr[left]=arr[right]
-           if(left<right&&arr[left]>arr[right]) left++;
-        arr[right]=arr[left]
+function quicksort(arr, low = 0, high = arr.length - 1) {
+    let left = low;
+    let right = high;
+    let flag = arr[left]
+    while (left < right) {
+        if (left < right && arr[right] >= arr[left]) right--;
+        arr[left] = arr[right]
+        if (left < right && arr[left] >= arr[right]) left++;
+        arr[right] = arr[left]
     }
-    arr[left]=flag;
-    quicksort(arr,low,left-1)
-     quicksort(arr,left+1,right)
+    arr[left] = flag;
+    quicksort(arr, low, left - 1)
+    quicksort(arr, left + 1, right)
     return arr
 
 }
