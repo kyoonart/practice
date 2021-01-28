@@ -821,3 +821,5 @@ Virtual DOM 就是用 js 对象来描述真实 DOM，是对真实 DOM 的抽象�
 虚拟 DOM 的实现就是普通对象包含 tag、data、children 等属性对真实节点的描述。（本质上就是在 JS 和 DOM 之间的一个缓存）
 Vue2 的 Virtual DOM 借鉴了开源库 snabbdom 的实现。
 VirtualDOM 映射到真实 DOM 要经历 VNode 的 create、diff、patch 等阶段。
+
+###
