@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+      </ul>
+    </div>
+    <script>
+      function $(id) {
+        return typeof id == "string" ? document.getElementById(id) : null;
+      }
+      let items = document.querySelectorAll("li");
+      for (var i = 0; i < items.length; i++) {
+        let item = items[i];
+        item.index = i;
+        items[i].onmousemove = function () {
+          console.log(this.index);
+          console.log(items);
+        };
+      }
+    </script>
+  </body>
+</html>

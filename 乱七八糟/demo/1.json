@@ -1,0 +1,95 @@
+{
+  "client_timestamp": "1612334134981",
+  "client_increment_id": "918",
+  "session_id": "4078e387404eeca97093e291df6fbf28",
+  "time_zone": "GMT+08:00",
+  "server_timestamp": "0",
+  "server_hostname": "",
+  "explore_locale": "",
+  "common_package": {
+    "identity_package": {
+      "device_id": "web_5741420167485D61",
+      "user_id": "",
+      "iu_id": "",
+      "global_id": "",
+      "union_id": "",
+      "open_id": ""
+    },
+    "app_package": {
+      "product": "UNKNOWN_PRODUCT",
+      "platform": "PC_WEB",
+      "language": "zh-CN",
+      "channel": "",
+      "version_name": "",
+      "version_code": 0,
+      "package_name": "",
+      "product_name": "qingque",
+      "hotfix_patch_version": "",
+      "container": "H5"
+    },
+    "device_package": {
+      "os_version": "11.1.0",
+      "model": "unknown",
+      "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 11_1_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.96 Safari/537.36"
+    },
+    "network_package": {
+      "type": "MOBILE_4G",
+      "isp": "",
+      "ip": "",
+      "ipv6": ""
+    },
+    "experiment": [],
+    "sdk_version": "3.7.33",
+    "service_name": "",
+    "safety_id": "",
+    "sub_biz": "",
+    "style_type": "",
+    "need_encrypt": false,
+    "global_attr": "",
+    "h5_extra_attr": {
+      "host_product": "",
+      "app_version_name": "",
+      "resolution": "2240x3584",
+      "domain": "https://k-uims-passport3.test.gifshow.com",
+      "sdk_name": "webLogger",
+      "sdk_version": "3.7.33",
+      "client_timestamp": 1612334134981,
+      "http_seq_id": 1413,
+      "channel": ""
+    }
+  },
+  "event_package": {
+    "show_event": {
+      "action": "ENTER",
+      "type": "ELEMENT",
+      "status": "SUCCESS",
+      "action_type": "CLICK",
+      "time_cost": "0",
+      "stay_length": "0",
+      "url_package": {
+        "page": "LOGIN",
+        "params": "",
+        "page_type": "H5"
+      },
+      "element_package": {
+        "index": 0,
+        "value": 0,
+        "status": "UNKNOWN_STATUS",
+        "action": "INPUT_PHONEOREMAIL_NEXT",
+        "params": "{}"
+      },
+      "refer_url_package": {
+        "page": "LOGIN",
+        "params": "",
+        "identity": "db643a6c488afc88ed9adf109d056584",
+        "page_type": "H5"
+      },
+      "content_package": "",
+      "sub_page": false,
+      "first_load": false,
+      "sub_action": "PAGE_ENTER"
+    }
+  },
+  "event_id": "",
+  "front_session_id": ""
+}

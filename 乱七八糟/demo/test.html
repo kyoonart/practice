@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <iframe src="https://www.baidu.com/" frameborder="0"></iframe>
+    <script>
+      // let a = {
+      //   b: 2,
+      // };
+
+      // let testObj = Object.create(a.prototype);、
+      // console.log(testObj.__proto__);
+      function foo() {
+        let a = (b = 0);
+        a++;
+        return a;
+      }
+      foo(); // => ???
+      console.log(typeof a); // => ???
+      console.log(typeof b);
+    </script>
+  </body>
+</html>

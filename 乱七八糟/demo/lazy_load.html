@@ -1,0 +1,173 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style>
+      img[data-src] {
+        filter: blur(0.2em);
+      }
+
+      img {
+        filter: blur(0em);
+        transition: filter 0.5s;
+      }
+
+      .lazy-load__item {
+        margin: 300px;
+      }
+
+      .lazy-load__container {
+        position: relative;
+        display: block;
+        height: 0;
+        border: 2px solid black;
+      }
+
+      .lazy-load__raw {
+        border: 2px solid black;
+      }
+
+      .lazy-load__container.feature {
+        padding-bottom: 42.8%;
+      }
+
+      .lazy-load__container.post {
+        padding-bottom: 100%;
+      }
+
+      .lazy-load__container img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+      }
+
+      .img-container {
+        margin: 300px;
+      }
+
+      .article {
+        width: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <img
+      src="https://via.placeholder.com/350x150"
+      data-src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/intermediary/f/a34d5645-8f4c-4536-afc4-e4ea77d62415/d319cgn-718cad87-976f-42cb-bdee-b00428f891d0.png"
+    />
+    <img
+      src="https://via.placeholder.com/350x150"
+      data-src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/intermediary/f/a34d5645-8f4c-4536-afc4-e4ea77d62415/d30o4hb-88a2a393-3ce8-404e-b5a3-60c15247f0ce.png"
+    />
+    <img
+      src="https://via.placeholder.com/350x150"
+      data-src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/intermediary/f/a34d5645-8f4c-4536-afc4-e4ea77d62415/d2zl3ce-3bf54cdc-650d-4add-820e-b740c52b2d61.png"
+    />
+    <img
+      src="https://via.placeholder.com/350x150"
+      data-src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/intermediary/f/a34d5645-8f4c-4536-afc4-e4ea77d62415/d2zi7lr-c160c655-0292-4644-82ae-086566112a7a.png"
+    />
+    <img
+      src="https://via.placeholder.com/350x150"
+      data-src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/intermediary/f/a34d5645-8f4c-4536-afc4-e4ea77d62415/d2yyh7v-92ffde3b-15b6-44fb-b93e-18b4c1347e94.png"
+    />
+    <img
+      src="https://via.placeholder.com/350x150"
+      data-src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/intermediary/f/a34d5645-8f4c-4536-afc4-e4ea77d62415/d2ya9rx-5e79a037-87fb-4827-84d2-126531dc6ae0.png"
+    />
+    <img
+      src="https://via.placeholder.com/350x150"
+      data-src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/intermediary/f/a34d5645-8f4c-4536-afc4-e4ea77d62415/d319cgn-718cad87-976f-42cb-bdee-b00428f891d0.png"
+    />
+    <img
+      src="https://via.placeholder.com/350x150"
+      data-src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/intermediary/f/a34d5645-8f4c-4536-afc4-e4ea77d62415/d30o4hb-88a2a393-3ce8-404e-b5a3-60c15247f0ce.png"
+    />
+    <img
+      src="https://via.placeholder.com/350x150"
+      data-src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/intermediary/f/a34d5645-8f4c-4536-afc4-e4ea77d62415/d2zl3ce-3bf54cdc-650d-4add-820e-b740c52b2d61.png"
+    />
+    <img
+      src="https://via.placeholder.com/350x150"
+      data-src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/intermediary/f/a34d5645-8f4c-4536-afc4-e4ea77d62415/d2zi7lr-c160c655-0292-4644-82ae-086566112a7a.png"
+    />
+    <img
+      src="https://via.placeholder.com/350x150"
+      data-src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/intermediary/f/a34d5645-8f4c-4536-afc4-e4ea77d62415/d2yyh7v-92ffde3b-15b6-44fb-b93e-18b4c1347e94.png"
+    />
+    <img
+      src="https://via.placeholder.com/350x150"
+      data-src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/intermediary/f/a34d5645-8f4c-4536-afc4-e4ea77d62415/d2ya9rx-5e79a037-87fb-4827-84d2-126531dc6ae0.png"
+    />
+    <img
+      src="https://via.placeholder.com/350x150"
+      data-src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/intermediary/f/a34d5645-8f4c-4536-afc4-e4ea77d62415/d319cgn-718cad87-976f-42cb-bdee-b00428f891d0.png"
+    />
+    <img
+      src="https://via.placeholder.com/350x150"
+      data-src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/intermediary/f/a34d5645-8f4c-4536-afc4-e4ea77d62415/d30o4hb-88a2a393-3ce8-404e-b5a3-60c15247f0ce.png"
+    />
+    <img
+      src="https://via.placeholder.com/350x150"
+      data-src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/intermediary/f/a34d5645-8f4c-4536-afc4-e4ea77d62415/d2zl3ce-3bf54cdc-650d-4add-820e-b740c52b2d61.png"
+    />
+    <img
+      src="https://via.placeholder.com/350x150"
+      data-src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/intermediary/f/a34d5645-8f4c-4536-afc4-e4ea77d62415/d2zi7lr-c160c655-0292-4644-82ae-086566112a7a.png"
+    />
+    <img
+      src="https://via.placeholder.com/350x150"
+      data-src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/intermediary/f/a34d5645-8f4c-4536-afc4-e4ea77d62415/d2yyh7v-92ffde3b-15b6-44fb-b93e-18b4c1347e94.png"
+    />
+    <img
+      src="https://via.placeholder.com/350x150"
+      data-src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/intermediary/f/a34d5645-8f4c-4536-afc4-e4ea77d62415/d2ya9rx-5e79a037-87fb-4827-84d2-126531dc6ae0.png"
+    />
+    <script>
+      // function lazyLoad() {
+      //   let images = document.querySelectorAll("img");
+      //   function loadImage(img) {
+      //     img.setAttribute("src", img.getAttribute("data-src"));
+      //     img.addEventListener("load", function () {
+      //       // img.removeAttribute("src");
+      //     });
+      //   }
+      //   images.forEach((img) => {
+      //     loadImage(img);
+      //   });
+      // }
+      // console.log(document.querySelectorAll("img"));
+
+      function lazyLoad() {
+        const imageToLazy = document.querySelectorAll("img[data-src]");
+        const loadImage = function (image) {
+          image.setAttribute("src", image.getAttribute("data-src"));
+          image.addEventListener("load", function () {
+            image.removeAttribute("data-src");
+          });
+        };
+
+        const intersectionObserver = new IntersectionObserver(function (
+          items,
+          observer
+        ) {
+          items.forEach(function (item) {
+            if (item.isIntersecting) {
+              loadImage(item.target);
+              // 停止监听
+              observer.unobserve(item.target);
+            }
+          });
+        });
+
+        imageToLazy.forEach(function (image) {
+          intersectionObserver.observe(image);
+        });
+      }
+
+      lazyLoad();
+    </script>
+  </body>
+</html>
