@@ -11,12 +11,15 @@ function _PromiseAll(arr) {
   return new Promise((resolve, reject) => {
     arr.forEach((item, index) => {
       if (isPromise(item)) {
-        item.then((data) => {
-          result[index] = data;
-          if (result.length === arr.length) {
-            resolve(result);
-          }
-        }, reject);
+        item.then(
+          (data) => {
+            result[index] = data;
+            if (result.length === arr.length) {
+              resolve(result);
+            }
+          },
+          (res) => reject(res)
+        );
       }
     });
   });

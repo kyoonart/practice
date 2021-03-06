@@ -28,15 +28,3 @@ let sum = [1, 2, 3].myReduce((pre, cur) => {
 console.log(sum);
 
 // 实现map
-Array.prototype.map1 = function (fn, ret = this) {
-  let arr = [];
-  for (let i = 0; i < ret.length; i++) {
-    arr.push(fn(ret[i], i, ret));
-  }
-  return arr;
-};
-let xxx = [1, 2, 3].map1((item, index, array) => {
-  console.log(item, index, array);
-  return item * 2;
-});
-console.log("xxx", xxx);

@@ -62,3 +62,11 @@ function flat(arr) {
   });
   return res;
 }
+
+function flat(arr) {
+  let res = [];
+  for (const i of arr) {
+    Array.isArray(i) ? (res = res.concat(flat(i))) : res.push(i);
+  }
+  return arr;
+}

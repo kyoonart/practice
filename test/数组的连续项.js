@@ -53,4 +53,27 @@ function fn1(arr) {
   return result;
 }
 
-console.log(fn1(arr));
+// console.log(fn1(arr));
+
+const fn2 = (arr) => {
+  let temp = 0;
+  let str = "";
+  let res = [];
+  for (let i = 0; i < arr.length; i++) {
+    temp = i;
+    if (arr[i] + 1 === arr[i + 1]) {
+      while (arr[temp] + 1 === arr[temp + 1]) {
+        str = "->" + arr[temp + 1];
+        temp++;
+      }
+      str = arr[i] + str;
+      res.push(str);
+      i = temp;
+    } else {
+      res.push(arr[i].toString());
+    }
+  }
+  console.log(res);
+  // return res;
+};
+console.log(fn2(arr));

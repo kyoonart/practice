@@ -1,37 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
+  </head>
 
-<body>
-
+  <body>
     <div id="app">
-        <button @click="handleEmitEvent">触发自定义事件</button>
+      <button @click="handleEmitEvent">触发自定义事件</button>
     </div>
     <script src="./vue.js"></script>
     <script>
-        new Vue({
-            el: '#app',
-            methods: {
-                handleEmitEvent() {
-                    // 在当前组件上触发自定义事件 test，并传值
-                    this.$emit('test', 'Hello Vue.js childred')
-                }
-            },
-            mounted() {
-                // 监听自定义事件 test
-                this.$on('test', (text) => {
-                    window.alert(text + 'and father');
-                });
-            }
-
-
-        })
+      new Vue({
+        el: "#app",
+        methods: {
+          handleEmitEvent() {
+            // 在当前组件上触发自定义事件 test，并传值
+            this.$emit("test", "Hello Vue.js childred");
+          },
+        },
+        mounted() {
+          // 监听自定义事件 test
+          this.$on("test", (text) => {
+            window.alert(text + "and father");
+          });
+        },
+      });
+      let imgs = document.getElementsByTagName("img");
+      let wH = document.body.clientHeight;
+      function lazyLoad() {
+        let wR = document.body.scrollHeight;
+        for (let i = 0; i < imgs.length; i++) {
+          let x = imgs[i].offsetHeight;
+          if (x > 0) {
+            imgs[i].src = imgs[i].getAttribute("data-src");
+          }
+        }
+      }
     </script>
-</body>
-
+  </body>
 </html>

@@ -172,6 +172,7 @@ happypack：使用多线程并行编译 loader
 - flex：1 是什么意思 flex: 1 1 0%; flex-grow flex-shrink flex-basis
 - 分配到的减小宽度 = (自身宽度*（自身元素的 flex-shrink 值 / 所有子元素的 flex-shrink 值 * 自身宽度的和）)
 - 增加的同理
+  原理：flex 容器，主要是就是主轴和交叉轴来控制子元素的排列对齐方式
 
 ### Class
 
@@ -189,7 +190,6 @@ happypack：使用多线程并行编译 loader
 - CMD 依赖于 seajs ,是异步加载，延后加载，就近加载，用时加载
 - CommonJS 模块 同步导入支持动态导入 输出的是一个值的拷贝 运行时加载
 - Es Module 模块 异步导入 输出的是一个值的引用 编译时输出接口 -加载的差异是因为 CommonJS 加载的是一个对象（即 module.exports 属性），该对象只有在脚本运行结束时才会生成。 -而 ES6 模块不是对象，它的对外接口只是一种静态定义，在代码静态解析阶段就会生成。
-- defer 是 渲染完再执行，async 是 下载完就执行
   它们有两个重大差异。
   CommonJS 模块输出的是一个值的拷贝，ES6 模块输出的是值的引用。
   CommonJS 模块是运行时加载，ES6 模块是编译时输出接口。
@@ -225,8 +225,8 @@ happypack：使用多线程并行编译 loader
 application/x-www-form-urlencoded
 multipart/form-data
 区别
-其中的数据会被编码成以&分隔的键值对
-字符以 URL 编码方式编码。
+application/x-www-form-urlencoded 其中的数据会被编码成以&分隔的键值对、字符以 URL 编码方式编码。
+multipart/form-data 的 content-type 会自动生成 boundry 字符串 数据也会被这个字符串分割
 
 ### 单元测试
 
@@ -279,3 +279,9 @@ function sameVnode(a, b) {
 
 webpack 打包原理是根据文件间的依赖关系对其进行静态分析，然后将这些模块按指定规则生成静态资源，
 当 webpack 处理程序时，它会递归地构建一个依赖关系图(dependency graph)，其中包含应用程序需要的每个模块，然后将所有这些模块打包成一个或多个 bundle。
+
+### 单元测试的重要性
+
+1:保证研发质量
+2:提高项目的稳定性
+3:提高开发速度

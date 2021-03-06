@@ -103,14 +103,14 @@ function process() {
 }
 
 // 标识+定时器
-let flag = false;
-
-function throttle_() {
-  if (!flag) {
-    console.log(233);
-    flag = true;
+let throttle = (fn, delay = 500) => {
+  let flag = true;
+  return (...args) => {
+    if (!flag) return;
+    flag = false;
     setTimeout(() => {
-      flag = false;
-    }, 2000);
-  }
-}
+      fn.apply(this, args);
+      flag = true;
+    }, delay);
+  };
+};

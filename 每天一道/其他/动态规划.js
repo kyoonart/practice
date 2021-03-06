@@ -26,6 +26,14 @@ function helper(memo, n) {
 
   return memo[n];
 }
+
+function helper(memo, n) {
+  if (n === 1 || n === 2) return 1;
+  if (memo[n]) return memo[n];
+  memo[n] = helper(memo, n - 1) + helper(memo, n - 2);
+  return memo[n];
+}
+
 console.time("fib");
 // console.log(fib1(50));
 console.timeEnd("fib");

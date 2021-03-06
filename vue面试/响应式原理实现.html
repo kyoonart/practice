@@ -72,4 +72,37 @@
       });
     });
   }
+
+  function defineReactive(obj) {
+    Object.keys(obj).forEach((key) => {
+      let dep = [];
+      let value = obj[key];
+      Object.defineProperty(obj, key, {
+        get: function () {
+          if (active) {
+            dep.push(active);
+          }
+          return obj[key];
+        },
+        set: function (newval) {
+          if (value !== newval) {
+            dep.forEach((watcher) => watcher());
+            return newval;
+          }
+        },
+      });
+    });
+  }
+  defineReactive(state);
+  const watcher = (fn) => {
+    active = fn;
+    fn();
+    active = null;
+  };
+  watcher(() => {
+    document.querySelector("#ip").innerHTML = state.value;
+  });
+  watcher(() => {
+    console.log("233");
+  });
 </script>

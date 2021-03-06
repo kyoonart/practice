@@ -22,7 +22,7 @@ function isUndef(val: any) {
 export default function useKeySet<T extends { [key: string]: any }>(
   initialSet: T[],
   key: keyof T
-): [T[], (item: T) => boolean, (item: T) => void, (item: T) => void] {
+): [T[], (item: T) => boolean, (item: T) => void, (item: T) => void, () => void] {
   const [set, setSet] = useState(initialSet);
   const keyObjRef = useRef(createKeyObj(set, key));
   const has = useCallback(
@@ -57,6 +57,10 @@ export default function useKeySet<T extends { [key: string]: any }>(
     },
     [key, has]
   );
+  const removeAll = useCallback(() => {
+    keyObjRef.current = {};
+    setSet([]);
+  }, []);
 
-  return [set, has, add, remove];
+  return [set, has, add, remove, removeAll];
 }

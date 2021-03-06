@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // pid=>id
+      let treeData = {
+        parent: [
+          { name: "文件夹1", pid: 0, id: 1 },
+          { name: "文件夹2", pid: 0, id: 2 },
+          { name: "文件夹1-1", pid: 1, id: 4 },
+          { name: "文件夹2-1", pid: 2, id: 3 },
+        ],
+        children: [
+          { name: "文件1", pid: 1, id: 1001 },
+          { name: "文件2", pid: 1, id: 1002 },
+          { name: "文件1-1", pid: 1, id: 1003 },
+          { name: "文件2-1", pid: 2, id: 1004 },
+          { name: "文件3-1", pid: 4, id: 1003 },
+          { name: "文件2-1", pid: 6, id: 1004 },
+        ],
+      };
+      let data = [...treeData.parent, ...treeData.children];
+      let treeMap = data.reduce((memo, current) => {
+        memo[current["id"]] = current;
+        return memo;
+      }, {});
+      let res = data.reduce((arr, current) => {
+        let pid = current.pid;
+        let parent = treeMap[pid];
+        if (parent) {
+          parent.children
+            ? parent.children.push(current)
+            : (parent.children = []);
+        } else if (pid === 0) {
+          arr.push(current);
+        }
+        return arr;
+      }, []);
+      console.log("res", res);
+    </script>
+  </body>
+</html>

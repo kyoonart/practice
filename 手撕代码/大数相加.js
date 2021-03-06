@@ -23,7 +23,7 @@ function BigSum(a, b) {
     sum = sum > 10 ? parseInt(sum % 10) : sum;
     res.push(sum);
   }
-  return res.reverse().join("").replace(/^0/, "");
+  return res.join("").replace(/^0/, "");
 }
 // console.log(BigSum('9007199254740998883', '1'))
 // console.log(parseInt(13 % 10));
@@ -60,6 +60,7 @@ function addB(str1, str2) {
       inc = 0;
     }
     res = charts.charAt(sum % 36) + res;
+    console.log("36res", res);
   }
   if (inc === 1) {
     res = 1 + res;
@@ -68,3 +69,30 @@ function addB(str1, str2) {
   return res;
 }
 addB("1x", "2b");
+
+const bigNumAdd = (str1, str2) => {
+  let arr1 = str1.split("");
+  let arr2 = str2.split("");
+  let curry = 0;
+  let distance = arr1.length - arr2.length;
+  let res = [];
+  let len = Math.max(arr1.length, arr2.length);
+  if (distance > 0) {
+    for (let i = 0; i < distance; i++) {
+      arr2.unshift("0");
+    }
+  } else {
+    for (let i = 0; i < Math.abs(distance); i++) {
+      arr1.unshift("0");
+    }
+  }
+
+  for (let i = 0; i < len; i++) {
+    let sum = Number(arr1[i]) + Number(arr2[i]) + curry;
+    curry = sum > 10 ? 1 : 0;
+    sum = sum > 10 ? parseInt(sum % 10) : sum;
+    res.push(sum);
+  }
+  console.log("res", res.join("").replace(/^0/, ""));
+};
+// console.log(bigNumAdd("090000071992547409900008883", "1"));

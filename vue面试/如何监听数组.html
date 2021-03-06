@@ -14,29 +14,35 @@
       let arrayMethods = Object.create(originMethods);
 
       function defineReactive(obj) {
-        arrayMethods.push = function (...args) {
-          // push之前做点什么
-          originMethods.push.call(this, ...args);
-          render();
-        };
+        [
+          "push",
+          "shift",
+          "pop",
+          "unshift",
+          "sort",
+          "splice",
+          "reverse",
+        ].forEach((method) => {
+          // 缓存原始方法
+          const originMethod = arrayMethods[method];
+          Object.defineProperty(arrayMethods, method, {
+            value: function mutator(...args) {
+              originMethod.apply(this, ...args);
+            },
+            enumerable: false,
+            writable: true,
+          });
+        });
         obj.__proto__ = arrayMethods;
       }
       defineReactive(state);
-
       function render() {
         app.innerHTML = state;
       }
       render();
       setTimeout(() => state.push(5), 1000);
       // 索引和长度的变化是监控不到的
-
       let arrayMethods = Object.create(Array.prototype);
-      function defineReactive(obj) {
-        arrayMethods.push = function (...args) {
-          arrayMethods.push.call(this, ...args);
-          render();
-        };
-      }
     </script>
   </body>
 </html>

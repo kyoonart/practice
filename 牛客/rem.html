@@ -18,6 +18,8 @@
       function setRem() {
         let doc = document.documentElement;
         let width = doc.getBoundingClientRect().width;
+        // rem=20 1 rem =20px
+        (w / 640) * (640 / 32);
         let rem = width / 10;
         doc.style.fontSize = rem + "px";
         console.log("rem", rem);
