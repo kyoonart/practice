@@ -36,7 +36,7 @@ class Scheduler {
     }
   }
   request() {
-    if (!this.queue.length || this.maxCount <= this.count) {
+    if (!this.queue.length || this.count >= this.maxCount) {
       return;
     }
     this.count++;

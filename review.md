@@ -265,6 +265,7 @@ function sameVnode(a, b) {
 }
 ```
 
+sameVnode 其实很简单，只有当 key、 tag、 isComment（是否为注释节点）、 data 同时定义（或不定义），同时满足当标签类型为 input 的时候 type 相同（某些浏览器不支持动态修改<input>类型，所以他们被视为不同类型）即可。
 更快速：key 的唯一性可以被 map 数据结构充分利用，想比于遍历查复度 O(N),map 的时间复杂度为 O(1)
 
 ### diff 的本质

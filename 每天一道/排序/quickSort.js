@@ -60,19 +60,3 @@ function quicksort(arr, low = 0, high = arr.length - 1) {
   quicksort(arr, left + 1, right);
   return arr;
 }
-
-function quicksort(arr, low = 0, high = arr.length - 1) {
-  let left = low;
-  let right = high;
-  let flag = arr[left];
-  while (left < right) {
-    if (left < right && arr[right] >= arr[left]) right--;
-    arr[left] = arr[right];
-    if (left < right && arr[left] >= arr[right]) left++;
-    arr[right] = arr[left];
-  }
-  arr[left] = flag;
-  quickSort(arr, low, left - 1);
-  quickSort(arr, left + 1, right);
-  return arr;
-}
