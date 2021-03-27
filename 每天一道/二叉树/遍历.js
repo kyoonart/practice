@@ -1,6 +1,7 @@
-var PreOrqerTraverse = (root) {
+var PreOrqerTraverse = (root,arr=[]) {
     if (root == null) return null;
     console.log(root.val); // 前序遍历 中序遍历 后序遍历 只是改变这个打印的位置
+    arr.push(root.val);
     PreOrqerTraverse(root.left);
     PreOrqerTraverse(root.right);
 };

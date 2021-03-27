@@ -57,6 +57,24 @@ function lengthOfLongestSubstring(str) {
   }
   return maxLen;
 }
-let res = lengthOfLongestSubstring("abcab");
-console.log(res);
+// let res = lengthOfLongestSubstring("abcab");
+// console.log(res);
 
+const lengthOfLongestSubstring2 = (str) => {
+  let map = new Map();
+  let start = 0;
+  let maxLen = 0;
+  for (let r = 0; r < str.length; r++) {
+    let val = str[r];
+    if (map.has(val) && map.get(val) >= 1) {
+      start = map.get(val) + 1;
+    }
+    maxLen = Math.max(maxLen, r - start + 1);
+    map.set(val, r);
+  }
+  return maxLen;
+};
+let res = lengthOfLongestSubstring2("pwwkew");
+console.log(res);
+//  解释
+// https://mp.weixin.qq.com/s/rz2QtZFWKAS1hUmpp6HAzA

@@ -79,7 +79,7 @@ let arr = [1, 1, 12, 2, 2, 24, 42, 3, 3, 3, 3, 3, 3, 3, 3];
 // }
 // unique(arr)
 
-function distinct(arr) {
+function distinct(arr = [1, 2, 3123, 1, 1, 13, 32, 2]) {
   return arr.filter((item, index, array) => array.indexOf(item) === index);
 }
 let res = distinct(arr);

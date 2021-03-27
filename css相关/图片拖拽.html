@@ -1,107 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-        body {
-            background: #444444;
-        }
-        
-        .box {
-            text-align: center;
-        }
-        
-        .empty {
-            display: inline-block;
-            width: 160px;
-            height: 160px;
-            background: #ccc;
-            margin: 5px;
-            border: 3px solid salmon;
-        }
-        
-        .fill {
-            width: 150px;
-            height: 150px;
-            background: url(http://w2h.cc/ZWQ3Y);
-            background-size: cover;
-            position: relative;
-            top: 5px;
-            left: 5px;
-            cursor: pointer;
-        }
-        
-        .hold {
-            border: 5px solid #ccc;
-        }
-        
-        .hovered {
-            background: #f4f4f4;
-            border-style: dashed;
-        }
+      body {
+        background: #444444;
+      }
+
+      .box {
+        text-align: center;
+      }
+
+      .empty {
+        display: inline-block;
+        width: 160px;
+        height: 160px;
+        background: #ccc;
+        margin: 5px;
+        border: 3px solid salmon;
+      }
+
+      .fill {
+        width: 150px;
+        height: 150px;
+        background: url(http://w2h.cc/ZWQ3Y);
+        background-size: cover;
+        position: relative;
+        top: 5px;
+        left: 5px;
+        cursor: pointer;
+      }
+
+      .hold {
+        border: 5px solid #ccc;
+      }
+
+      .hovered {
+        background: #f4f4f4;
+        border-style: dashed;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="box">
-        <div class="empty">
-            <div class="fill" draggable="true"></div>
-        </div>
-        <div class="empty"></div>
-        <div class="empty"></div>
-        <div class="empty"></div>
-        <div class="empty"></div>
-        <div class="empty"></div>
-
-
+      <div class="empty">
+        <div class="fill" draggable="true"></div>
+      </div>
+      <div class="empty"></div>
+      <div class="empty"></div>
+      <div class="empty"></div>
+      <div class="empty"></div>
+      <div class="empty"></div>
     </div>
 
     <script>
-        var fill = document.querySelector('.fill')
-        var emptys = document.querySelectorAll('.empty')
-            // 被拖动的对象
+      var fill = document.querySelector(".fill");
+      var emptys = document.querySelectorAll(".empty");
+      // 被拖动的对象
 
-        fill.addEventListener('dragstart', dragStart)
-        fill.addEventListener('dragend', dragEnd)
-            // 拖动经过的对象
-        for (const empty of emptys) {
-            empty.addEventListener('dragover', dragOver)
-            empty.addEventListener('dragenter', dragEnter)
-            empty.addEventListener('dragleave', dragLeave)
-            empty.addEventListener('drop', dragDrop)
-        }
+      fill.addEventListener("dragstart", dragStart);
+      fill.addEventListener("dragend", dragEnd);
+      // 拖动经过的对象
+      for (const empty of emptys) {
+        empty.addEventListener("dragover", dragOver);
+        empty.addEventListener("dragenter", dragEnter);
+        empty.addEventListener("dragleave", dragLeave);
+        empty.addEventListener("drop", dragDrop);
+      }
 
-        function dragOver(e) {
-            e.preventDefault()
+      function dragOver(e) {
+        e.preventDefault();
+      }
 
-        }
+      function dragEnter(e) {
+        e.preventDefault();
+        this.className += " hovered";
+      }
 
-        function dragEnter(e) {
-            e.preventDefault()
-            this.className += ' hovered'
-        }
+      function dragLeave() {
+        this.className = "empty";
+      }
 
-        function dragLeave() {
-            this.className = 'empty'
-        }
+      function dragDrop() {
+        this.className = "empty";
+        this.appendChild(fill);
+      }
 
-        function dragDrop() {
-            this.className = 'empty';
-            this.appendChild(fill)
-        }
+      function dragStart() {
+        this.className += " hold";
+        setTimeout(() => (this.className = "invisable"), 0);
+      }
 
-        function dragStart() {
-            this.className += ' hold';
-            setTimeout(() => (this.className = 'invisable'), 0)
-        }
-
-        function dragEnd() {
-            this.className = 'fill';
-        }
+      function dragEnd() {
+        this.className = "fill";
+      }
     </script>
-</body>
-
+  </body>
 </html>

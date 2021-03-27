@@ -13,7 +13,7 @@ const binarySearch = (arr, target) => {
       high = mid - 1;
     }
   }
-  return;
+  return -1;
 };
 
 // 递归版本
@@ -29,7 +29,7 @@ const binarySearch1 = (arr, target, low = 0, high = arr.length - 1) => {
   if (target < arr[mid]) {
     return binarySearch(arr, target, low, mid - 1);
   }
-  return;
+  return -1;
 };
 console.log(
   binarySearch1([1, 2, 3, 4, 5, 7, 9, 11, 14, 16, 17, 22, 33, 55, 65], 4)
