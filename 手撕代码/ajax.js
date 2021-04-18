@@ -25,3 +25,26 @@ xhr.onreadystatechange = function() {
 2: 请求已接收  
 3: 请求处理中  
 4: 请求已完成, 且响应已就绪
+
+
+
+function ajax(method,url,data){
+    let xhr = new XMLHttpRequest();
+    xhr.open(method,url);
+    if(method==='POST'){
+        xhr.send(data);
+    }else{
+        xhr.send();
+    }
+    xhr.onload=function(){
+        return new Promise((resolve, reject)=>{
+            if(xhr.status ===200){
+                resolve(xhr.responseText);
+            }else {
+                reject(xhr.responseText);
+            }
+
+        })
+    }
+
+}

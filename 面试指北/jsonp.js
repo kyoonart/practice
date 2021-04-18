@@ -5,8 +5,21 @@ function jsonp(url, callback, success) {
   let script = document.createElement("script");
   script.src = url;
   script.type = "text/javascript";
-  window[callback] = function () {
-    success && success();
+  window[callback] = function (data) {
+    success && success(data);
   };
   document.body.appendChild(script);
+}
+
+function jsonp(url, callback) {
+  return new Promise(function (resolve, reject) {
+    let script = document.createElement("script");
+    script.src = url;
+    script.type = "text/javascript";
+    document.body.appendChild(script);
+    window[callback] = function (data) {
+      resolve(data);
+      document.body.removeChild(script);
+    };
+  });
 }

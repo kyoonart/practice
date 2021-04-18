@@ -3,28 +3,30 @@ console.log("script start");
 async function async1() {
   await async2();
   console.log("async1 end");
-  return "test";
 }
 async function async2() {
   console.log("async2 end");
 }
-// async1();
-setTimeout(function() {
+async function async3() {
+  console.log("async3 end");
+}
+async1();
+setTimeout(function () {
   console.log("setTimeout");
 }, 0);
-async1().then(data => console.log(data));
+// async1().then((data) => console.log(data));
 
-new Promise(resolve => {
+new Promise((resolve) => {
   console.log("Promise");
   resolve();
 })
-  .then(function() {
+  .then(function () {
     console.log("promise1");
   })
-  .then(function() {
+  .then(function () {
     console.log("promise2");
   })
-  .then(function() {
+  .then(function () {
     console.log("promise3");
   });
 

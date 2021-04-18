@@ -1,6 +1,6 @@
 // 中序遍历  左根右
 //  递归实现
-const inorderTraversal = (root, array) => {
+const inorderTraversal = (root, array = []) => {
   if (root) {
     inorderTraversal(root.left, array);
     array.push(root.val);

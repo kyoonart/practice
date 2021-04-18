@@ -102,3 +102,36 @@ function _bind() {
   Fn.prototype = Object.create(bindFunc.prototype);
   return Fn;
 }
+
+function mybind() {
+  let bindFn = this;
+  let bindTo = arguments[0];
+  let args = Object.prototype.slice.call(arguments, 1);
+  function Fn() {
+    let isNew = this instanceof Fn;
+    let newargs = Object.prototype.slice.call(arguments);
+    bindFn.apply(isNew ? isNew : bindTo, args.concat(newargs));
+  }
+  Fn.prototype = Object.create(bindFn.prototype);
+  return Fn;
+}
+
+function deepClone(tar) {
+  if (typeof tar !== "object") return tar;
+  let result = Array.isArray(tar) ? [] : {};
+  for (const key in tar) {
+    if (Object.hasOwnProperty.call(tar, key)) {
+      const element = object[key];
+      typeof element === "object"
+        ? deepClone(element)
+        : (result[key] = element);
+    }
+  }
+  return result;
+}
+
+for (const key in object) {
+  if (Object.hasOwnProperty.call(object, key)) {
+    const element = object[key];
+  }
+}

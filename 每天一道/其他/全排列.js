@@ -15,27 +15,55 @@ const fns = (str = "aabb") => {
   } else if (str.length === 1) res.push(str);
   return res;
 };
-let ee = fns();
-console.log(ee);
+
+fns(list);
+
+// let ee = fns();
+// console.log(ee);
 var arr = [1, 2, 3, 4]; //现实数组的全排列
 
-function permute(input) {
-  var permArr = [],
-    usedChars = [];
-  function main(input) {
-    var i, ch;
-    for (i = 0; i < input.length; i++) {
-      ch = input.splice(i, 1)[0];
-      usedChars.push(ch);
-      if (input.length == 0) {
-        permArr.push(usedChars.slice());
-      }
-      main(input);
-      input.splice(i, 0, ch);
-      usedChars.pop();
-    }
-    return permArr;
-  }
-  return main(input);
+// function permute(input) {
+//   var permArr = [],
+//     usedChars = [];
+//   function main(input) {
+//     var i, ch;
+//     for (i = 0; i < input.length; i++) {
+//       ch = input.splice(i, 1)[0];
+//       usedChars.push(ch);
+//       if (input.length == 0) {
+//         permArr.push(usedChars.slice());
+//       }
+//       main(input);
+//       input.splice(i, 0, ch);
+//       usedChars.pop();
+//     }
+//     return permArr;
+//   }
+//   return main(input);
+// }
+// console.log(permute(arr));
+var list = [
+  ["热", "冷", "冰"],
+  ["大", "中", "小"],
+  ["重辣", "微辣"],
+  ["重麻", "微麻"],
+];
+function compose(list) {
+  var res = list.reduce((result, property) => {
+    return property.reduce((acc, value) => {
+      return acc.concat(result.map((ele) => [].concat(ele, value)));
+    }, []);
+  });
+  return res.map((arr) => arr.join("+"));
 }
-console.log(permute(arr));
+// compose(list);
+console.log(compose(list));
+
+function compose(list) {
+  let res = list.reduce((result, property) => {
+    return property.reduce((acc, value) => {
+      return acc.concat(result.map((ele) => [].concat(ele, value)));
+    }, []);
+  });
+  return res.map((arr) => arr.join("+"));
+}

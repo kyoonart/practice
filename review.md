@@ -217,7 +217,7 @@ happypack：使用多线程并行编译 loader
 ### 缓存
 
 浏览器实现借助 http headers
-强缓存 状态码 200 headers:{expries,catch-control}
+强缓存 状态码 200 headers:{expries,catch-control} public prative no-cache no-store max-age
 协商缓存 状态码 304 Last-Modefied`配合`If-Modified-Since ETag`配合`If-None-Match
 
 ### 表单提交的 content-type

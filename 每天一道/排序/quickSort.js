@@ -45,18 +45,19 @@ console.log(quickSort1(arr));
 // 1： 随机数 2：三平均法  第一个 最后一个
 //  中间的那个 相加取平均数
 
-function quicksort(arr, low = 0, high = arr.length - 1) {
+function quickSort1(arr, low = 0, high = arr.length - 1) {
+  if (low >= high) return;
   let left = low;
   let right = high;
   let flag = arr[left];
   while (left < right) {
-    if (left < right && arr[right] >= arr[left]) right--;
-    arr[left] = arr[right];
-    if (left < right && arr[left] >= arr[right]) left++;
+    if (left < right && arr[right] >= flag) right--;
     arr[right] = arr[left];
+    if (left < right && arr[left] <= flag) left++;
+    arr[left] = arr[left];
   }
   arr[left] = flag;
-  quicksort(arr, low, left - 1);
-  quicksort(arr, left + 1, right);
+  quickSort1(arr, low, left - 1);
+  quickSort2(arr, left + 1, high);
   return arr;
 }

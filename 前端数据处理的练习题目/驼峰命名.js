@@ -1,33 +1,56 @@
-let obj = {
-    red_apple: '111',
-    blue_apple: {
-        green_apple: {
-            orange_apple: '222'
-        }
-    }
-}
+// let obj = {
+//   red_apple: "111",
+//   blue_apple: {
+//     green_apple: {
+//       orange_apple: "222",
+//     },
+//   },
+// };
 
 function fn(str) {
-    let arr = str.split('_');
-    let res = arr.map((item, index) => {
-        return index == 0 ? item : item[0].toUpperCase().concat(item.slice(1, item.length))
-    })
-    return res.join('')
-
+  let arr = str.split("_");
+  let res = arr.map((item, index) => {
+    return index == 0
+      ? item
+      : item[0].toUpperCase().concat(item.slice(1, item.length));
+  });
+  return res.join("");
 }
-let kk = []
-
-function getName(obj) {
-    for (const key in obj) {
-        if (typeof obj[key] === 'object') {
-            getName(obj[key])
-        }
-        kk.push(key)
-    }
+var obj = {
+  name: "xiaoming",
+  all_grades: {
+    first_chinese: 114,
+    math: 101,
+    third_english: 108,
+  },
+};
+function replaceUpper(val, char = "_") {
+  if (val.indexOf(char) === -1) return val;
+  var arr = val.split(""); //将字符串切割为字符数组
+  var index = val.indexOf(char);
+  var upperVal = arr[index + 1].toUpperCase(); //将下划线后面第一个字母大写
+  arr.splice(index, 2, upperVal);
+  return arr.join("");
 }
-getName(obj)
-let res = []
-kk.forEach(item => {
-    res.push(fn(item))
-});
-console.log(res);
+function filterUnderLine(obj, char = "_") {
+  var arr = Object.keys(obj).filter((item) => {
+    return item.indexOf(char) !== -1;
+  });
+
+  arr.forEach((item) => {
+    var before =
+      typeof obj[item] === "object" ? filterUnderLine(obj[item]) : obj[item];
+    var key = replaceUpper(item); //将属性名换成驼峰式
+    obj[key] = before;
+    delete obj[item];
+  });
+  return obj;
+}
+console.log(filterUnderLine(obj));
+
+// function fn(value, char = "_") {
+//   let index = value.indexOf(char);
+//   let upperVal = value[index + 1].toUpperCase();
+//   value.splice(index, 2, upperVal);
+//   return value;
+// }
