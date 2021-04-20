@@ -37,3 +37,15 @@ function ReverseList(head) {
   head.next = null;
   return reverList;
 }
+
+function reverseList(head) {
+  let prev = null;
+  let cur = null;
+  while (head) {
+    cur = head.next;
+    head.next = prev;
+    prev = head;
+    head = cur;
+  }
+  return prev;
+}

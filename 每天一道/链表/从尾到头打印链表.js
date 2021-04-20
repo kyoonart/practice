@@ -26,12 +26,11 @@ let list = {
   },
 };
 
-function printReverseList(list) {
-  if (list.next) {
-    printReverseList(list.next);
+function printListFromTailToHead(root) {
+  let result = [];
+  while (root) {
+    result.unshift(root.val);
+    root = root.next;
   }
-
-  console.log(list.value);
+  return result;
 }
-
-printReverseList(list);

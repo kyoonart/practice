@@ -44,3 +44,28 @@ var mergeTwoList = (l1, l2) => {
   cur.next == l1 ? l1 : l2;
   return head.next;
 };
+// 递归实现
+// 实现思路
+// 前提 终止条件
+// 链表头部节点比较，取较小节点。
+// 小节点的next等于小节点的next和大节点的较小值。
+// 如此递归。
+// 返回小节点。
+
+var mergeTwoList = (l1, l2) => {
+  if (!l1) {
+    return l2;
+  }
+  if (!l2) {
+    return l1;
+  }
+  let head = null;
+  if (l1.val > l2.val) {
+    head = l2;
+    head.next = mergeTwoList(l1, l2.next);
+  } else {
+    head = l1;
+    head.next = mergeTwoList(l1.next, l2);
+  }
+  return head;
+};

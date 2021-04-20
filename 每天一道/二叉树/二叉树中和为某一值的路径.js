@@ -10,6 +10,7 @@ function FindPath(root, expectNumber) {
 
 function FindPathCore(node, expectNumber, result, stack, sum) {
   stack.push(node.val);
+  sum += node.val;
   if (!node.left && !node.right && sum === expectNumber) {
     result.push(stack.slice(0));
   }
