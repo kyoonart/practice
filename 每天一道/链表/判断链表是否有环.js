@@ -29,3 +29,17 @@ const hasCycle = (head) => {
   }
   return true;
 };
+
+function hasCycle(head) {
+  if (!head || !head.next) return false;
+  let map = new Map();
+  let current = head;
+  while (current) {
+    if (map.has(current)) {
+      return true;
+    }
+    map.set(current, true);
+    current = current.next;
+  }
+  return false;
+}

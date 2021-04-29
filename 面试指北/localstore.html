@@ -1,0 +1,29 @@
+<script>
+  (function () {
+    if (!window.localStorage) {
+      console.log("当前浏览器不支持localStorage!");
+    }
+    let test = "哈";
+    let add = function (num) {
+      num += num;
+      if (num.length == 10240) {
+        test = num;
+        return;
+      }
+      add(num);
+    };
+    add(test);
+    let sum = test;
+    let show = setInterval(function () {
+      sum += test;
+      try {
+        window.localStorage.removeItem("test");
+        window.localStorage.setItem("test", sum);
+        console.log(sum.length / 1024);
+      } catch (e) {
+        console.log("最大容量" + sum.length / 1024);
+        clearInterval(show);
+      }
+    }, 0.1);
+  })();
+</script>
