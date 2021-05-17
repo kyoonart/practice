@@ -66,7 +66,7 @@ const lengthOfLongestSubstring2 = (str) => {
   let maxLen = 0;
   for (let r = 0; r < str.length; r++) {
     let val = str[r];
-    if (map.has(val) && map.get(val) >= 1) {
+    if (map.has(val) && map.get(val) >= start) {
       start = map.get(val) + 1;
     }
     maxLen = Math.max(maxLen, r - start + 1);
@@ -74,7 +74,25 @@ const lengthOfLongestSubstring2 = (str) => {
   }
   return maxLen;
 };
-let res = lengthOfLongestSubstring2("pwwkew");
-console.log(res);
+
 //  解释
 // https://mp.weixin.qq.com/s/rz2QtZFWKAS1hUmpp6HAzA
+
+const lengthOfLongestSubstring3 = (str) => {
+  if (!str) return 0;
+  if (str.length === 1) return 1;
+  let start = 0;
+  let map = new Map();
+  let maxLen = 0;
+  for (let i = 0; i <= str.length; i++) {
+    let val = str.charAt(i);
+    if (map.has(val) && map.get(val) >= start) {
+      start = map.get(val) + 1;
+    }
+    maxLen = Math.max(maxLen, i - start + 1);
+    map.set(val, i);
+  }
+  return maxLen;
+};
+let res = lengthOfLongestSubstring3("abcabcbb");
+console.log(res);

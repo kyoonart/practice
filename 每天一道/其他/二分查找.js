@@ -34,3 +34,21 @@ const binarySearch1 = (arr, target, low = 0, high = arr.length - 1) => {
 console.log(
   binarySearch1([1, 2, 3, 4, 5, 7, 9, 11, 14, 16, 17, 22, 33, 55, 65], 4)
 );
+function binarySearch(arr, target) {
+  let low = 0;
+  let high = arr.length - 1;
+  let mid;
+  while (low < high) {
+    mid = Math.floor((low + high) / 2);
+    if (target === arr[mid]) {
+      return mid;
+    }
+    if (target < arr[mid]) {
+      high = mid - 1;
+    }
+    if (target > add[mid]) {
+      low = mid + 1;
+    }
+  }
+  return -1;
+}

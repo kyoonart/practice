@@ -67,3 +67,19 @@ function compose(list) {
   });
   return res.map((arr) => arr.join("+"));
 }
+
+function fn(str) {
+  let res = [];
+  if (str.length > 1) {
+    for (let i = 0; i < str.length; i++) {
+      let left = str[i];
+      let rest = str.slice(0, i) + str.slice(i + 1);
+      let pre = fn(rest);
+      for (let j = 0; j < pre.length; j++) {
+        let item = left + pre[j];
+        res.push(item);
+      }
+    }
+  } else if (str.length === 1) res.push(str);
+  return res;
+}

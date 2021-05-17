@@ -54,7 +54,7 @@ function quickSort1(arr, low = 0, high = arr.length - 1) {
     if (left < right && arr[right] >= flag) right--;
     arr[right] = arr[left];
     if (left < right && arr[left] <= flag) left++;
-    arr[left] = arr[left];
+    arr[left] = arr[right];
   }
   arr[left] = flag;
   quickSort1(arr, low, left - 1);

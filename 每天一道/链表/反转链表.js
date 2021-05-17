@@ -2,7 +2,7 @@
     this.val = x;
     this.next = null;
 }*/
-var reverseList = (function (head) {
+var reverseList = function (head) {
   let pre = null;
   let cur = null;
   while (head !== null) {
@@ -15,7 +15,7 @@ var reverseList = (function (head) {
     // 往下走
     head = cur;
   }
-})``;
+};
 
 function reverseList(head) {
   let prev = null;
@@ -39,6 +39,7 @@ function ReverseList(head) {
 }
 
 function reverseList(head) {
+  if (!head || !head.next) return head;
   let prev = null;
   let cur = null;
   while (head) {
@@ -49,3 +50,38 @@ function reverseList(head) {
   }
   return prev;
 }
+// 不改变原链表
+var reverseList = function (head) {
+  if (!head || !head.next) return head;
+  let next,
+    current = head,
+    pre = null;
+  while (current) {
+    next = current.next;
+    current.next = pre;
+    pre = current;
+    current = next;
+  }
+  return pre;
+};
+var reverseList = function (head) {
+  if (!head || !head.next) return head;
+  let next = head;
+  let current = head;
+  let pre = null;
+  while (current) {
+    next = current.next;
+    current.next = pre;
+    pre = current;
+    current = next;
+  }
+  return pre;
+};
+//  递归实现
+var reverseList = function (head) {
+  if (!head || !head.next) return head;
+  var last = reverseList(head.next);
+  head.next.next = head;
+  head.next = null;
+  return last;
+};
