@@ -25,7 +25,7 @@ class Scheduler {
   constructor(count) {
     this.queue = [];
     this.maxCount = count || 2; // 并发限制
-    this.count = 0; //当前执行promise个数
+    this.runing = 0; //当前执行promise个数
   }
   add(promiseCreator) {
     this.queue.push(promiseCreator);
@@ -36,14 +36,14 @@ class Scheduler {
     }
   }
   request() {
-    if (!this.queue.length || this.count >= this.maxCount) {
+    if (!this.queue.length || this.runing >= this.maxCount) {
       return;
     }
-    this.count++;
+    this.runing++;
     this.queue
       .shift()()
       .then(() => {
-        this.count--;
+        this.runing--;
         this.request();
       });
   }

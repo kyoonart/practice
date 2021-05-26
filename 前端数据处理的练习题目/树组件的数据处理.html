@@ -26,6 +26,7 @@
         ],
       };
       let data = [...treeData.parent, ...treeData.children];
+      let data = [...treeData.parent, ...treeData.children];
       let treeMap = data.reduce((memo, current) => {
         memo[current["id"]] = current;
         return memo;
@@ -36,7 +37,7 @@
         if (parent) {
           parent.children
             ? parent.children.push(current)
-            : (parent.children = []);
+            : (parent.children = [current]);
         } else if (pid === 0) {
           arr.push(current);
         }

@@ -23,3 +23,13 @@ const single = (function () {
     return instance;
   };
 })();
+
+const instance = (function () {
+  var instance = null;
+  function Instance() {
+    this.name = "RECYCLE_LIST_MARKER";
+  }
+  if (!instance) instance = new Instance();
+  return instance;
+})();
+// 单例模式

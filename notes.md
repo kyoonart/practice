@@ -251,6 +251,7 @@ document.body.contentEditable = "true";
 
 ### 状态码
 
+200 204
 **3XX 重定向**
 
 - 301 moved permanently，永久性重定向，表示资源已被分配了新的 URL
@@ -349,7 +350,7 @@ Number string Boolean,null undefined symbol object 还有新的 bigint
 `destroyed`发生在实例销毁之后，这个时候只剩下了 dom 空壳。组件已被拆解，数据绑定被卸除，监听被移出，子实例也统统被销毁。
 加上 keep-alive 会额外增加两个生命周期函数
 `activated` 和 `deactivated`
-运行时机 create->mounted->activated
+运行时机 create->mounted->activated 如果开启了 keep-alive 那么再次加载组件就不会再触发其他生命周期函数 // 美团考过
 ![](https://user-gold-cdn.xitu.io/2020/4/5/171467924210a82d?imageslim)
 
 ### defer async
@@ -760,21 +761,6 @@ function useDebounce(value: any, delay = 300) {
 
   return debouncedValue;
 }
-
-export default useDebounce;
-
-const useDebounce = (value, delay) => {
-  const [debouncedValue, setDebounceValue] = useState(value);
-  useEffect(() => {
-    const handler = setTimeout(() => {
-      setDebounceValue(value);
-    }, delay);
-    return () => {
-      clearTimeout(handler);
-    };
-  }, [value, delay]);
-  return debouncedValue;
-};
 // useEffect 处理函数的副作用 当useEffect函数返回一个函数的时候代表着下次update的时候清理函数的副作用
 //  这里正好利用这一点来clear
 ```
@@ -798,6 +784,9 @@ alert( a == b ); // false
 - 箭头函数中的 this 是在定义函数时绑定，普通函数是在执行函数时绑定
 - 箭头函数中的 this，指向与一般 function 定义的函数不同，比较容易绕晕，箭头函数 this 的定义：箭头函数中的 this 是在定义函数的时候绑定，而不是在执行函数的时候绑定。
 - 箭头函数的 this 永远指向其上下文的 this，任何方法都改变不了其指向，如 call(), bind(), apply()
+- arguments?
+- 构造函数 new？
+- 没有原型对象？
 
 ### 进程线程
 
