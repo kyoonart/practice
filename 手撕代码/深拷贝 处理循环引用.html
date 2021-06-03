@@ -1,0 +1,58 @@
+<script>
+  function getType(obj) {
+    return Object.prototype.toString.call(obj).slice(8, -1);
+  }
+  function deepClone(source, hash = new Map()) {
+    if (getType(source) !== "Object" && source !== "Null") {
+      return source;
+    }
+    if (hash.get(source)) return hash.get(source);
+    let target = Array.isArray(source) ? [] : {};
+    hash.set(source, target);
+    for (const key in source) {
+      if (getType(source[key]) === "Object") {
+        target[key] = deepClone(source[key], hash);
+      } else {
+        target[key] = source[key];
+      }
+    }
+    return target;
+  }
+  function isObject(obj) {
+    return Object.prototype.toString.call(obj).slice(8, -1) === "Object";
+  }
+  function cloneDeep3(source, hash = new WeakMap()) {
+    if (!isObject(source)) return source;
+    if (hash.has(source)) return hash.get(source); // 新增代码，查哈希表
+    var target = Array.isArray(source) ? [] : {};
+    hash.set(source, target); // 新增代码，哈希表设值
+    for (var key in source) {
+      if (Object.prototype.hasOwnProperty.call(source, key)) {
+        if (isObject(source[key])) {
+          target[key] = cloneDeep3(source[key], hash); // 新增代码，传入哈希表
+        } else {
+          target[key] = source[key];
+        }
+      }
+    }
+    return target;
+  }
+  // 解决循环引用 map 或者 数组 把对象值存下来 即可
+  var a = {
+    name: "muyiy",
+    book: {
+      title: "You Don't Know JS",
+      price: "45",
+    },
+    a1: undefined,
+    a2: null,
+    a3: 123,
+  };
+  a.circleRef = a;
+  var b = deepClone(a);
+  a.name = "高级前端进阶";
+  a.book.price = "55";
+  console.log("b", b);
+  console.log("a", a);
+  // console.log(JSON.parse(JSON.stringify(a)));
+</script>
