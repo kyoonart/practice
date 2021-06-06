@@ -54,3 +54,22 @@ console.log(filterUnderLine(obj));
 //   value.splice(index, 2, upperVal);
 //   return value;
 // }
+
+// 需求
+// 把类名 getLableName 转换成 get_label_name
+function translateClassName(className) {
+  return className.replace(/([A-Z])/g, "_$1").toLowerCase();
+}
+function translate(name) {
+  return name
+    .split("")
+    .map((item) => {
+      if (item.charCodeAt() >= 67 && item.charCodeAt() <= 96) {
+        return "_" + item.toLowerCase();
+      } else return item;
+    })
+    .join("");
+}
+
+let res = translate("getLableName");
+console.log(res);
