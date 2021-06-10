@@ -13,10 +13,10 @@ function f1(x) {
   return x + 1;
 }
 function f2(x) {
-  return x + 1;
+  return x + 2;
 }
 function f3(x) {
-  return x + 1;
+  return x + 3;
 }
 const r = compose(f1, f2, f3);
 console.log("r", r(1));
