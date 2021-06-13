@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>整屏横向滚动</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .container {
+        display: flex;
+        overflow-x: scroll;
+      }
+      .page {
+        width: 100vw;
+        height: 100vh;
+        flex-shrink: 0;
+      }
+      .page:nth-child(1) {
+        background-color: hsl(120, 100%, 50%);
+      }
+      .page:nth-child(2) {
+        background-color: hsl(120, 100%, 25%);
+      }
+      .page:nth-child(3) {
+        background-color: hsl(120, 60%, 70%);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="page">1</div>
+      <div class="page">2</div>
+      <div class="page">3</div>
+    </div>
+    <script>
+      var pages = document.querySelector(".container");
+      pages.addEventListener("wheel", (e) => {
+        e.preventDefault();
+        pages.scrollLeft += e.deltaY;
+      });
+    </script>
+  </body>
+</html>
