@@ -7,11 +7,13 @@ const Vue = require("vue");
 // 2 获取渲染器实例
 const { createRenderer } = require("vue-server-renderer");
 const renderer = createRenderer();
-
-server.get("/", function (req, res) {
-  const app = new Vue({
-    template: "<div> hello world ssr</div>",
-  });
+const app = new Vue({
+  template: "<div>{{message}}</div>",
+  data() {
+    return { message: "hello world ssr" };
+  },
+});
+server.get("/", (req, res) => {
   renderer
     .renderToString(app)
     .then((html) => {
@@ -22,7 +24,6 @@ server.get("/", function (req, res) {
     });
 });
 // 3 用渲染器渲染vue实例
-
-server.listen(80, () => {
-  console.log("server listening on port 80");
+server.listen(90, () => {
+  console.log("server listening on port 90");
 });
