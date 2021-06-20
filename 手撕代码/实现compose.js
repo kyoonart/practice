@@ -5,7 +5,7 @@ function compose(...funs) {
   }
   return funs.reduce((a, b) => {
     return function (...args) {
-      console.log("args", args);
+      // 这行代码的实际上是f1(f2(f3(f4(3))))这样 这样看来更好理解
       return a(b(...args));
     };
   });
