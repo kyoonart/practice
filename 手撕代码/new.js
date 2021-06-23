@@ -68,3 +68,21 @@ function cr(pro) {
   obj.prototype = pro; // pro.prototype;
   obj.prototype.constructor = obj;
 }
+function Foo() {
+  this.a = 1;
+  return {
+    a: 4,
+    b: 5,
+  };
+}
+
+
+Foo.prototype.a = 6;
+Foo.prototype.b = 7;
+Foo.prototype.c = 8;
+
+var o = new Foo();
+
+console.log(o.a); 4
+console.log(o.b); 5
+console.log(o.c); undefined
