@@ -121,6 +121,14 @@ XSS 攻击是指黑客往 HTML 文件中或者 DOM 中注入恶意脚本，从�
 ### webpack
 
 webpack 打包原理是根据文件间的依赖关系对其进行静态分析，然后将这些模块按指定规则生成静态资源，当 webpack 处理程序时，它会递归地构建一个依赖关系图(dependency graph)，其中包含应用程序需要的每个模块，然后将所有这些模块打包成一个或多个 bundle。
+webpack 执行原理：
+
+1.  解析配置参数，生成配置结果
+2.  注册所有配置插件(plugin),插件监听 webpack 构建生命周期
+3.  开始解析文件，构建 AST 语法树，找到每个文件依赖项（依次递归）
+4.  递归过程中根据文件类型 执行 loader 进行文件转换
+5.  递归完成后，生成代码块 chunk
+6.  根据 entry 配置，输出所有 chunk 到文件系统中
 
 - module chunk bundle
 - webpack-dev-server 是 webpack 官方提供的一个小型 Express 服务器
@@ -155,6 +163,9 @@ Plugin 在 plugins 中单独配置，类型为数组，每一项是一个 plugin
 define-plugin:定义环境变量
 html-webpack-plugin:简化 html 文件创建
 HotModuleReplacementPlugin：热更新
+noParse noParse 作用主要是过滤不需要解析的文件，比如打包的时候依赖了三方库（jquyer、lodash）等，而这些三方库里面没有其他依赖，可以通过配置 noParse 不去解析文件，提高打包效率
+ignorePlugin webpack 内置插件 可以忽略某个文件
+dllPlugin 单独打包资源
 
 ##### 优化
 
