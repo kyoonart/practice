@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>多行文本实现省略号显示</title>
+  </head>
+  <style type="text/css">
+    /*纯css实现省略号，兼容火狐，IE9，chrome*/
+    .wrap {
+      height: 40px;
+      line-height: 20px;
+      overflow: hidden;
+      width: 500px;
+      background: #999;
+    }
+    .wrap .text {
+      float: right;
+      margin-left: -5px;
+      width: 500px;
+      word-break: normal;
+    }
+    .wrap::before {
+      float: left;
+      width: 5px;
+      content: "";
+      height: 40px;
+    }
+    .wrap::after {
+      float: right;
+      content: "...";
+      height: 20px;
+      line-height: 20px;
+      width: 30px;
+      margin-left: -30px; /*更改宽度和边距，移动省略号位置*/
+      position: relative;
+      left: 100%;
+      top: -20px;
+      padding-right: 5px;
+      background: #999;
+    }
+  </style>
+  <body>
+    <div class="wrap">
+      <div class="text">
+        ceshi测试ceshi测试ceshi测试ceshi测试ceshi测试ceshi测试ceshi测试ceshi测试ceshi测试ceshi测试ceshi测试ceshi测试ceshi测试ceshi测试ceshi测试ceshi测试ceshi测试ceshi测试ceshi测试ceshi测试ceshi测试
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box {
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      浏览器渲染页面 1、浏览器无法直接读取html,需要先构建dom树
+      2、把读取到的css,变成浏览器可以理解的cssom 3、css标准化，比如red -> rgba
+      font-weigth:bold变成数值 4、计算dom树的具体样式
+      5、生成布局树，把不显示的去掉、把每个元素的信息计算出来
+      6、生成分层树，页面都是一层一层叠加在一起形成的
+      7、合成线程就会把分层树的图层变成图块
+      8、GPU的栅格化把视窗附近的图块变成位图，就是也渲染的最小粒度了，然后保存在GPu的进程中
+      栅格化完成之后，浏览器进去去GPU进程里取出页面内容显示在屏幕上，这就完成了渲染阶段
+    </div>
+  </body>
+</html>

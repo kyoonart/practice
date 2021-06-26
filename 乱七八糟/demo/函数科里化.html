@@ -1,0 +1,45 @@
+<script>
+  function curry(fns) {
+    return function curried(...args) {
+      if (args.length >= fns.length) {
+        return fns.apply(this, args);
+      } else {
+        return function (...args2) {
+          return curried.apply(this, args.concat(args2));
+        };
+      }
+    };
+  }
+  //   function curry(func) {
+  //     return function curried(...args) {
+  //       if (args.length >= func.length) {
+  //         return func.apply(this, args);
+  //       } else {
+  //         return function (...args2) {
+  //           return curried.apply(this, args.concat(args2));
+  //         };
+  //       }
+  //     };
+  //   }
+  function multiFn(a, b, c) {
+    return a * b * c;
+  }
+  var multi = curry(multiFn);
+  //   let res1 = multi(2)(3)(4);
+  //   let res2 = multi(2, 3, 4);
+  //   let res3 = multi(2)(3, 4);
+  //   let res4 = multi(2, 3)(4);
+
+  function sum(a, b, c) {
+    return a + b + c;
+  }
+  let de = curry(sum);
+  console.log("de", de(1)(2)(3));
+
+  var multi = curry(multiFn);
+  let res1 = multi(2)(3)(4);
+  let res2 = multi(2, 3, 4);
+  let res3 = multi(2)(3, 4);
+  let res4 = multi(2, 3)(4);
+  console.log(res1, res2, res3, res4);
+</script>

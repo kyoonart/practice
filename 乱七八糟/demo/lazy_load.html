@@ -126,20 +126,6 @@
       data-src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/intermediary/f/a34d5645-8f4c-4536-afc4-e4ea77d62415/d2ya9rx-5e79a037-87fb-4827-84d2-126531dc6ae0.png"
     />
     <script>
-      // function lazyLoad() {
-      //   let images = document.querySelectorAll("img");
-      //   function loadImage(img) {
-      //     img.setAttribute("src", img.getAttribute("data-src"));
-      //     img.addEventListener("load", function () {
-      //       // img.removeAttribute("src");
-      //     });
-      //   }
-      //   images.forEach((img) => {
-      //     loadImage(img);
-      //   });
-      // }
-      // console.log(document.querySelectorAll("img"));
-
       function lazyLoad() {
         const imageToLazy = document.querySelectorAll("img[data-src]");
         const loadImage = function (image) {

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .green {
+        background-color: green;
+      }
+
+      .red {
+        background-color: red;
+      }
+
+      .blue {
+        background-color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="green blue red">fsdfasdfasd</div>
+    <div id="bx">233</div>
+
+    <script>
+      for (let i = 0; i < 5; i++) {
+        var btn = document.createElement("button");
+        btn.appendChild(document.createTextNode("Button " + i));
+        btn.addEventListener("click", function () {
+          console.log(i);
+        });
+        document.body.appendChild(btn);
+      }
+      const a = [1, 2, 3, 4, 5];
+      Array.prototype.multiply =
+        Array.prototype.multiply ||
+        function () {
+          this.concat(this.map((i) => i * i));
+        };
+      // Array.prototype.multiply = function () {
+      //   return this.concat(this.map((i) => i * i));
+      // };
+      // Implement this
+      a.multiply();
+      console.log(a); // [1, 2, 3, 4, 5, 1, 4, 9, 16, 25]
+    </script>
+  </body>
+</html>

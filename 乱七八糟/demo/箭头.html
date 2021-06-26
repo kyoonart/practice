@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box {
+        width: 10px;
+        height: 10px;
+        border: 2px solid black;
+        border-left-color: #fff;
+        border-bottom-color: #fff;
+        transform: rotate(45deg);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box"></div>
+    <script>
+      let arr = [1, 5, 6, 8, 2];
+      function quickSort(arr, low = 0, high = arr.length - 1) {
+        if (low >= high) return;
+        let left = low;
+        let right = high;
+        let flag = arr[left];
+        while (left < right) {
+          if (left < right && arr[right] >= flag) right--;
+          arr[left] = arr[right];
+          if (left < right && arr[left] <= flag) left++;
+          arr[right] = arr[left];
+        }
+        arr[left] = flag;
+        quickSort(arr, low, left - 1);
+        quickSort(arr, left + 1, high);
+        return arr;
+      }
+
+      function qsort(arr) {
+        if (arr.length <= 1) return arr;
+        let flag = arr.shift();
+        let left = [];
+        let right = [];
+        for (let i = 0; i < arr.length; i++) {
+          if (arr[i] <= flag) left.push(arr[i]);
+          if (arr[i] >= flag) right.push(arr[i]);
+        }
+        return qsort(left).concat(flag, qsort(right));
+      }
+      // let res = qsort(arr);
+
+      function insertArray(arr) {
+        for (let i = 0; i < arr.length; i++) {
+          for (let j = i; j > 0; j--) {
+            if (arr[j] < arr[j - 1]) {
+              [arr[j], arr[j - 1]] = [arr[j - 1], arr[j]];
+            }
+          }
+        }
+        return arr;
+      }
+      let r = insertArray(arr);
+      console.log("res", r);
+    </script>
+  </body>
+</html>

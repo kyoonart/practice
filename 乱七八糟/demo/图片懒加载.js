@@ -50,3 +50,17 @@ function lazyLoad() {
     loadImage(img);
   });
 }
+let imgs = [...document.getElementsByTagsName("img")];
+let num = imgs.length;
+window.addEventListener("scroll", lazyLoad);
+function lazyLoad() {
+  let viewHeight = document.body.clientHeight;
+  let scrollTop = document.body.scrollTop;
+  for (let i = 0; i < num; i++) {
+    if (imgs[i].offsetTop + scrollTop > viewHeight) {
+      if (imgs[i].src !== "default.jpg") continue;
+      let src = imgs[i].getAttribute("data-stc");
+      imgs[i].setAttribute("src", src);
+    }
+  }
+}

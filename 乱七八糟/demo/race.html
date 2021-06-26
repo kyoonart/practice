@@ -1,0 +1,17 @@
+<script>
+  const p1 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      console.log(1);
+      resolve(1);
+    }, 1000);
+  });
+  const p2 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      console.log(2);
+      resolve(2);
+    }, 3000);
+  });
+  let p3 = p1.then((res) => Promise.resolve(res));
+  //   let res = Promise.race([p3, p2]);
+  //   res.then((res) => console.log("res", res));
+</script>

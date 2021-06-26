@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .dv {
+        width: 100px;
+        height: 100px;
+        background-color: green;
+        border-radius: 50%;
+        position: absolute;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="dv" draggable="true"></div>
+    <script>
+      let dv = document.getElementsByClassName("dv")[0];
+      let body = document.getElementsByTagName("body")[0];
+      dv.addEventListener("dragstart", dragstart);
+      dv.addEventListener("dragend", dragend);
+      let x = 0;
+      let y = 0;
+      let nx = 0;
+      let ny = 0;
+      function dragstart(e) {
+        e.preventDefault();
+        this.style.backgroundColor = "red";
+        x = e.clientX;
+        y = e.clientY;
+      }
+      function dragend(e) {
+        e.preventDefault();
+        this.style.backgroundColor = "black";
+        dv.style.cursor = "pointer";
+      }
+      body.addEventListener("dragover", dragover);
+      body.addEventListener("dragenter", dragenter);
+      body.addEventListener("dragleave", dragleave);
+      body.addEventListener("drop", drop);
+      function dragover(e) {
+        console.log("xxx");
+      }
+      function dragenter(e) {}
+      function dragleave(e) {}
+      function drop(e) {
+        console.log("xx");
+      }
+    </script>
+  </body>
+</html>

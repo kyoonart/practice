@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>选项卡Tab切换</title>
+    <style>
+      * {
+        padding: 0px;
+        margin: 0px;
+      }
+
+      #tabs {
+        margin: 0 auto;
+        width: 290px;
+        padding: 5px;
+        height: 150px;
+      }
+
+      #tabs ul {
+        display: block;
+        height: 30px;
+        line-height: 30px;
+        border-bottom: 2px saddlebrown solid;
+      }
+
+      #tabs ul li {
+        display: inline-block;
+        width: 60px;
+        height: 28px;
+        line-height: 28px;
+        margin: 0px 3px;
+        float: left;
+        background: #fff;
+        cursor: pointer;
+        list-style: none;
+        border: 1px solid #aaa;
+        border-bottom: none;
+        text-align: center;
+      }
+
+      #tabs ul li.on {
+        border-top: 2px solid saddlebrown;
+        border-bottom: 2px solid #fff;
+      }
+
+      #tabs div {
+        text-align: center;
+        height: 120px;
+        line-height: 120px;
+        line-height: 25px;
+        border: 1px solid #336699;
+        border-top: none;
+        padding: 5px;
+      }
+      .hide {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="tabs">
+      <ul>
+        <li class="on">出塞</li>
+        <li>杂诗</li>
+        <li>寻隐</li>
+      </ul>
+      <div>
+        秦时明月汉时关，万里长征人未还。<br />
+        但使龙城飞将在，不教胡马度阴山。
+      </div>
+      <div class="hide">
+        君自故乡来，应知故乡事。<br />
+        来日绮窗前，寒梅著花未？
+      </div>
+      <div class="hide">
+        松下问童子，言师采药去。<br />
+        只在此山中，云深不知处。
+      </div>
+    </div>
+    <script>
+      window.onload = function () {
+        let oTab = document.getElementById("tabs");
+        let oul = oTab.getElementsByTagName("ul")[0];
+        let olis = oul.getElementsByTagName("li");
+        let oDivs = oTab.getElementsByTagName("div");
+        for (let i = 0; i < olis.length; i++) {
+          olis[i].index = i;
+          olis[i].onclick = function () {
+            for (let j = 0; j < olis.length; j++) {
+              olis[j].className = "";
+              oDivs[j].className = "hide";
+            }
+            this.className = "on";
+            oDivs[this.index].className = "";
+          };
+        }
+      };
+    </script>
+  </body>
+</html>

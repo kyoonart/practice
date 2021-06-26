@@ -5,7 +5,7 @@ const stringify = (obj, replacer) => {
     return String(obj);
   }
   let json = [];
-  let arr = obj ? getType(obj) === "Array" : false;
+  let arr = obj ? getType(obj) === "array" : false;
   for (const key in obj) {
     if (obj.hasOwnProperty(key)) {
       let item = obj[key];
@@ -13,10 +13,10 @@ const stringify = (obj, replacer) => {
       let flag = true;
       if (replacer) {
         switch (getType(replacer)) {
-          case "Function":
+          case "function":
             flag = replacer(key, item);
             break;
-          case "Array":
+          case "array":
             flag = replacer.includes(key);
             break;
           default:
@@ -24,7 +24,7 @@ const stringify = (obj, replacer) => {
         }
       }
       if (!flag) continue;
-      if (/Function|Symbol|Undefined/.test(getType(item))) {
+      if (/function|symbol|undefined/.test(getType(item))) {
         delete obj[key];
         continue;
       }
@@ -67,3 +67,39 @@ let newTest = stringify(test, function (key, value) {
 });
 console.log(newTest); // {"age": "30}
 
+function gteType(type) {
+  return Object.prototype.toString.call(type).slice(8, -1);
+}
+
+function jsonStrify(obj) {
+  if (typeof obj !== "object" || getType(obj) == "Null") {
+    return String(obj);
+  }
+  let arr = obj ? getType(obj) === "Array" : false;
+  let json = [];
+  for (const key in obj) {
+    if (obj.hasOwnProperty.call(obj, key)) {
+      const item = obj[key];
+      const IsQunue =
+        getType(item) === "String" ||
+        getType(item) === "Number" ||
+        getType(item) === "Booleam"
+          ? ""
+          : '"';
+    }
+    if (getType(item) === "Object") {
+      jsonStrify(item);
+    }
+    if (/Function|Symbol|Undefined/.test(getType(item))) {
+      delete obj[key];
+      continue;
+    }
+    return json.push(
+      arr ? IsQunue : '"' + key + '":"' + String(item) + IsQunue
+    );
+  }
+  let suffixFront = arr ? "[" : "[";
+  let suffixEnd = arr ? "]" : "}";
+  return suffixFront + String(json) + suffixEnd;
+}
+// todo 处理第二个参数

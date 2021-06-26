@@ -1,0 +1,38 @@
+<script>
+  // function fn(tar) {
+  //   let res = 0;
+  // }
+
+  // function fn(n) {
+  //   if (n <= 2 && n >= 0) {
+  //     return n;
+  //   } else return n * fn(n - 1);
+  // }
+  // let res = fn(4);
+  // console.log(res);
+  let node = {
+    val: 1,
+    next: {
+      val: 2,
+      next: {
+        val: 3,
+        next: {
+          val: 4,
+          next: null,
+        },
+      },
+    },
+  };
+
+  function ReverseList(head) {
+    if (head === null || head.next === null) return head;
+    let reverList = ReverseList(head.next);
+    let h2 = head.next;
+    h2.next = head;
+    head.next = null;
+    return reverList;
+  }
+  let res = ReverseList(node);
+  // console.log(res);
+  console.log(res);
+</script>

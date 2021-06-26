@@ -15,5 +15,22 @@
   </head>
   <body>
     <div class="box"></div>
+    <script>
+      // function flat(arr) {
+      //   let res = [];
+      //   for (const i of arr) {
+      //     Array.isArray(i) ? (res = res.concat(flat(i))) : res.push(i);
+      //   }
+      //   return res;
+      // }
+      function flat(arr) {
+        while (arr.some(Array.isArray)) {
+          arr = [].concat(...arr);
+        }
+        return arr;
+      }
+      let res = flat([1, [2, [2]]]);
+      console.log(res);
+    </script>
   </body>
 </html>

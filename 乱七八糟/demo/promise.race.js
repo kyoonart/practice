@@ -14,7 +14,7 @@ let promiseAll = (promises) => {
     promises.forEach((promise) => {
       if (promise instanceof Promise) {
         promise.then((res) => {
-          result.push(res);
+          result[index] = res;
           if (promises.length === result.length) {
             return resolve(result);
           }

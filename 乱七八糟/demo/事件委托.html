@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <button>1</button>
+      <button>3</button>
+      <button>4</button>
+      <button>5</button>
+      <button>6</button>
+    </div>
+    <script>
+      let fa = document.querySelector("div");
+      fa.addEventListener("click", function (e) {
+        console.log(e.target.innerText);
+      });
+      // let btns = fa.children;
+      // for (var i = 0; i < btns.length; i++) {
+      //   btns[i].onclick = function () {
+      //     console.dir(this.innerText);
+      //     console.log(this.tagName);
+      //   };
+      // }
+      let arr = [1, 4, 4, 1, 2, 5, 25, 6];
+      arr.sort(() => Math.random() - 0.5);
+      console.log(arr);
+    </script>
+  </body>
+</html>

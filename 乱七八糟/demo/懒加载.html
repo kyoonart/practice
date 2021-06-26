@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      img {
+        margin-top: 2000px;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <img
+        src="https://th.bing.com/th/id/R33b75ecf0b60a88e9be0ccbc8e977879?rik=xVwMY%2fSYj3AxQw&riu=http%3a%2f%2fwww.webhek.com%2fwordpress%2fwp-content%2fuploads%2f2016%2f10%2f2008100603035335.gif&ehk=u0YjsNQUvyAcXcOKnOuyuB1ObFQSE%2b0jhf1oRzdIaM8%3d&risl=&pid=ImgRaw"
+        alt=""
+      />
+      <!-- <img
+        src="https://tse2-mm.cn.bing.net/th/id/OIP.e7kqrMHYiOlJJ-DIPYo6sAHaEA?pid=ImgDet&rs=1"
+        alt=""
+      /> -->
+    </div>
+    <script>
+      let img = document.querySelector("img");
+      img.onclick = function () {
+        console.log(img.getBoundingClientRect().top);
+        console.log(document.documentElement.clientHeight);
+      };
+    </script>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      ul {
+        font-size: 12px;
+      }
+      li {
+        width: 10em;
+        height: 10em;
+        font-size: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <ul>
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>5</li>
+    </ul>
+    <script>
+      let uls = document.querySelector("ul");
+      uls.addEventListener("click", (e) => {
+        console.log("e.target", e.target);
+        console.log("e.currentTarget", e.currentTarget);
+      });
+      //   for (let i = 0; i < uls.length; i++) {}
+    </script>
+  </body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <ul>
+      <li>li 1 号</li>
+      <li>li 2 号</li>
+      <li>li 3 号</li>
+      <li>li 4 号</li>
+    </ul>
+    <button id="btn">添加</button>
+    <script>
+      // 通过标签名获取元素
+      let oUl = document.getElementsByTagName("ul")[0];
+      let oLi = document.getElementsByTagName("li");
+
+      // 直接给 ul 添加点击事件
+      oUl.onclick = function (ev) {
+        // ev 对象的兼容处理
+        ev = ev || window.event;
+
+        // 通过 ev 对象的 target 找到触发事件的元素
+        // 此操作的作用是：拿到对应的元素
+        let target = ev.target || ev.srcElement;
+
+        // 需求中的操作
+        // target.nodeName.toLowerCase() 获取元素的操作
+        // 写法一
+        // if (target.nodeName.toLowerCase() == "li") {
+        //   console.log(target.innerText);
+        // }
+
+        // 写法二
+        console.log(target.innerText);
+      };
+
+      // 通过 id 获取 按钮元素
+      let btn = document.getElementById("btn");
+
+      // 为按钮添加点击事件
+      btn.onclick = function (ev) {
+        // 新建 li 元素
+        let aLi = document.createElement("li");
+
+        // 给 li 赋值
+        aLi.innerHTML = `li ${oLi.length + 1} 号`;
+
+        // 直接将新 li 元素放到 ul 上
+        oUl.appendChild(aLi);
+      };
+    </script>
+  </body>
+</html>

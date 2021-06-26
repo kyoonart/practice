@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>秒表</title>
+    <style type="text/css"></style>
+  </head>
+  <body>
+    <div id="div1">
+      <span id="span1">00</span> : <span id="span2">00</span> :
+      <span id="span3">00</span> :
+      <span id="span4">00</span>
+    </div>
+    <input id="input1" type="button" value="start" onclick="whenClick();" />
+    <input id="input2" type="button" value="clear" onclick="clear1();" />
+    <script type="text/javascript">
+      var milliSeconds1 = document.getElementById("span4");
+      var seconds1 = document.getElementById("span3");
+      var minutes1 = document.getElementById("span2");
+      var hours1 = document.getElementById("span1");
+      var time = 0;
+      var pre_time = 0; //前端全栈交流学习圈：866109386
+      var intervals = 0; //面相1-3年经验前端开发人员
+      var pre_intervals = 0; //帮助突破技术瓶颈，提升思维能力
+      var flag;
+
+      function whenClick() {
+        //  开始/暂停
+        var inputValue = document.getElementById("input1");
+        if (inputValue.value == "start" || inputValue.value == "continue") {
+          var date = new Date();
+          time = date.getTime();
+          pre_time = time;
+          inputValue.value = "stop ";
+          start1();
+        } else {
+          inputValue.value = "continue";
+          stop1();
+        }
+      }
+
+      function clear1() {
+        //  清零
+        stop1();
+        milliSeconds1.innerHTML =
+          seconds1.innerHTML =
+          minutes1.innerHTML =
+          hours1.innerHTML =
+            "00";
+        time = 0;
+        pre_time = 0;
+        intervals = 0;
+        pre_intervals = 0;
+        document.getElementById("input1").value = "start";
+      }
+
+      function start1() {
+        //  开始/继续
+        flag = setInterval("timeIncrement();", 1000);
+      }
+
+      function timeIncrement() {
+        date = new Date();
+        intervals = date.getTime() - time + pre_intervals;
+        var a = (intervals % 1000) / 10;
+        var b = (intervals % 60000) / 1000;
+        var c = (intervals % 3600000) / 60000;
+        var d = intervals / 3600000;
+        milliSeconds1.innerHTML = a < 10 ? "0" + Math.floor(a) : Math.floor(a);
+        seconds1.innerHTML = b < 10 ? "0" + Math.floor(b) : Math.floor(b);
+        minutes1.innerHTML = c < 10 ? "0" + Math.floor(c) : Math.floor(c);
+        hours1.innerHTML = d < 10 ? "0" + Math.floor(d) : Math.floor(d);
+      }
+
+      function stop1() {
+        //  暂停/停止
+        date = new Date();
+        pre_intervals += date.getTime() - pre_time;
+        clearInterval(flag);
+      }
+    </script>
+  </body>
+</html>

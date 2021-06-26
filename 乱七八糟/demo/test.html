@@ -14,14 +14,44 @@
 
       // let testObj = Object.create(a.prototype);、
       // console.log(testObj.__proto__);
-      function foo() {
-        let a = (b = 0);
-        a++;
-        return a;
+      // foo(); // => ???
+      // console.log(typeof a); // => ???
+      // console.log(typeof b);
+      // const curry = (fn, ...args) => {
+      //   return fn.length >= args.length
+      //     ? fn(args)
+      //     : (...args2) => curry(fn, ...args, ...args2);
+      // };
+      function curry(func) {
+        return function curried(...args) {
+          if (args.length >= func.length) {
+            return func.apply(this, args);
+          } else {
+            return function (...args2) {
+              return curried.apply(this, args.concat(args2));
+            };
+          }
+        };
       }
-      foo(); // => ???
-      console.log(typeof a); // => ???
-      console.log(typeof b);
+
+      function sum(a, b, c) {
+        return a + b + c;
+      }
+      let de = curry(sum);
+      // console.log(de(1)(2)(3));
+      const add = (a) => {
+        let res = a;
+        function sum(b) {
+          res += b;
+          return sum;
+        }
+        sum.toString = function () {
+          return res;
+        };
+        return sum;
+      };
+      let res = add(1)(2);
+      console.log(res);
     </script>
   </body>
 </html>

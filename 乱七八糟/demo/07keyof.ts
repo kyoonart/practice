@@ -3,15 +3,5 @@ interface info {
   age: number;
 }
 type dataIndex = keyof info;
-const arr: dataIndex[] = ["age", "name"];
-arr.push("name");
-// test
-// test
-// test
-// test
-// test
-// test
-
-// test
-// test
-// test
+const arrx: dataIndex[] = ["age", "name"];
+arrx.push("name");

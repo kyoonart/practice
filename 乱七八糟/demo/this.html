@@ -1,0 +1,11 @@
+<script>
+  let obj = {
+    a: 20,
+    b: this.a + 10,
+    say: function () {
+      return this.a + 10;
+    },
+  };
+  console.log(obj.b);
+  console.log(obj.say(), obj.say);
+</script>

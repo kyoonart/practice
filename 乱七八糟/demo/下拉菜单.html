@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>下拉菜单</title>
+    <style>
+      .container {
+        display: flex;
+        justify-content: center;
+      }
+
+      ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .nav li {
+        float: left;
+        width: 100px;
+        list-style: none;
+        background-color: #fff;
+        border: 1px solid black;
+        height: 30px;
+        text-align: center;
+        line-height: 30px;
+        margin-right: -1px;
+      }
+
+      .nav li a {
+        text-decoration: none;
+        text-align: center;
+        color: black;
+      }
+
+      .nav li ul {
+        border: 1px solid #000;
+        display: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <select id="demo">
+        <option value="baidu">百度</option>
+        <option value="bing">bing</option>
+        <option value="google">谷歌</option>
+        <option value="audi">Audi</option>
+      </select>
+    </div>
+    <script>
+      let selects = [...document.querySelectorAll("option")];
+      document
+        .getElementById("demo")
+        .addEventListener(
+          "click",
+          console.log(document.getElementById("demo").value)
+        );
+    </script>
+  </body>
+</html>

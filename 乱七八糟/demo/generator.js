@@ -32,3 +32,50 @@ function loadZ() {
 function loadE() {
   console.log("数据加载完成");
 }
+function load1() {
+  return new Promise(function (resolve, reject) {
+    setTimeout(() => resolve(1), 1000);
+  });
+}
+function load2() {
+  return new Promise(function (resolve, reject) {
+    setTimeout(() => resolve(2), 1000);
+  });
+}
+async function test() {
+  let a = await load1();
+  let b = await load2();
+  console.log(a, b);
+}
+test();
+// 类似co模块
+function run(generator) {
+  let gen = generator();
+  function step(val) {
+    let res = gen.next(val);
+    if (res.done) return res.value;
+    res.value.then((val) => {
+      step(val);
+    });
+  }
+  step();
+}
+
+function* myGenerator() {
+  console.log(yield Promise.resolve(1)); //1
+  console.log(yield Promise.resolve(2)); //2
+  console.log(yield Promise.resolve(3)); //3
+}
+run(myGenerator);
+
+function co(generator) {
+  let gen = generator();
+  function step(res) {
+    if (res.done) return res.value;
+    res.value.then((val) => {
+      step(gen.next(val));
+    });
+  }
+  step(gen.next());
+}
+co(myGenerator);
