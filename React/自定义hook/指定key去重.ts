@@ -1,8 +1,11 @@
-import { useState, useRef, useMemo, useCallback } from 'react';
+import { useState, useRef, useMemo, useCallback } from "react";
 
-function createKeyObj<T extends { [key: string]: any }>(list: T[], key: keyof T) {
+function createKeyObj<T extends { [key: string]: any }>(
+  list: T[],
+  key: keyof T
+) {
   const obj: { [key: string]: T } = {};
-  list.forEach(s => {
+  list.forEach((s) => {
     if (s[key]) {
       obj[s[key]] = s;
     }
@@ -22,7 +25,13 @@ function isUndef(val: any) {
 export default function useKeySet<T extends { [key: string]: any }>(
   initialSet: T[],
   key: keyof T
-): [T[], (item: T) => boolean, (item: T) => void, (item: T) => void, () => void] {
+): [
+  T[],
+  (item: T) => boolean,
+  (item: T) => void,
+  (item: T) => void,
+  () => void
+] {
   const [set, setSet] = useState(initialSet);
   const keyObjRef = useRef(createKeyObj(set, key));
   const has = useCallback(
@@ -33,7 +42,7 @@ export default function useKeySet<T extends { [key: string]: any }>(
     (item: T) => {
       if (!has(item)) {
         keyObjRef.current[item[key]] = item;
-        setSet(prev => [...prev, item]);
+        setSet((prev) => [...prev, item]);
       }
     },
     [key, has]
@@ -44,9 +53,9 @@ export default function useKeySet<T extends { [key: string]: any }>(
         const target = keyObjRef.current[item[key]];
         if (isUndef(target)) {
           delete keyObjRef.current[item[key]];
-          setSet(prev => {
+          setSet((prev) => {
             const current = [...prev];
-            const idx = current.findIndex(i => i[key] === item[key]);
+            const idx = current.findIndex((i) => i[key] === item[key]);
             if (idx !== -1) {
               current.splice(idx, 1);
             }
