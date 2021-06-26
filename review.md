@@ -143,6 +143,12 @@ webpack 执行原理：
 Loader 直译为‘加载器’。webpack 将一切文件视为模块，但是 webpack 原生是只能解析 js 文件，如果想将其他文件也打包的话，就会用到 loader。所以 loader 的作用是让 webpack 拥有了加载和解析非 javascript 文件的能力
 （2）使用
 Loader 在 module.rules 中配置，也就是说它作为模块的解析规则而存在，类型为数组，每一项都是一个 object，里面描述了对于什么类型的文件(test)，使用什么加载(loader)和使用的参数(options)  
+ 加载顺序问题
+
+- 从右到左
+- 从下到上
+- pre-> normal->inline->post
+
 （3）常见的 loader
 
 - css-loader 加载 css，支持模块化、压缩、文件导入等特性
