@@ -5,7 +5,7 @@ const loaderUtils = require("loader-utils");
 function loader(source) {
   // loader的参数就是源代码  这里的this就是loader的上下文
   const options = loaderUtils.getOptions(this);
-  console.log(this.resourcePath, "=========================="); // [./src/index.js]
+  console.log(this, "=========================="); // [./src/index.js]
   const callback = this.async(); // babel的转换是异步的,同步的返回是不行的， 不能用return  同步就是直接掉用 异步会在async中
   babel.transform(
     source,
