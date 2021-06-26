@@ -1,3 +1,4 @@
+// 连续数组
 function Arr(arr) {
   var len = arr.length,
     j,
