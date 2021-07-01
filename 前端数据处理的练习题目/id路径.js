@@ -1,5 +1,5 @@
 // 有这么一个数据结构:
-
+// 根据某一节点id查找这个id所在的完整路径。
 const data = [
   {
     id: "1",
@@ -59,54 +59,35 @@ const data = [
 // id = "9" => ["7", "8", "9"]
 // id = "100" => []
 // PS: id 全局唯一， 无序
-// function isContinued(arr) {
-//   let flag = false;
-//   let len = arr.length - 1;
-//   let newArr = arr.map((i) => +i);
-//   if ((newArr[len] - newArr[0]) / len === 1) return true;
-//   return false;
-// }
-// console.log(isContinued(["1", "2", "3", "4"]));
-
-// let result = [];
-// const fn = (id, arr) => {
-//   for (let i = 0; i < arr.length; i++) {
-//     let temp = arr[i];
-//     if (result.id === id) {
+// 通过树节点id获取子父节点路径的函数
+const findPath = (data, id, path = []) => {
+  if (!data) return [];
+  for (const item of data) {
+    path.push(item.id);
+    if (item.id == id) return path;
+    if (item.sub && item.sub.length > 0) {
+      const findChildren = findPath(item.sub, id, path);
+      if (findChildren) return findChildren;
+    }
+    path.pop();
+  }
+};
+let r = findPath(data, 4);
+console.log("rr", r);
+// const findPath = (data, id, result = []) => {
+//   for (let i = 0; i < data.length; i++) {
+//     result.push(data[i].id);
+//     if (data[i].id == id) {
 //       return result;
-//     } else {
-//       result.push(temp.id);
 //     }
+//     console.log("result", result);
+//     let subs = data[i].sub || [];
+//     if (subs && subs.length) {
+//       let findChildren = findPath(subs, id, result);
+//       if (findChildren) return findChildren;
+//     }
+//     result.pop();
 //   }
 // };
-var returnedItem = [];
-var find = function (arr, id) {
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i].id == id) {
-      return returnedItem;
-      break;
-    } else if (arr[i].sub && arr[i].sub.length > 0) {
-      returnedItem.push(arr[i].id);
-      find(arr[i].sub, id); //递归调用
-    }
-  }
-  return returnedItem;
-
-  // arr.forEach((item) => { //利用foreach循环遍历
-  //     if(item.id==id)//判断递归结束条件
-  //     {
-  //         returnedItem = item;
-  //         return item;
-  //     }
-  //     else if(item.children.length > 0) //判断chlidren是否有数据
-  //     {
-  //         find(item.children, id);  //递归调用
-  //     }
-  // })
-};
-
-// var item = find(array, 187);
-console.log(find(data, 6));
-
-// let f = findPath("7", data);
-// console.log(f);
+// let tt = findPath(data, 9);
+// console.log("tt", tt);
