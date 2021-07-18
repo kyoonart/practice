@@ -79,3 +79,4 @@ const flatten = (arr) => {
   return [].concat(...arr.map(flatten));
 };
 console.log(flatten([1, 2, [3, 3, [4, 4, [7, 8]]]]));
+// Array.map(callback) callback 函数会被自动传入三个参数：数组元素，元素索引，原数组本身。
