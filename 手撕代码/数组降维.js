@@ -1,3 +1,4 @@
+// 实现数组的扁平化
 const arr = [2, 5, [7, 8, [2, 3, 1, [3, 9, 8, [2, 8]]]]];
 // Es6
 let res = flat(arr);
@@ -70,3 +71,11 @@ function flat(arr) {
   }
   return arr;
 }
+
+const flatten = (arr) => {
+  if (!Array.isArray(arr)) {
+    return arr;
+  }
+  return [].concat(...arr.map(flatten));
+};
+console.log(flatten([1, 2, [3, 3, [4, 4, [7, 8]]]]));
