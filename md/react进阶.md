@@ -12,3 +12,15 @@
 - v17： 事件绑定由 document 变成 container ，移除事件池等。
 #### 基础篇 认识jsx
  总结:我们写的 JSX 会先转换成 React.element，再转化成 React.fiber 的过程。这里要牢牢记住 jsx 转化成 element 的处理逻辑，还有就是 element 类型与转化成 fiber 的 tag 类型的对应关系。这对后续的学习会很有帮助。
+ [介绍一下react fiber](https://www.jianshu.com/p/ff32dea870ed)
+ ##### 那么，函数组件和类组件本质的区别是什么呢？
+对于类组件来说，底层只需要实例化一次，实例中保存了组件的 state 等状态。对于每一次更新只需要调用 render 方法以及对应的生命周期就可以了。但是在函数组件中，每一次更新都是一次新的函数执行，一次函数组件的更新，里面的变量会重新声明。
+ ##### 组件通信方式
+ - props 和 callback 方式
+ - ref 方式。
+ - React-redux 或 React-mobx 状态管理方式。
+ - context 上下文方式。
+ - event bus 事件总线。
+##### 类组件和函数组件的区别：
+1. 类组件的本质就是 类和函数还有 oop 思想中的继承，在此之上需要内置处理 state和props 组件的状态维护，状态 -> ui -> 渲染
+2. 函数组件 没有实例化的概念，FC 思想，每个组件应该只处理一个逻辑事物不想 class组件那么复合，另外它没有转态存储能力必须依赖 hook
