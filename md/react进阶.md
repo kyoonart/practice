@@ -10,3 +10,5 @@
 - v16.8：全新 React-Hooks 支持，使函数组件也能做类组件的一切事情。
 
 - v17： 事件绑定由 document 变成 container ，移除事件池等。
+#### 基础篇 认识jsx
+ 总结:我们写的 JSX 会先转换成 React.element，再转化成 React.fiber 的过程。这里要牢牢记住 jsx 转化成 element 的处理逻辑，还有就是 element 类型与转化成 fiber 的 tag 类型的对应关系。这对后续的学习会很有帮助。
