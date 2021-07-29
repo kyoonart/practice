@@ -24,3 +24,36 @@
 ##### 类组件和函数组件的区别：
 1. 类组件的本质就是 类和函数还有 oop 思想中的继承，在此之上需要内置处理 state和props 组件的状态维护，状态 -> ui -> 渲染
 2. 函数组件 没有实例化的概念，FC 思想，每个组件应该只处理一个逻辑事物不想 class组件那么复合，另外它没有转态存储能力必须依赖 hook
+#### State相关
+- setState后发生了什么？
+    + render 阶段 render 函数执行 -> commit 阶段真实 DOM 替换 -> setState 回调函数执行 callback 。
+- 同步异步问题
+- setState更新的优先级
+    + flushSync 中的 setState > 正常执行上下文中 setState > setTimeout ，Promise 中的 setState。
+- hooks useState相关
+```js
+ [ ①state , ②dispatch ] = useState(③initData);
+ ① state，目的提供给 UI ，作为渲染视图的数据源。
+ ② dispatch 改变 state 的函数，可以理解为推动函数组件渲染的渲染函数。
+ ③ initData 有两种情况，第一种情况是非函数，将作为 state 初始化的值。 第二种情况是函数，函数的返回值作为 useState 初始化的值。
+ initData为非函数的情况/* 此时将把 0 作为初使值 */
+ const [ number , setNumber ] = React.useState(0)
+ initData 为函数的情况:
+ const [ number , setNumber ] = React.useState(()=>{
+       /*  props 中 a = 1 state 为 0-1 随机数 ， a = 2 state 为 1 -10随机数 ， 否则，state 为 1 - 100 随机数   */
+       if(props.a === 1) return Math.random() 
+       if(props.a === 2) return Math.ceil(Math.random() * 10 )
+       return Math.ceil(Math.random() * 100 ) 
+    })
+``` 
+   + 更新
+       + 第一种非函数情况，此时将作为新的值，赋予给 state，作为下一次渲染使用;
+       + 第二种是函数的情况，如果 dispatch 的参数为一个函数，这里可以称它为reducer，reducer 参数，是上一次返回最新的 state，返回值作为新的 state。
+
+- 如何监听 state 变化？
+   + 类组件 setState 中，有第二个参数 callback 或者是生命周期componentDidUpdate 可以检测监听到 state 改变或是组件更新。
+   + 那么在函数组件中，如何怎么监听 state 变化呢？这个时候就需要 useEffect 出场了，通常可以把 state 作为依赖项传入 useEffect 第二个参数 deps ，但是注意 useEffect 初始化会默认执行一次。
+ 更新的不同点
+   + 在不是 pureComponent 组件模式下， setState 不会浅比较两次 state 的值，只要调用 setState，在没有其他优化手段的前提下，就会执行更新。但是 useState 中的 dispatchAction 会默认比较两次 state 是否相同，然后决定是否更新组件。
+   + setState 有专门监听 state 变化的回调函数 callback，可以获取最新state；但是在函数组件中，只能通过 useEffect 来执行 state 变化引起的副作用。
+   + setState 在底层处理逻辑上主要是和老 state 进行合并处理，而 useState 更倾向于重新赋值。
