@@ -57,3 +57,36 @@
    + 在不是 pureComponent 组件模式下， setState 不会浅比较两次 state 的值，只要调用 setState，在没有其他优化手段的前提下，就会执行更新。但是 useState 中的 dispatchAction 会默认比较两次 state 是否相同，然后决定是否更新组件。
    + setState 有专门监听 state 变化的回调函数 callback，可以获取最新state；但是在函数组件中，只能通过 useEffect 来执行 state 变化引起的副作用。
    + setState 在底层处理逻辑上主要是和老 state 进行合并处理，而 useState 更倾向于重新赋值。
+##### react 生命周期
+ React 两个重要阶段，render 阶段和 commit 阶段，React 在调和( render )阶段会深度遍历 React fiber 树，目的就是发现不同( diff )，不同的地方就是接下来需要更新的地方，对于变化的组件，就会执行 render 函数。在一次调和过程完毕之后，就到了commit 阶段，commit 阶段会创建修改真实的 DOM 节点。
+ - render阶段 执行顺序：constructor -> getDerivedStateFromProps / componentWillMount -> render -> componentDidMount
+ ![render阶段](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/9838872f404c474b87612400c3a6c504~tplv-k3u1fbpfcp-watermark.image)
+ update更新阶段
+ ![update更新阶段](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/de17c24547b040b9a93b01706d9e585b~tplv-k3u1fbpfcp-watermark.image)
+ - 更新阶段对应的生命周期的执行顺序：
+componentWillReceiveProps( props 改变) / getDerivedStateFromProp -> shouldComponentUpdate -> componentWillUpdate -> render -> getSnapshotBeforeUpdate -> componentDidUpdate
+- 销毁阶段
+ ①执行生命周期 componentWillUnmount
+####### 一些重要的生命周期函数的作用
+- getDerivedStateFromProps 作用：
+代替 componentWillMount 和 componentWillReceiveProps
+组件初始化或者更新时，将 props 映射到 state。
+返回值与 state 合并完，可以作为 shouldComponentUpdate 第二个参数 newState ，可以判断是否渲染组件。(请不要把 getDerivedStateFromProps 和 shouldComponentUpdate 强行关联到一起，两者没有必然联系)
+- getSnapshotBeforeUpdate
+getSnapshotBeforeUpdate(prevProps,preState){}
+把 getSnapshotBeforeUpdate 用英文解释一下 ， get | snap shot | before | update ， 中文翻译为 获取更新前的快照，可以进一步理解为 获取更新前 DOM 的状态。见名知意，上面说过该生命周期是在 commit 阶段的before Mutation ( DOM 修改前)，此时 DOM 还没有更新，但是在接下来的 Mutation 阶段会被替换成真实 DOM 。此时是获取 DOM 信息的最佳时期，getSnapshotBeforeUpdate 将返回一个值作为一个snapShot(快照)，传递给 componentDidUpdate作为第三个参数。
+8 componentDidUpdate
+componentDidUpdate(prevProps, prevState, snapshot){
+    const style = getComputedStyle(this.node)
+    const newPosition = { /* 获取元素最新位置信息 */
+        cx:style.cx,
+        cy:style.cy
+    }
+}
+三个参数：
+prevProps 更新之前的 props ；
+prevState 更新之前的 state ；
+snapshot 为 getSnapshotBeforeUpdate 返回的快照，可以是更新前的 DOM 信息。
+作用
+componentDidUpdate 生命周期执行，此时 DOM 已经更新，可以直接获取 DOM 最新状态。这个函数里面如果想要使用 setState ，一定要加以限制，否则会引起无限循环。
+接受 getSnapshotBeforeUpdate 保存的快照信息。
