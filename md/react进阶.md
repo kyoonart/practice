@@ -67,7 +67,7 @@
 componentWillReceiveProps( props 改变) / getDerivedStateFromProp -> shouldComponentUpdate -> componentWillUpdate -> render -> getSnapshotBeforeUpdate -> componentDidUpdate
 - 销毁阶段
  ①执行生命周期 componentWillUnmount
-####### 一些重要的生命周期函数的作用
+###### 一些重要的生命周期函数的作用
 - getDerivedStateFromProps 作用：
 代替 componentWillMount 和 componentWillReceiveProps
 组件初始化或者更新时，将 props 映射到 state。
@@ -76,6 +76,7 @@ componentWillReceiveProps( props 改变) / getDerivedStateFromProp -> shouldComp
 getSnapshotBeforeUpdate(prevProps,preState){}
 把 getSnapshotBeforeUpdate 用英文解释一下 ， get | snap shot | before | update ， 中文翻译为 获取更新前的快照，可以进一步理解为 获取更新前 DOM 的状态。见名知意，上面说过该生命周期是在 commit 阶段的before Mutation ( DOM 修改前)，此时 DOM 还没有更新，但是在接下来的 Mutation 阶段会被替换成真实 DOM 。此时是获取 DOM 信息的最佳时期，getSnapshotBeforeUpdate 将返回一个值作为一个snapShot(快照)，传递给 componentDidUpdate作为第三个参数。
 8 componentDidUpdate
+```js
 componentDidUpdate(prevProps, prevState, snapshot){
     const style = getComputedStyle(this.node)
     const newPosition = { /* 获取元素最新位置信息 */
@@ -83,6 +84,7 @@ componentDidUpdate(prevProps, prevState, snapshot){
         cy:style.cy
     }
 }
+```
 三个参数：
 prevProps 更新之前的 props ；
 prevState 更新之前的 state ；
@@ -90,3 +92,23 @@ snapshot 为 getSnapshotBeforeUpdate 返回的快照，可以是更新前的 DOM
 作用
 componentDidUpdate 生命周期执行，此时 DOM 已经更新，可以直接获取 DOM 最新状态。这个函数里面如果想要使用 setState ，一定要加以限制，否则会引起无限循环。
 接受 getSnapshotBeforeUpdate 保存的快照信息。
+##### ref
+- 为什么不能在函数组件中使用createRef？
+   useRef 底层逻辑是和 createRef 差不多，就是 ref 保存位置不相同，类组件有一个实例 instance 能够维护像 ref 这种信息，但是由于函数组件每次更新都是一次新的开始，所有变量重新声明，所以 useRef 不能像 createRef 把 ref 对象直接暴露出去，如果这样每一次函数组件执行就会重新声明 Ref，此时 ref 就会随着函数组件执行被重置，这就解释了在函数组件中为什么不能用 createRef 的原因。
+- 类组件获取 Ref 三种方式
+  + 字符串形式  eg： <div ref='devRef'></div>
+  + 回调函数形式  eg：<div ref={(node)=>this.divRef=node}></div>
+  + 对象形式  
+ ```js
+   currentDom = React.createRef(null)
+    render=()=> <div>
+         <div ref={ this.currentDom }  >Ref对象模式获取元素或组件</div>
+   </div>
+```
+ ##### ref的高阶用法
+ - forwardRef 转发 Ref
+ - ref实现组件通信
+ - 函数组件缓存数据
+   +  useRef 可以创建出一个 ref 原始对象，只要组件没有销毁，ref 对象就一直存在，那么完全可以把一些不依赖于视图更新的数据储存到 ref 对象中。这样做的好处有两个
+   保持全局唯一的引用、可以及时获取到改变后的最新值
+   
