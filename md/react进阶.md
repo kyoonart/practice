@@ -152,7 +152,9 @@ fiber 可以说是是 element 和真实 DOM 之间的交流枢纽站，一方面
 1. 当前阶段不会被打断，会根据上面两阶段生成的`effectList`一口气执行完成渲染操作。 
 2. 遍历render阶段生成的effectList，effectList上的Fiber节点保存着对应的props变化。之后会遍历effectList进行对应的dom操作和生命周期、hooks回调或销毁函数。 
 3. 通过双缓存的技术workInProgress Fiber完成渲染后会变为current Fiber树
-#####一些总结
+  
+
+ ##### 一些总结
 - React16引入了新的架构Fiber，使得React在reconciliation阶段可以被切分成多个小任务异步执行，Fiber的出现主要解决的是同步递归渲染造成的页面卡顿问题
 - render 阶段：这个阶段是可中断的，会找出所有节点的变更
 - commit 阶段：这个阶段是不可中断的，会执行所有的变更
