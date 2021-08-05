@@ -136,4 +136,23 @@ componentDidUpdate 生命周期执行，此时 DOM 已经更新，可以直接�
 - 在未来某个时刻继续调度任务，执行上次还没有完成的任务
 要满足这两点就需要调度一个宏任务，因为宏任务是在下次事件循环中执行，不会阻塞本次页面更新。而微任务是在本次页面更新前执行，与同步执行无异，不会让出主线程
 ##### React Fibe
-
+ - 为什么要使用fiber？
+     + 在 Reactv15 以及之前的版本，React 对于虚拟 DOM 是采用递归方式遍历更新的，比如一次更新，就会从应用根部递归更新，递归一旦开始，中途无法中断，随着项目越来越复杂，层级越来越深，导致更新的时间越来越长，给前端交互上的体验就是卡顿。
+Reactv16 为了解决卡顿问题引入了 fiber ，为什么它能解决卡顿，更新 fiber 的过程叫做 Reconciler（调和器），每一个 fiber 都可以作为一个执行单元来处理，所以每一个 fiber 可以根据自身的过期时间expirationTime（ v17 版本叫做优先级 lane ）来判断是否还有空间时间执行更新，如果没有时间更新，就要把主动权交给浏览器去渲染，做一些动画，重排（ reflow ），重绘 repaints 之类的事情，这样就能给用户感觉不是很卡。然后等浏览器空余时间，在通过 scheduler （调度器），再次恢复执行单元上来，这样就能本质上中断了渲染，提高了用户体验。
+-  element,fiber,dom三种什么关系？
+   + 首先必须需要弄明白 React.element ，fiber 和真实 DOM 三者是什么关系。
+element 是 React 视图层在代码层级上的表象，也就是开发者写的 jsx 语法，写的元素结构，都会被创建成 element 对象的形式。上面保存了 props ， children 等信息。
+DOM 是元素在浏览器上给用户直观的表象。
+fiber 可以说是是 element 和真实 DOM 之间的交流枢纽站，一方面每一个类型 element 都会有一个与之对应的 fiber 类型，element 变化引起更新流程都是通过 fiber 层面做一次调和改变，然后对于元素，形成新的 DOM 做视图渲染
+- 调和两大核心 render commit 阶段
+   + render阶段: 
+1. 生成新的fiber节点，通过diff算法对比节点差异创建出用于更新操作的workinprogressFiber树，给需要更新的fiber打上相对应的effectTag并且生成用于更新的effectList链表。具体可以拆分为`beginWork`以及`completeWork`两个阶段,通过深度优先遍历的形式来进项这两个阶段。 
+2. 相比于react15的递归处理虚拟dom节点，Reconciler通过链表的形式改成了循环处理。每处理完一个fiber节点都会检查时间是否充足或者是否又高优先级任务。
+   + commit阶段：
+1. 当前阶段不会被打断，会根据上面两阶段生成的`effectList`一口气执行完成渲染操作。 
+2. 遍历render阶段生成的effectList，effectList上的Fiber节点保存着对应的props变化。之后会遍历effectList进行对应的dom操作和生命周期、hooks回调或销毁函数。 
+3. 通过双缓存的技术workInProgress Fiber完成渲染后会变为current Fiber树
+ 一些总结
+- React16引入了新的架构Fiber，使得React在reconciliation阶段可以被切分成多个小任务异步执行，Fiber的出现主要解决的是同步递归渲染造成的页面卡顿问题
+- render 阶段：这个阶段是可中断的，会找出所有节点的变更
+- commit 阶段：这个阶段是不可中断的，会执行所有的变更
