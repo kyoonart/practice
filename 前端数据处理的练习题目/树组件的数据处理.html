@@ -11,24 +11,23 @@
       // pid=>id
       let treeData = {
         parent: [
-          { name: "文件夹1", pid: 0, id: 1 },
-          { name: "文件夹2", pid: 0, id: 2 },
-          { name: "文件夹1-1", pid: 1, id: 4 },
-          { name: "文件夹2-1", pid: 2, id: 3 },
+          { name: '文件夹1', pid: 0, id: 1 },
+          { name: '文件夹2', pid: 0, id: 2 },
+          { name: '文件夹1-1', pid: 1, id: 4 },
+          { name: '文件夹2-1', pid: 2, id: 3 },
         ],
         children: [
-          { name: "文件1", pid: 1, id: 1001 },
-          { name: "文件2", pid: 1, id: 1002 },
-          { name: "文件1-1", pid: 1, id: 1003 },
-          { name: "文件2-1", pid: 2, id: 1004 },
-          { name: "文件3-1", pid: 4, id: 1003 },
-          { name: "文件2-1", pid: 6, id: 1004 },
+          { name: '文件1', pid: 1, id: 1001 },
+          { name: '文件2', pid: 1, id: 1002 },
+          { name: '文件1-1', pid: 1, id: 1003 },
+          { name: '文件2-1', pid: 2, id: 1004 },
+          { name: '文件3-1', pid: 4, id: 1003 },
+          { name: '文件2-1', pid: 6, id: 1004 },
         ],
       };
       let data = [...treeData.parent, ...treeData.children];
-      let data = [...treeData.parent, ...treeData.children];
       let treeMap = data.reduce((memo, current) => {
-        memo[current["id"]] = current;
+        memo[current['id']] = current;
         return memo;
       }, {});
       let res = data.reduce((arr, current) => {
@@ -43,7 +42,7 @@
         }
         return arr;
       }, []);
-      console.log("res", res);
+      console.log('res', res);
     </script>
   </body>
 </html>

@@ -18,3 +18,4 @@ function Example() {
   );
 }
 export default Example;
+//  函数每次执行都是一次新的开始

@@ -31,3 +31,14 @@ function pop() {
   }
   return popVal;
 }
+
+function pop() {
+  while (stack1.length) {
+    stack2.push(stack1.pop());
+  }
+  const popVal = stack2.pop();
+  while (stack2.length) {
+    stack1.push(stack2.pop());
+  }
+  return popVal;
+}

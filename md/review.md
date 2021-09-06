@@ -137,6 +137,13 @@ webpack 执行原理：
 - happypack 多线程打包(加载 loader 过多很费时间)
 - tree-shaking 把没有的用到的代码自动删除掉
 
+#### Webpack 编译过程会将源码解析为 AST 吗？webpack 与 babel 分别实现了什么？
+构建阶段会读取源码，解析为 AST 集合。
+Webpack 读出 AST 之后仅遍历 AST 集合；babel 则对源码做等价转换
+#### Webpack 编译过程中，如何识别资源对其他资源的依赖？
+Webpack 遍历 AST 集合过程中，识别 require/ import 之类的导入语句，确定模块对其他资源的依赖关系
+#### 相对于 grant、gulp 等流式构建工具，为什么 webpack 会被认为是新一代的构建工具？
+Grant、Gulp 仅执行开发者预定义的任务流；而 webpack 则深入处理资源的内容，功能上更强大
 ##### 常见的 loader
 
 （1）作用
@@ -299,8 +306,58 @@ sameVnode 其实很简单，只有当 key、 tag、 isComment（是否为注释�
 webpack 打包原理是根据文件间的依赖关系对其进行静态分析，然后将这些模块按指定规则生成静态资源，
 当 webpack 处理程序时，它会递归地构建一个依赖关系图(dependency graph)，其中包含应用程序需要的每个模块，然后将所有这些模块打包成一个或多个 bundle。
 
+### webpack热更新原理
+
+webpack运行时启动了一个express应用，添加了对webpack编译监听的功能，添加了对浏览器的websocket长连接，当文件发生变化触发webpack进行 编译完成后，会通过socket消息告诉浏览器准备刷新。而为了减少刷新的代价，就是不用刷新网页，而是刷新某个模块，webpack-dev-server可以支持热更新，通过生成的文件的hash值来对比需要更新的模块，浏览器再进行热替换。
 ### 单元测试的重要性
 
 1:保证研发质量
 2:提高项目的稳定性
 3:提高开发速度
+
+### 错误处理】
+一般通过 try catch、then 捕获同步、异步错误还是不够的，因为这些是局部错误捕获手段，当我们无法保证所有代码都处理了异常时，需要进行全局异常监控，一般有两种方法：
+
+```js
+window.addEventListener('error')
+window.addEventListener('unhandledrejection')
+```
+error 可以监听所有同步、异步的运行时错误，但无法监听语法、接口、资源加载错误。而 `window.addEventListener('error')`
+`window.addEventListener('unhandledrejection')` 可以监听到 Promise 中抛出的，未被 .catch 捕获的错误。
+
+在具体的前端框架中，也可以通过框架提供的错误监听方案解决部分问题，比如 React 的` Error Boundaries`、Vue 的 `error handler`，一个是 UI 组件级别的，一个是全局的。
+
+回过头来看，本身 js 提供的 try catch 错误捕获是非常有效的，之所以会遇到无法捕获错误的经常，大多是因为异步导致的。
+
+然而大部分异步错误，都可以通过 await 的方式解决，我们唯一要注意的是，await 仅支持一层，或者说一条链的错误监听，比如这个例子是可以监听到错误的：
+```js
+try {
+  await func1()
+} catch (err) {
+  // caught
+}
+
+async function func1() {
+  await func2()
+}
+
+async function func2() {
+  throw Error('error')
+}
+
+```
+也就是说，只要这一条链内都被 await 住了，那么最外层的 try catch 就能捕获异步错误。但如果有一层异步又脱离了 await，那么就无法捕获了：
+```js
+async function func2() {
+  setTimeout(() => {
+    throw Error('error') // uncaught
+  })
+}
+
+```
+针对这个问题，原文也提供了例如 Promise.all、链式 Promise、.catch 等方法解决，因此只要编写代码时注意对异步的处理，就可以用 try catch 捕获这些异步错误。
+
+### dependencies与devDependencies实际区别
+
+如果我们只是单纯的做项目，那么我们可简单地认为生产环境和开发环境做为一种友善的提示，实质没有什么区别；但是，如果在发布npm包的时候，两种环境安装方式是有很大区别的！！！
+在发布npm包的时候，本身dependencies下的模块会作为依赖，一起被下载；devDependencies下面的模块就不会自动下载了；但对于项目而言，npm install 会自动下载devDependencies和dependencies下面的模块。
