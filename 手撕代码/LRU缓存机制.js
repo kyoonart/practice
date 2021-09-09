@@ -36,7 +36,7 @@ var LRUCache = function (capacity) {
  * @return {number}
  */
 LRUCache.prototype.get = function (key) {
-  let index = this.cache.findIndex((item) => item.key === key);
+  let index = this.cache.findIndex(item => item.key === key);
   if (index === -1) {
     return -1;
   }
@@ -56,7 +56,7 @@ LRUCache.prototype.get = function (key) {
  * @return {void}
  */
 LRUCache.prototype.put = function (key, value) {
-  let index = this.cache.findIndex((item) => item.key === key);
+  let index = this.cache.findIndex(item => item.key === key);
   // 想要插入的数据已经存在了，那么直接提升它就可以
   if (index > -1) {
     this.cache.splice(index, 1);
@@ -79,7 +79,7 @@ var LRUCache = function (capacity) {
 // 1: 不存在=>return -1
 // 2:存在 => 删除 => 然后在缓存数组开头存入数据=>返回对应的value
 LRUCache.prototype.get = function (key) {
-  let index = this.cache.findIndex((item) => item.key === key);
+  let index = this.cache.findIndex(item => item.key === key);
   if (index === -1) return -1;
   let value = this.cache[index].value;
   this.cache.splice(index, 1);
@@ -92,7 +92,7 @@ LRUCache.prototype.get = function (key) {
 //  不存在 直接插入缓存数组前面
 //  如果缓存数组满了 删除没有使用过的数据 也就缓存数组的最后一位
 LRUCache.prototype.put = function (key, value) {
-  let index = this.cache.findIndex((item) => item.key === key);
+  let index = this.cache.findIndex(item => item.key === key);
   if (index > -1) {
     this.cache.splice(index, 1);
   } else if (this.cache.length >= this.capacity) {
@@ -100,3 +100,11 @@ LRUCache.prototype.put = function (key, value) {
   }
   this.cache.unshift({ key, value });
 };
+
+let map = new Map();
+map.set(1, 2);
+map.set(1, 2);
+map.delete(2);
+map.set(2, 2);
+map.set(3, 3);
+console.log('map', map.keys().next().value);
