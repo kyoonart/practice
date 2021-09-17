@@ -1,4 +1,4 @@
-// componentDidMounted
+// componentDidMount 
 useEffect(() => {
     console.log("componentDidMount");
     return () => {

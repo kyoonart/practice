@@ -1,4 +1,5 @@
 // 给定一棵树，请你输出所有从根节点到叶子节点的路径组成的数字之和
+import { *asnodeOps } from 'web/runtime/node-ops';
 let tree = {
   val: 1,
   left: {

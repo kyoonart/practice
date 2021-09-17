@@ -1,0 +1,76 @@
+<!-- 使用div和css实现一个圆形，红色部分站60%，绿色40% -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box1 {
+        width: 0;
+        height: 0;
+        border-width: 100px;
+        border-style: solid;
+        border-color: red pink green blue;
+        padding: 50px;
+        border-radius: 200px;
+        background-color: cyan;
+      }
+      .triangle {
+        width: 0;
+        height: 0;
+        border-right: 50px solid transparent;
+        /* border-top: 50px solid transparent; */
+        border-left: 50px solid transparent;
+        border-bottom: 100px solid purple;
+      }
+      .sector {
+        width: 0;
+        height: 0;
+        border-width: 100px;
+        border-style: solid;
+        border-color: transparent transparent green;
+        border-radius: 200px;
+      }
+
+      /*anySector 任意角度的扇形*/
+      .anySector {
+        position: relative;
+        left: 200px;
+        top: -300px;
+        width: 200px;
+        height: 200px;
+        border-radius: 100px;
+        background-color: red;
+      }
+      .r1 {
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        border-radius: 100px;
+        background-color: yellow;
+        clip: rect(0, 100px, 200px, 0);
+        transform: rotate(90deg);
+      }
+      .r2 {
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        border-radius: 100px;
+        background-color: green;
+        clip: rect(0, 100px, 200px, 0);
+        transform: rotate(0deg);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box1"></div>
+    <div class="triangle"></div>
+    <div class="sector"></div>
+    <div class="anySector">
+      <div class="r1"></div>
+      <div class="r2"></div>
+    </div>
+  </body>
+</html>
