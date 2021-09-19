@@ -49,3 +49,4 @@ let obj = {
   },
 };
 console.log(levelOrder(obj));
+// [ [ 'b', 'f' ], [ 'c', 'g' ], [ 'd', 'l' ], [ 'i' ] ]
