@@ -38,8 +38,8 @@ function merge(arr1, arr2) {
   return res;
 }
 
-// const repeatFunc = repeat(console.log, 4, 3000);
-// repeatFunc("hello world");//会输出4次 hello world, 每次间隔3秒
+const repeatFunc = repeat(console.log, 4, 3000);
+repeatFunc("hello world"); //会输出4次 hello world, 每次间隔3秒
 function repeat(fn, times, delay) {
   return (arg) => {
     for (let i = 1; i <= times; i++) {
@@ -49,3 +49,27 @@ function repeat(fn, times, delay) {
 }
 const repeatFunc = repeat(console.log, 4, 3000);
 repeatFunc("hello world"); //会输出4次 hello world, 每次间隔3秒
+
+function repeat(func, times, wait) {
+  function sleep(fn, wait, args) {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        try {
+          fn.apply(this, args);
+          resolve();
+        } catch (error) {
+          reject(error);
+        }
+      }, wait);
+    });
+  }
+  // TODO
+  return async function (...args) {
+    const promises = new Array(times).fill(sleep);
+    for (const p of promises) {
+      await p(func, wait, args);
+    }
+  };
+}
+const repeatFunc = repeat(console.log, 4, 3000);
+repeatFunc("hellworld");
