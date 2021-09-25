@@ -16,6 +16,27 @@
 
  总结:我们写的 JSX 会先转换成 React.element，再转化成 React.fiber 的过程。这里要牢牢记住 jsx 转化成 element 的处理逻辑，还有就是 element 类型与转化成 fiber 的 tag 类型的对应关系。这对后续的学习会很有帮助。
  [介绍一下react fiber](https://www.jianshu.com/p/ff32dea870ed)
+ ```js
+ //  实现 react jsx render 函数
+function render(vnode, comtainer) {
+  if (typeof vnode === "string") {
+    let dom = document.createTextNode(vnode);
+    return comtainer.appendChild(dom);
+  }
+  let dom = document.createElement(vode.tag);
+  if (vnode.attrs) {
+    Object.keys(vnode.attrs).forEach((key) => {
+      if (key === "className") {
+        key = "class";
+      }
+      dom.setAttribute(key, vnode.attrs[key]);
+    });
+  }
+  vnode.children.forEach((child) => render(child, comtainer));
+  return comtainer.appendChild(dom);
+}
+
+```
 
 ##### 那么，函数组件和类组件本质的区别是什么呢？
 
