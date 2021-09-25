@@ -3,7 +3,7 @@ let arr = [
   [4, 5, 6],
   [7, 8, 9],
 ];
-const revortArr = arr => {
+const revortArr = (arr) => {
   for (let i = 0; i < arr.length; i++) {
     for (let j = i; j < arr[i].length; j++) {
       [arr[i][j], arr[j][i]] = [arr[j][i], arr[i][j]];
@@ -15,7 +15,7 @@ const revortArr = arr => {
   return arr;
 };
 let res = revortArr(arr);
-console.log('res: ', res);
+console.log("res: ", res);
 // 螺旋矩阵
 var spiralOrder = function (matrix) {
   const m = matrix.length;
@@ -34,23 +34,21 @@ var spiralOrder = function (matrix) {
   while (ans.length < count) {
     const rowNext = row + positions[d][0];
     const colNext = col + positions[d][1];
-    console.log('rowNext', rowNext);
     if (
       rowNext === m ||
       rowNext < 0 ||
       colNext === n ||
       colNext < 0 ||
-      matrix[rowNext][colNext] === ''
+      matrix[rowNext][colNext] === ""
     ) {
       d = (d + 1) % positions.length;
       continue;
     }
     ans.push(matrix[rowNext][colNext]);
-    matrix[rowNext][colNext] = '';
+    matrix[rowNext][colNext] = "";
     row = rowNext;
     col = colNext;
   }
-  console.log('xx', ans);
   return ans;
 };
 spiralOrder([
@@ -58,3 +56,15 @@ spiralOrder([
   [4, 5, 6],
   [7, 8, 9],
 ]);
+
+// 判断对象是否相等
+const ans = [];
+const map = new Map();
+arr.forEach((item) => {
+  const key = JSON.stringify(item);
+  if (!map.has(key)) {
+    ans.push(item);
+    map.set(key, 1);
+  }
+});
+return ans;
