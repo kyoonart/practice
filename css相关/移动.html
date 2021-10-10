@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      .box {
+        width: 200px;
+        height: 200px;
+        background: aquamarine;
+        animation: gg 1s 5;
+        /* animation: name duration timing-function de  lay iteration-count direction fill-mode; */
+      }
+      @keyframes gg {
+        0% {
+          transform: translateX(0px);
+        }
+        50% {
+          transform: translateX(400px);
+        }
+        70% {
+          transform: translate(400px, 400px);
+        }
+        90% {
+          transform: translate(0, 400px);
+        }
+        100% {
+          transform: translate(0, 0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box"></div>
+  </body>
+</html>

@@ -11,6 +11,7 @@ function Dog() {}
 Dog.prototype = new Animal();
 Dog.prototype.constructor = Dog;
 var d1 = new Dog();
+
 // 借用构造函数实现
 function Animal(name) {
   this.name = name;
@@ -24,6 +25,7 @@ function Dog(name) {
   Animal.call(this, name);
 }
 var d1 = new Dog("tom");
+
 // 组合继承 = 原型链+构造函数
 function Animal(name) {
   this.name = name;

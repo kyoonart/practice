@@ -1,8 +1,8 @@
 function BigSum(a, b) {
   a = "0" + a;
   b = "0" + b;
-  let carry = 0,
-    res = [];
+  let carry = 0;
+  let res = [];
   var arrA = a.split("");
   var arrB = b.split("");
   var len = Math.max(arrA.length, arrB.length);

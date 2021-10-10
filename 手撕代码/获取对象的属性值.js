@@ -37,7 +37,7 @@ const get = (obj, path, defaultVal = "undefined") => {
   if (Array.isArray(path)) {
     newPath = path;
   } else {
-    newPath = path.replace(/\[/g, ".").repace(/\]/g, "").split(".");
+    newPath = path.replace(/\[/g, ".").replace(/\]/g, "").split(".");
   }
   return newPath.reduce((o, k) => (o || {})[k], obj) || defaultVal;
 };
