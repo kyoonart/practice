@@ -200,3 +200,40 @@ function allSettled(iterable) {
     const result = new Array(index);
   });
 }
+
+// 实现简易版 promise
+const PENDING = "pending";
+const FULFILLED = "fulfilled";
+const REJECTED = "rejected";
+class myPromise {
+  state = PENDING;
+  result = null;
+  reason = null;
+  constructor(callback) {
+    callback(this.resolve, this.reject);
+  }
+  resolve = (result) => {
+    if (this.state === PENDING) {
+      this.state = FULFILLED;
+      this.result = result;
+    }
+  };
+  reject = (reason) => {
+    if (this.state === PENDING) {
+      this.state = REJECTED;
+      this.reason = reason;
+    }
+  };
+  then = (resolve, reject) => {
+    if (this.state === FULFILLED) {
+      resolve(this.result);
+    }
+    if (this.state === REJECTED) {
+      resolve(this.reason);
+    }
+  };
+}
+
+new myPromise((res, rej) => res(5)).then((res1) => {
+  console.log("lll", res1);
+});
