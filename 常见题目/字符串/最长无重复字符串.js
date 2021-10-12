@@ -96,3 +96,31 @@ const lengthOfLongestSubstring3 = (str) => {
 };
 let res = lengthOfLongestSubstring3("abcabcbb");
 console.log(res);
+
+// 最长无重复子串
+function findLongestStr(str) {
+  let left = 0;
+  let right = 0;
+  let maxLen = 0;
+  let start = 0;
+  let set = new Set();
+  const len = str.length;
+  while (right < len) {
+    while (set.has(str[right])) {
+      set.delete(str[left]);
+      left++;
+    }
+    while (!set.has(str[right]) && right < len) {
+      set.add(str[right]);
+      right++;
+    }
+    if (right - left > maxLen) {
+      maxLen = right - left;
+      start = left;
+    }
+    if (right === len) break;
+  }
+  return str.slice(start, start + maxLen);
+}
+
+console.log(findLongestStr("abcdaaaabcdefg"));
