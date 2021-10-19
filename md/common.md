@@ -9,17 +9,17 @@
 从上面的例子，我们已经知道，页面的卡顿是由于同时渲染大量DOM所引起的，所以我们考虑将渲染过程分批进行
 在这里，我们使用 setTimeout来实现分批渲染
 
-简单聊一下 setTimeout 和闪屏现象 setTimeout的执行时间并不是确定的。在JS中， setTimeout任务被放进事件队列中，只有主线程执行完才会去检查事件队列中的任务是否需要执行，因此 setTimeout的实际执行时间可能会比其设定的时间晚一些。
+简单聊一下 setTimeout 和闪屏现象setTimeout的执行时间并不是确定的。在JS中， setTimeout任务被放进事件队列中，只有主线程执行完才会去检查事件队列中的任务是否需要执行，因此 setTimeout的实际执行时间可能会比其设定的时间晚一些。
 刷新频率受屏幕分辨率和屏幕尺寸的影响，因此不同设备的刷新频率可能会不同，而 setTimeout只能设置一个固定时间间隔，这个时间不一定和屏幕的刷新时间相同。
 以上两种情况都会导致setTimeout的执行步调和屏幕的刷新步调不一致。
 在 setTimeout中对dom进行操作，必须要等到屏幕下次绘制时才能更新到屏幕上，如果两者步调不一致，就可能导致中间某一帧的操作被跨越过去，而直接更新下一帧的元素，从而导致丢帧现象
 
-（三）、使用 requestAnimationFrame 与 setTimeout相比， requestAnimationFrame最大的优势是由系统来决定回调函数的执行时机。
+（三）、使用 requestAnimationFrame与 setTimeout相比， requestAnimationFrame最大的优势是由系统来决定回调函数的执行时机。
 如果屏幕刷新率是60Hz,那么回调函数就每16.7ms被执行一次，如果刷新率是75Hz，那么这个时间间隔就变成了1000/75=13.3ms，换句话说就是， requestAnimationFrame的步伐跟着系统的刷新步伐走。它能保证回调函数在屏幕每一次的刷新间隔中只被执行一次，这样就不会引起丢帧现象。
 （四）、使用 DocumentFragment
 文档片段接口
 从MDN的说明中，我们得知 DocumentFragments是DOM节点，但并不是DOM树的一部分，可以认为是存在内存中的，所以将子元素插入到文档片段时不会引起页面回流。
-当 append元素到 document中时，被 append进去的元素的样式表的计算是同步发生的，此时调用 getComputedStyle 可以得到样式的计算值。而 append元素到 documentFragment 中时，是不会计算元素的样式表，所以 documentFragment 性能更优。当然现在浏览器的优化已经做的很好了， 当 append元素到 document中后，没有访问 getComputedStyle 之类的方法时，现代浏览器也可以把样式表的计算推迟到脚本执行之后。
+当 append元素到 document中时，被 append进去的元素的样式表的计算是同步发生的，此时调用 getComputedStyle 可以得到样式的计算值。而 append元素到 documentFragment 中时，是不会计算元素的样式表，所以 documentFragment 性能更优。当然现在浏览器的优化已经做的很好了，当 append元素到 document中后，没有访问 getComputedStyle 之类的方法时，现代浏览器也可以把样式表的计算推迟到脚本执行之后。
 
 二：虚拟列表
 思路

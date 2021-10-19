@@ -18,22 +18,22 @@
  [介绍一下react fiber](https://www.jianshu.com/p/ff32dea870ed)
  ```js
  //  实现 react jsx render 函数
-function render(vnode, comtainer) {
-  if (typeof vnode === "string") {
-    let dom = document.createTextNode(vnode);
-    return comtainer.appendChild(dom);
+function render(vNode, container) {
+  if (typeof vNode === "string") {
+    let dom = document.createTextNode(vNode);
+    return container.appendChild(dom);
   }
   let dom = document.createElement(vode.tag);
-  if (vnode.attrs) {
-    Object.keys(vnode.attrs).forEach((key) => {
+  if (vNode.attrs) {
+    Object.keys(vNode.attrs).forEach((key) => {
       if (key === "className") {
         key = "class";
       }
-      dom.setAttribute(key, vnode.attrs[key]);
+      dom.setAttribute(key, vNode.attrs[key]);
     });
   }
-  vnode.children.forEach((child) => render(child, comtainer));
-  return comtainer.appendChild(dom);
+  vNode.children.forEach((child) => render(child, container));
+  return container.appendChild(dom);
 }
 
 ```
@@ -74,9 +74,9 @@ function render(vnode, comtainer) {
  initData 为函数的情况:
  const [ number , setNumber ] = React.useState(()=>{
        /*  props 中 a = 1 state 为 0-1 随机数 ， a = 2 state 为 1 -10随机数 ， 否则，state 为 1 - 100 随机数   */
-       if(props.a === 1) return Math.random() 
+       if(props.a === 1) return Math.random()
        if(props.a === 2) return Math.ceil(Math.random() * 10 )
-       return Math.ceil(Math.random() * 100 ) 
+       return Math.ceil(Math.random() * 100 )
     })
 ```
 
