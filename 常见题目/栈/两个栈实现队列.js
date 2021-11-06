@@ -1,5 +1,5 @@
-let stack1 = []; //入队操作
-let stack2 = []; //出队操作
+let stack1 = [];
+let stack2 = [];
 
 //队列的入队操作
 function push(node) {
