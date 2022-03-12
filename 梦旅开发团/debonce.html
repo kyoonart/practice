@@ -1,53 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <button id="btn">节流提交</button>
     <script>
-        let btn = document.querySelector('#btn');
-        const debounce = (fn, delay) => {
-            let timer = null;
-            return (...args) => {
-                clearTimeout(timer);
-                timer = setTimeout(() => {
-                    fn.apply(this, args);
-                    console.log('this:', this);
-                }, delay)
-            }
-        }
+      let btn = document.querySelector("#btn");
+      const debounce1 = (fn, delay) => {
+        let timer = null;
+        return (...args) => {
+          clearTimeout(timer);
+          timer = setTimeout(() => {
+            fn.apply(this, args);
+            console.log("this:", this);
+          }, delay);
+        };
+      };
 
-        function success(e) {
-            console.log('防抖 success');
-        }
-        const Odebounce = debounce(success, 2000)
-        btn.addEventListener('click', Odebounce);
-        const debounce = (fn, delay) => {
-            let timer = null;
-            return (...args) => {
-                clearTimeout(timer)
-                timer = setTimeout(() => {
-                    fn.apply(this, args)
-                }, delay);
-            }
-        }
-        const troottle = (fn, delay) => {
-            let flag = true
-            return (...args) => {
-                if (!flag) return
-                flag = false
-                setTimeout(() => {
-                    fn.apply(this, args)
-                    flag = true
-                })
-            }
-        }
+      function success(e) {
+        console.log("防抖 success");
+      }
+      const Odebounce = debounce(success, 2000);
+      btn.addEventListener("click", Odebounce);
+      const debounce = (fn, delay) => {
+        let timer = null;
+        return (...args) => {
+          clearTimeout(timer);
+          timer = setTimeout(() => {
+            fn.apply(this, args);
+          }, delay);
+        };
+      };
+      const troottle = (fn, delay) => {
+        let flag = true;
+        return (...args) => {
+          if (!flag) return;
+          flag = false;
+          setTimeout(() => {
+            fn.apply(this, args);
+            flag = true;
+          });
+        };
+      };
     </script>
-</body>
-
+  </body>
 </html>
